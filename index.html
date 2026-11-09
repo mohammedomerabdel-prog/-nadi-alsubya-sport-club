@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
+    <!-- استدعاء خط كايرو لجعل الخطوط أنيقة ومتناسقة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
 
         body {
-            background-color: #f0f4f8;
-            color: #102a43;
+            background-color: #f4f6f9;
+            color: #1e293b;
             line-height: 1.6;
         }
 
@@ -22,76 +24,60 @@
         header {
             background-color: #0b2545;
             color: #ffffff;
-            padding: 1.1rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         header .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.4rem;
+            font-weight: 700;
             color: #63b3ed;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         nav {
             display: flex;
-            gap: 18px;
+            gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: #ffffff;
             text-decoration: none;
-            font-weight: 600;
             font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
+            font-weight: 600;
+            padding: 6px 12px;
             border-radius: 6px;
-            transition: all 0.3s ease;
+            transition: background 0.3s, color 0.3s;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #63b3ed;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .icon-svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
+            background-color: rgba(255, 255, 255, 0.08);
         }
 
         /* قسم الترحيب الرئيسي */
         .hero {
-            background: linear-gradient(135deg, rgba(11, 37, 69, 0.95), rgba(20, 70, 130, 0.92));
+            background: linear-gradient(135deg, #0b2545, #134074);
             color: #ffffff;
             text-align: center;
-            padding: 100px 20px;
-            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.1);
+            padding: 80px 20px;
         }
 
         .hero h1 {
-            font-size: 2.6rem;
-            margin-bottom: 18px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 35px;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
             color: #cbd5e1;
-            max-width: 650px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -99,86 +85,65 @@
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .btn {
             border: none;
-            padding: 12px 24px;
+            padding: 10px 22px;
             font-size: 0.95rem;
             font-weight: 700;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-block;
         }
 
         .btn-primary {
             background-color: #3182ce;
             color: #ffffff;
-            box-shadow: 0 4px 14px rgba(49, 130, 206, 0.4);
+            box-shadow: 0 4px 10px rgba(49, 130, 206, 0.3);
         }
 
         .btn-primary:hover {
             background-color: #2b6cb0;
-            transform: translateY(-2px);
         }
 
         .btn-secondary {
             background-color: #ffffff;
             color: #0b2545;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
         }
 
         .btn-secondary:hover {
             background-color: #e2e8f0;
-            transform: translateY(-2px);
         }
 
         /* الحاويات والأقسام */
         .container {
-            max-width: 1000px;
-            margin: -40px auto 50px auto;
+            max-width: 950px;
+            margin: 40px auto;
             padding: 0 20px;
-            position: relative;
-            z-index: 10;
         }
 
         .section {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 35px;
-            margin-bottom: 35px;
-            box-shadow: 0 4px 20px rgba(11, 37, 69, 0.06);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05);
         }
 
-        .section-title {
+        .section h2 {
             color: #0b2545;
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 12px;
-        }
-
-        .section-title .icon-svg {
-            width: 24px;
-            height: 24px;
-            fill: #3182ce;
+            padding-bottom: 10px;
         }
 
         /* جدول الأنشطة والتمارين */
-        .schedule-table-wrapper {
-            overflow-x: auto;
-        }
-
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -187,7 +152,7 @@
         }
 
         .schedule-table th, .schedule-table td {
-            padding: 15px 18px;
+            padding: 14px 16px;
             border-bottom: 1px solid #e2e8f0;
         }
 
@@ -195,17 +160,16 @@
             background-color: #f8fafc;
             color: #0b2545;
             font-weight: 700;
-            font-size: 1rem;
         }
 
         .schedule-table tr:hover {
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
         }
 
         .badge {
             display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 12px;
             font-size: 0.85rem;
             font-weight: 700;
         }
@@ -225,63 +189,34 @@
             background-color: #0b2545;
             color: #9fb3c8;
             text-align: center;
-            padding: 25px;
-            font-size: 0.95rem;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر وشريط التصفح بأيقونات SVG -->
+    <!-- الهيدر وشريط التصفح -->
     <header>
-        <div class="logo">
-            <svg class="icon-svg" viewBox="0 0 24 24" style="width:26px; height:26px; fill:#63b3ed;">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-            نادي الصبية الرياضي
-        </div>
+        <div class="logo">نادي الصبية الرياضي 🏆</div>
         <nav>
-            <a href="index.html">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-                الرئيسية
-            </a>
-            <a href="about.html">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                عن النادي
-            </a>
-            <a href="finance.html">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                الخزينة
-            </a>
-            <a href="members.html">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-                الأعضاء
-            </a>
-            <a href="media.html">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-3 5h-5v2h5V9zm0 4h-5v2h5v-2zM7 9h4v6H7V9z"/></svg>
-                المركز الإعلامي
-            </a>
+            <a href="index.html" class="active">الرئيسية</a>
+            <a href="about.html">عن النادي</a>
+            <a href="finance.html">الخزينة</a>
+            <a href="members.html">الأعضاء</a>
+            <a href="media.html">المركز الإعلامي</a>
         </nav>
     </header>
 
-    <!-- الهيرو بانو الترحيبي -->
+    <!-- قسم الترحيب الرئيسي -->
     <section class="hero">
         <h1>الموقع الرسمي لنادي الصبية الرياضي</h1>
-        <p>نصنع المستقبل الرياضي بروح الفريق والتزام الشفافية والتطوير المستمر.</p>
-        
+        <p>نعمل على تطوير المهارات الرياضية وبناء الجيل القادم بروح رياضية عالية.</p>
         <div class="hero-buttons">
-            <button id="joinBtn" class="btn btn-primary">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                انضم إلينا الآن
-            </button>
-            <a href="finance.html" class="btn btn-secondary">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9z"/></svg>
-                خزينة النادي
-            </a>
-            <a href="media.html" class="btn btn-secondary">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/></svg>
-                المركز الإعلامي
-            </a>
+            <button id="joinBtn" class="btn btn-primary">انضم إلينا الآن</button>
+            <a href="finance.html" class="btn btn-secondary">خزينة النادي 💳</a>
+            <a href="members.html" class="btn btn-secondary">الأعضاء ⚽</a>
         </div>
     </section>
 
@@ -289,12 +224,8 @@
         
         <!-- جدول التمارين والأنشطة -->
         <div class="section">
-            <div class="section-title">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
-                جدول التمارين والنشاط الأسبوعي
-            </div>
-            
-            <div class="schedule-table-wrapper">
+            <h2>📅 جدول التمارين والنشاط الأسبوعي</h2>
+            <div style="overflow-x: auto;">
                 <table class="schedule-table">
                     <thead>
                         <tr>
@@ -334,14 +265,11 @@
             </div>
         </div>
 
-        <!-- قسم التعريف النادي -->
+        <!-- عن النادي -->
         <div class="section">
-            <div class="section-title">
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
-                عن نادي الصبية
-            </div>
-            <p style="color: #486581; font-size: 1.05rem;">
-                نادي الصبية الرياضي هو ملتقى رياضي واجتماعي متكامل يسعى لترسيخ الروح الرياضية، وصقل مهارات الشباب، وتقديم نموذج إداري متميز قائم على المشاركة المجتمعية والشفافية.
+            <h2>⚽ نبذة عن النادي</h2>
+            <p style="color: #486581;">
+                نادي الصبية الرياضي هو ملتقى رياضي واجتماعي يهدف إلى تنمية المواهب الشابة وتقديم أفضل الأنشطة والتدريبات الرياضية بأعلى كفاءة وشفافية إدارية.
             </p>
         </div>
 
