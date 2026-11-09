@@ -1,51 +1,897 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#071d38">
+    <meta name="description" content="تعرف على تاريخ ورؤية ورسالة ومجلس إدارة نادي الصبية الرياضي">
     <title>عن النادي - نادي الصبية الرياضي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background-color: #f4f6f9; color: #1e293b; line-height: 1.6; padding-bottom: 70px; }
-        header { background-color: #0b2545; color: #ffffff; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-        header .logo { font-size: 1.4rem; font-weight: 700; color: #63b3ed; text-decoration: none; }
-        .container { max-width: 950px; margin: 25px auto; padding: 0 15px; }
-        .section { background: #ffffff; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05); }
-        .section h2 { color: #0b2545; margin-bottom: 18px; font-size: 1.3rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
-        .section p { color: #486581; margin-bottom: 12px; font-size: 0.95rem; }
-        .about-card { background: #ffffff; border-right: 4px solid #3182ce; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0b2545; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); z-index: 1000; }
-        .bottom-nav a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-        .bottom-nav a.active, .bottom-nav a:hover { color: #63b3ed; }
-        footer { background-color: #0b2545; color: #9fb3c8; text-align: center; padding: 20px 15px; font-size: 0.85rem; margin-top: 30px; }
+        :root {
+            --navy: #071d38;
+            --blue: #0c3970;
+            --light-blue: #1764ad;
+            --pale-blue: #eaf3ff;
+            --white: #ffffff;
+            --bg: #f3f7fc;
+            --text: #14243a;
+            --muted: #718096;
+            --border: #e3eaf3;
+            --shadow: 0 10px 30px rgba(7, 29, 56, .07);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.9;
+            padding-bottom: 85px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            width: min(1000px, 92%);
+            margin: auto;
+        }
+
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,.12);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 17px;
+            font-weight: 900;
+            color: white;
+        }
+
+        .logo-icon {
+            background: white;
+            color: var(--blue);
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+        }
+
+        .header-badge {
+            color: #dcecff;
+            font-size: 11px;
+            border: 1px solid rgba(255,255,255,.25);
+            padding: 5px 12px;
+            border-radius: 30px;
+        }
+
+        /* Hero */
+        .hero {
+            background:
+                linear-gradient(135deg, rgba(7,29,56,.98), rgba(12,57,112,.92));
+            color: white;
+            padding: 55px 0;
+            text-align: center;
+        }
+
+        .hero-icon {
+            width: 75px;
+            height: 75px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 15px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 23px;
+            font-size: 38px;
+        }
+
+        .hero h1 {
+            font-size: clamp(27px, 5vw, 42px);
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: #d8e8fa;
+            font-size: 14px;
+        }
+
+        .hero-slogan {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 7px 22px;
+            border-radius: 30px;
+            background: rgba(255,255,255,.12);
+            color: white;
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        /* General sections */
+        .container-content {
+            padding-top: 28px;
+        }
+
+        .section {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 19px;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .heading-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            background: var(--pale-blue);
+            color: var(--blue);
+            border-radius: 13px;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .section-heading h2 {
+            color: var(--navy);
+            font-size: 19px;
+            font-weight: 900;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .section p {
+            color: #52647a;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* About */
+        .about-card {
+            background: #f5f9ff;
+            border-right: 4px solid var(--light-blue);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .about-card p:last-child { margin-bottom: 0; }
+
+        /* History */
+        .history-card {
+            background: linear-gradient(135deg, var(--navy), var(--blue));
+            color: white;
+            border-radius: 17px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .history-year {
+            font-size: 55px;
+            font-weight: 900;
+            color: #a9d4ff;
+            line-height: 1.3;
+            direction: ltr;
+        }
+
+        .history-card h3 {
+            font-size: 18px;
+            margin: 8px 0;
+        }
+
+        .history-card p {
+            color: #dcecff;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Vision, mission, goals */
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .principle-card {
+            background: #f7faff;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 19px;
+        }
+
+        .principle-card.full {
+            grid-column: 1 / -1;
+        }
+
+        .principle-icon {
+            font-size: 27px;
+            margin-bottom: 6px;
+        }
+
+        .principle-card h3 {
+            color: var(--blue);
+            font-size: 15px;
+            margin-bottom: 7px;
+            font-weight: 900;
+        }
+
+        .principle-card p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        .goals-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .goals-list li {
+            background: #f5f9ff;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            padding: 11px;
+            font-size: 12px;
+            color: #40546b;
+        }
+
+        .goals-list li::before {
+            content: "✓";
+            color: var(--light-blue);
+            font-weight: 900;
+            margin-left: 7px;
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .value-card {
+            text-align: center;
+            background: #f5f9ff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 17px 8px;
+        }
+
+        .value-card span {
+            display: block;
+            font-size: 27px;
+            margin-bottom: 5px;
+        }
+
+        .value-card strong {
+            color: var(--navy);
+            font-size: 12px;
+        }
+
+        /* Management */
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .person-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 19px;
+            text-align: center;
+            transition: .2s;
+        }
+
+        .person-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: #a9cdef;
+        }
+
+        .person-icon {
+            width: 65px;
+            height: 65px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            background: var(--pale-blue);
+            font-size: 29px;
+        }
+
+        .person-card h3 {
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+
+        .person-role {
+            display: inline-block;
+            color: var(--blue);
+            background: #eaf3ff;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .person-card p {
+            font-size: 11px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .member-card {
+            background: #f8faff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 13px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .member-card .person-icon {
+            width: 43px;
+            height: 43px;
+            font-size: 20px;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .member-card strong {
+            display: block;
+            color: var(--navy);
+            font-size: 12px;
+        }
+
+        .member-card small {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11px;
+            margin-top: 14px;
+        }
+
+        .subheading {
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 900;
+            margin: 18px 0 10px;
+        }
+
+        /* Technical staff */
+        .coach-card {
+            background: linear-gradient(135deg, #f1f7ff, #ffffff);
+            border: 1px solid #d8e8fa;
+            border-radius: 17px;
+            padding: 23px;
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+        }
+
+        .coach-icon {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            background: var(--blue);
+            color: white;
+            font-size: 33px;
+            flex-shrink: 0;
+        }
+
+        .coach-card h3 {
+            color: var(--navy);
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .coach-card .person-role { margin-bottom: 9px; }
+
+        .coach-card p {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Identity */
+        .identity-card {
+            background: var(--navy);
+            border-radius: 18px;
+            padding: 25px;
+            color: white;
+            text-align: center;
+        }
+
+        .identity-card h3 {
+            font-size: 21px;
+            font-weight: 900;
+            margin-bottom: 7px;
+        }
+
+        .identity-card p {
+            color: #dcecff;
+            font-size: 12px;
+        }
+
+        .colors {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .color-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,.1);
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+        }
+
+        .color-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,.6);
+        }
+
+        .blue-circle { background: #1764ad; }
+        .white-circle { background: white; }
+
+        .identity-slogan {
+            font-size: 24px;
+            font-weight: 900;
+            color: #a9d4ff;
+            margin-top: 12px;
+        }
+
+        .identity-note {
+            font-size: 10px !important;
+            color: #b9cee5 !important;
+            margin-top: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: #cbd9e8;
+            text-align: center;
+            padding: 22px 12px;
+            font-size: 11px;
+            margin-top: 30px;
+        }
+
+        footer strong { color: white; }
+
+        /* Bottom navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--navy);
+            display: flex;
+            justify-content: space-around;
+            padding: 9px 3px calc(9px + env(safe-area-inset-bottom));
+            box-shadow: 0 -3px 15px rgba(0,0,0,.15);
+            z-index: 1000;
+        }
+
+        .bottom-nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            min-width: 55px;
+        }
+
+        .bottom-nav a span { font-size: 20px; }
+
+        .bottom-nav a.active,
+        .bottom-nav a:hover {
+            color: #8dc5ff;
+        }
+
+        @media (max-width: 650px) {
+            .header-badge { display: none; }
+            .principles-grid { grid-template-columns: 1fr; }
+            .principle-card.full { grid-column: auto; }
+            .management-grid { grid-template-columns: 1fr 1fr; }
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .members-grid { grid-template-columns: 1fr; }
+            .goals-list { grid-template-columns: 1fr; }
+            .coach-card { flex-direction: column; }
+        }
+
+        @media (max-width: 380px) {
+            .management-grid { grid-template-columns: 1fr; }
+            .logo { font-size: 14px; }
+        }
     </style>
 </head>
+
 <body>
+
+    <!-- رأس الصفحة -->
     <header>
-        <a href="index.html" class="logo">نادي الصبية الرياضي 🏆</a>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🏆</span>
+                <span>نادي الصبية الرياضي</span>
+            </a>
+            <span class="header-badge">الصبية تعيش 💙</span>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="section">
-            <h2>📜 عن نادي الصبية الرياضي</h2>
-            <div class="about-card">
-                <p>تأسس نادي الصبية الرياضي ليكون حاضنة رئيسية للمواهب الرياضية والشبابية، ومنصة مجتمعية تهدف إلى نشر الروح الرياضية والمنافسة الشريفة.</p>
-                <p>حرص النادي منذ انطلاقته على بناء كيان منظم يعتمد على الشفافية الإدارية والمالية، ويجمع الشباب تحت سقف واحد لتحقيق التميز الرياضي.</p>
-            </div>
+    <!-- واجهة الصفحة -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-icon">⚽</div>
+            <h1>عن نادي الصبية الرياضي</h1>
+            <p>تاريخ يجمعنا، وروح رياضية تقودنا، وطموح لا يتوقف.</p>
+            <div class="hero-slogan">الصبية تعيش 💙</div>
         </div>
-    </div>
+    </section>
 
-    <div class="bottom-nav">
-        <a href="index.html"><span>🏠</span>الرئيسية</a>
-        <a href="about.html" class="active"><span>📜</span>عن النادي</a>
-        <a href="finance.html"><span>💳</span>الخزينة</a>
-        <a href="members.html"><span>⚽</span>الأعضاء</a>
-        <a href="media.html"><span>📢</span>الإعلامي</a>
-    </div>
+    <main class="container container-content">
 
+        <!-- نبذة عن النادي -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">📜</span>
+                <div>
+                    <h2>نبذة عن النادي</h2>
+                    <p>حكاية كيان يجمع الرياضة والأخوة والانتماء</p>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <p>
+                    نادي الصبية الرياضي كيان يجمع بين حب الرياضة وروح الأخوة
+                    والتعاون، ويسعى إلى تطوير قدرات لاعبيه، وصناعة المواهب،
+                    والمشاركة في البطولات وتحقيق الإنجازات، في بيئة يسودها
+                    الاحترام والانتماء والطموح.
+                </p>
+                <p>
+                    نؤمن بأن كرة القدم أكبر من مجرد منافسة؛ فهي مساحة لصناعة
+                    المواهب، وبناء الشخصيات، وتعزيز روح الفريق الواحد.
+                    ونسعى إلى بناء فريق يشرّف اسمه وجمهوره.
+                </p>
+            </div>
+        </section>
+
+        <!-- تاريخ النادي -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">🕰️</span>
+                <div>
+                    <h2>تاريخنا ومسيرتنا</h2>
+                    <p>منذ البدايات وحتى اليوم</p>
+                </div>
+            </div>
+
+            <div class="history-card">
+                <div class="history-year">1972</div>
+                <h3>عام تأسيس نادي الصبية الرياضي</h3>
+                <p>
+                    من هنا بدأت الحكاية… وسيتم توثيق تفاصيل تاريخ النادي
+                    ومحطاته وأبرز إنجازاته بعد مراجعة مجلس الإدارة.
+                </p>
+            </div>
+        </section>
+
+        <!-- الرؤية والرسالة والأهداف -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">🎯</span>
+                <div>
+                    <h2>رؤيتنا ورسالتنا وأهدافنا</h2>
+                    <p>الطريق الذي نسير عليه والطموح الذي يجمعنا</p>
+                </div>
+            </div>
+
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">🌟</div>
+                    <h3>رؤيتنا</h3>
+                    <p>
+                        بناء نادٍ رياضي متميز يصنع المواهب، ويطور قدرات
+                        اللاعبين، ويسعى إلى تحقيق الإنجازات.
+                    </p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🤝</div>
+                    <h3>رسالتنا</h3>
+                    <p>
+                        بناء فريق قوي داخل الملعب وخارجه، يجمعه الطموح
+                        وتوحده الروح الرياضية.
+                    </p>
+                </div>
+
+                <div class="principle-card full">
+                    <div class="principle-icon">🏆</div>
+                    <h3>أهدافنا</h3>
+                    <ul class="goals-list">
+                        <li>تطوير قدرات اللاعبين ورفع مستواهم.</li>
+                        <li>اكتشاف المواهب وصقلها.</li>
+                        <li>تعزيز الأخوة والانتماء بين أعضاء النادي.</li>
+                        <li>نشر الروح الرياضية والتنافس الشريف.</li>
+                        <li>المشاركة في البطولات والمنافسات.</li>
+                        <li>السعي لتحقيق الإنجازات والتميز الرياضي.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- قيم النادي -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">💎</span>
+                <div>
+                    <h2>قيم ومبادئ النادي</h2>
+                    <p>المبادئ التي تجمعنا داخل الملعب وخارجه</p>
+                </div>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <span>🤝</span>
+                    <strong>الأخوة والانتماء</strong>
+                </div>
+
+                <div class="value-card">
+                    <span>🙏</span>
+                    <strong>الاحترام المتبادل</strong>
+                </div>
+
+                <div class="value-card">
+                    <span>⏱️</span>
+                    <strong>الالتزام والانضباط</strong>
+                </div>
+
+                <div class="value-card">
+                    <span>👥</span>
+                    <strong>التعاون والعمل الجماعي</strong>
+                </div>
+
+                <div class="value-card">
+                    <span>⚽</span>
+                    <strong>الروح الرياضية</strong>
+                </div>
+
+                <div class="value-card">
+                    <span>🚀</span>
+                    <strong>الطموح والتطور</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- مجلس الإدارة -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">👔</span>
+                <div>
+                    <h2>مجلس إدارة نادي الصبية</h2>
+                    <p>الأسماء والمسؤوليات الإدارية المعتمدة حالياً</p>
+                </div>
+            </div>
+
+            <div class="management-grid">
+
+                <div class="person-card">
+                    <div class="person-icon">👨‍💼</div>
+                    <h3>عثمان محمد عبد الرحمن</h3>
+                    <span class="person-role">رئيس النادي</span>
+                    <p>
+                        شخصية عُرفت بالعطاء والإخلاص، وقدّمت الكثير من
+                        الوقت والجهد والإمكانات في سبيل دعم التعليم وخدمة
+                        كرة القدم ومساعدة الآخرين.
+                    </p>
+                </div>
+
+                <div class="person-card">
+                    <div class="person-icon">🤝</div>
+                    <h3>صديق سخن</h3>
+                    <span class="person-role">نائب الرئيس ومدير الكرة</span>
+                    <p>
+                        شخصية تتميز بالشهامة والوقوف مع الفريق، والحرص
+                        على متابعة أحوال النادي وتفقد اللاعبين ومساندتهم
+                        بروح إيجابية.
+                    </p>
+                </div>
+
+            </div>
+
+            <h3 class="subheading">أعضاء مجلس الإدارة</h3>
+
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="person-icon">👤</div>
+                    <div>
+                        <strong>الطيب حدك</strong>
+                        <small>عضو مجلس الإدارة</small>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="person-icon">👤</div>
+                    <div>
+                        <strong>علي الحبوب</strong>
+                        <small>عضو مجلس الإدارة</small>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="person-icon">👤</div>
+                    <div>
+                        <strong>الطيب عباس</strong>
+                        <small>عضو مجلس الإدارة</small>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="person-icon">👤</div>
+                    <div>
+                        <strong>بابكر</strong>
+                        <small>عضو مجلس الإدارة</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- الجهاز الفني -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">📋</span>
+                <div>
+                    <h2>الجهاز الفني</h2>
+                    <p>العمل الفني والتدريبي للفريق</p>
+                </div>
+            </div>
+
+            <div class="coach-card">
+                <div class="coach-icon">⚽</div>
+                <div>
+                    <h3>أمين سنادة</h3>
+                    <span class="person-role">المدير الفني والمدرب</span>
+                    <p>
+                        مدرب يمتلك خبرة واسعة في المجال التدريبي، ويجمع
+                        بين الانضباط والصرامة في العمل، والقرب من اللاعبين
+                        والتعامل معهم بروح طيبة. يسعى إلى تطوير قدرات
+                        اللاعبين ورفع مستواهم الفني والبدني، وبناء فريق
+                        متماسك يجمع بين الروح الرياضية والانضباط والطموح.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- هوية النادي -->
+        <section class="section">
+            <div class="section-heading">
+                <span class="heading-icon">💙</span>
+                <div>
+                    <h2>هوية النادي</h2>
+                    <p>الألوان والشعار الذي يجمعنا</p>
+                </div>
+            </div>
+
+            <div class="identity-card">
+                <h3>نادي الصبية الرياضي</h3>
+                <p>ألواننا الرسمية التي تمثل هويتنا وانتماءنا</p>
+
+                <div class="colors">
+                    <div class="color-item">
+                        <span class="color-circle blue-circle"></span>
+                        الأزرق
+                    </div>
+
+                    <div class="color-item">
+                        <span class="color-circle white-circle"></span>
+                        الأبيض
+                    </div>
+                </div>
+
+                <div class="identity-slogan">الصبية تعيش 🏆</div>
+
+                <p class="identity-note">
+                    الشعار البصري الرسمي للنادي يمكن إضافته لاحقاً عند اعتماده.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- التنقل السفلي -->
+    <nav class="bottom-nav">
+        <a href="index.html">
+            <span>🏠</span>
+            الرئيسية
+        </a>
+
+        <a href="about.html" class="active">
+            <span>📜</span>
+            عن النادي
+        </a>
+
+        <a href="finance.html">
+            <span>💳</span>
+            الخزينة
+        </a>
+
+        <a href="members.html">
+            <span>⚽</span>
+            الأعضاء
+        </a>
+
+        <a href="media.html">
+            <span>📢</span>
+            الإعلامي
+        </a>
+    </nav>
+
+    <!-- التذييل -->
     <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
+        <p>جميع الحقوق محفوظة © 2026 - <strong>نادي الصبية الرياضي</strong></p>
+        <p>الصبية تعيش 💙</p>
     </footer>
+
 </body>
 </html>
