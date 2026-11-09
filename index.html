@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -14,107 +14,111 @@
         }
 
         body {
-            background-color: #f4f6f9;
-            color: #1e293b;
+            background-color: #0b1329;
+            color: #f1f5f9;
             line-height: 1.6;
-            padding-bottom: 70px;
+            padding-bottom: 80px;
         }
 
-        /* هيدر مبسط وأنيق */
+        /* الهيدر العلوي */
         header {
-            background-color: #0b2545;
-            color: #ffffff;
-            padding: 1rem;
+            background-color: #080e21;
+            padding: 1.2rem;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #1e293b;
         }
 
         header .logo {
             font-size: 1.4rem;
-            font-weight: 700;
-            color: #63b3ed;
+            font-weight: 800;
+            color: #3b82f6;
         }
 
-        /* واجهة الترحيب الرئيسية */
-        .hero {
-            background: linear-gradient(135deg, #0b2545, #134074);
+        /* شريط التنقل العلوي */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background: #0d1b3e;
+            padding: 10px;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        nav a.active, nav a:hover {
+            background-color: #2563eb;
             color: #ffffff;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            color: #cbd5e1;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .container {
-            max-width: 950px;
-            margin: 25px auto;
+            max-width: 900px;
+            margin: 30px auto;
             padding: 0 15px;
         }
 
-        /* بطاقات الأقسام الرئيسية في وسط الصفحة */
-        .nav-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .nav-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 18px 10px;
+        /* بطاقة الترحيب */
+        .hero-card {
+            background: linear-gradient(180deg, #132247 0%, #0d1733 100%);
+            border: 1px solid #1e3a8a;
+            border-radius: 16px;
+            padding: 35px 20px;
             text-align: center;
-            text-decoration: none;
-            color: #0b2545;
-            font-weight: 700;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-card h1 {
+            color: #60a5fa;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-card p {
+            color: #94a3b8;
             font-size: 0.95rem;
-            box-shadow: 0 4px 10px rgba(11, 37, 69, 0.04);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 20px;
         }
 
-        .nav-card:hover {
-            border-color: #3182ce;
-            transform: translateY(-3px);
-            background-color: #f8fafc;
+        .btn-main {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .nav-card-icon {
-            font-size: 1.5rem;
+        /* الجدول */
+        .section-card {
+            background: #0d1733;
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
         }
 
-        .section {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05);
-        }
-
-        .section h2 {
-            color: #0b2545;
-            margin-bottom: 18px;
+        .section-card h2 {
+            color: #60a5fa;
             font-size: 1.3rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 8px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
         }
 
-        /* جدول التمارين */
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -122,159 +126,200 @@
         }
 
         .schedule-table th, .schedule-table td {
-            padding: 12px 14px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.95rem;
+            padding: 12px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.9rem;
         }
 
         .schedule-table th {
-            background-color: #f8fafc;
-            color: #0b2545;
-            font-weight: 700;
+            color: #94a3b8;
+            background: #080e21;
         }
 
         .badge {
-            display: inline-block;
             padding: 3px 8px;
-            border-radius: 10px;
+            border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 700;
         }
 
-        .badge-main {
-            background-color: #e0f2fe;
-            color: #0369a1;
-        }
+        .badge-main { background: #1e3a8a; color: #93c5fd; }
+        .badge-senior { background: #78350f; color: #fde68a; }
 
-        .badge-senior {
-            background-color: #fef3c7;
-            color: #b45309;
-        }
-
-        /* تصميم قسم "من نحن" بنفس ستايل المنصة وموقع جامعة بحري */
-        .about-card {
-            background: #ffffff;
-            border-right: 4px solid #3182ce;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .about-card h3 {
-            color: #0b2545;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .about-card p {
-            color: #486581;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .about-supervisor {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 10px 15px;
-            display: inline-block;
-            color: #0b2545;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        /* زر الواتساب */
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            max-width: 320px;
-            margin: 15px auto 0 auto;
-            background-color: #25d366;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-        }
-
-        /* شريط التنقل السفلي */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #0b2545;
+        /* أزرار الفوتر */
+        .footer-action-buttons {
             display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
-            z-index: 1000;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0 25px 0;
         }
 
-        .bottom-nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.75rem;
+        .btn-footer {
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 1px solid #334155;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 3px;
+            gap: 8px;
         }
 
-        .bottom-nav a.active, .bottom-nav a:hover {
-            color: #63b3ed;
+        .btn-footer-primary {
+            background: #2563eb;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-footer:hover {
+            transform: translateY(-2px);
         }
 
         footer {
-            background-color: #0b2545;
-            color: #9fb3c8;
             text-align: center;
-            padding: 20px 15px;
+            color: #64748b;
             font-size: 0.85rem;
-            margin-top: 30px;
+            border-top: 1px solid #1e293b;
+            padding-top: 25px;
+            position: relative;
+        }
+
+        footer p {
+            margin-bottom: 6px;
+        }
+
+        /* زر الصعود للأعلى */
+        .btn-scroll-top {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #2563eb;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            border: none;
+            z-index: 99;
+        }
+
+        /* نافذة Pop-up من نحن */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 20px;
+            max-width: 420px;
+            width: 100%;
+            padding: 25px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-body-text {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .credits-box {
+            background: #1e293b;
+            color: #ffffff;
+            border-radius: 14px;
+            padding: 18px;
+            text-align: center;
+        }
+
+        .credits-label {
+            color: #60a5fa;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .credits-name {
+            color: #f8fafc;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
-    <!-- هيدر مبسط -->
     <header>
         <div class="logo">نادي الصبية الرياضي 🏆</div>
     </header>
 
-    <!-- قسم الترحيب -->
-    <section class="hero">
-        <h1>الموقع الرسمي لنادي الصبية</h1>
-        <p>نعمل على تطوير المهارات الرياضية وبناء الجيل القادم بروح رياضية عالية.</p>
-    </section>
+    <nav>
+        <a href="index.html" class="active">الرئيسية</a>
+        <a href="finance.html">الخزينة</a>
+        <a href="members.html">الأعضاء</a>
+        <a href="media.html">المركز الإعلامي</a>
+    </nav>
 
     <div class="container">
 
-        <!-- بطاقات التنقل الرئيسية في منتصف الصفحة -->
-        <div class="nav-cards-grid">
-            <a href="about.html" class="nav-card">
-                <span class="nav-card-icon">📜</span>
-                <span>عن النادي</span>
-            </a>
-            <a href="finance.html" class="nav-card">
-                <span class="nav-card-icon">💳</span>
-                <span>الخزينة</span>
-            </a>
-            <a href="members.html" class="nav-card">
-                <span class="nav-card-icon">⚽</span>
-                <span>الأعضاء</span>
-            </a>
-            <a href="media.html" class="nav-card">
-                <span class="nav-card-icon">📢</span>
-                <span>المركز الإعلامي</span>
-            </a>
+        <!-- بطاقة الترحيب / الانضمام -->
+        <div class="hero-card">
+            <h1>انضم إلى نادي الصبية الرياضي</h1>
+            <p>كن على إطلاع بمواعيد التمارين والفعاليات عبر مجتمع الواتساب الرسمي.</p>
+            <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE" target="_blank" class="btn-main">أرسل طلب الانضمام 📱</a>
         </div>
 
         <!-- جدول التمارين والنشاط الأسبوعي -->
-        <div class="section">
+        <div class="section-card">
             <h2>📅 جدول التمارين والنشاط الأسبوعي</h2>
             <div style="overflow-x: auto;">
                 <table class="schedule-table">
@@ -316,41 +361,77 @@
             </div>
         </div>
 
-        <!-- قسم "من نحن" بنفس طريقة وأسلوب بطاقات الموقع والمنصة -->
-        <div class="section">
-            <h2>ℹ️ من نحن</h2>
-            <div class="about-card">
-                <h3>نادي الصبية الرياضي</h3>
-                <p>ملتقى رياضي اجتماعي يهدف لتنمية المواهب الشبابية وترسيخ قيم الرياضة والشفافية والتطوير المستمر.</p>
-                <div class="about-supervisor">
-                    👤 المسؤول العام: عمر عبد المنعم محمد أحمد
-                </div>
+        <!-- أزرار الفوتر -->
+        <div class="footer-action-buttons">
+            <button class="btn-footer btn-footer-primary" id="openAboutModal">
+                من نحن 👤
+            </button>
+            <button class="btn-footer" id="shareBtn">
+                مشاركة المنصة 🔗
+            </button>
+        </div>
+
+        <footer>
+            <p>جميع الحقوق محفوظة لـ <strong>نادي الصبية الرياضي</strong></p>
+            <p style="color: #475569;">صُنع بشغف لخدمة أعضاء ولاعبي النادي 🎓</p>
+        </footer>
+
+    </div>
+
+    <!-- زر الصعود للأعلى -->
+    <button class="btn-scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <!-- النافذة المنبثقة (Popup Modal - من نحن) -->
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeAboutModal">✕</button>
+            
+            <div class="modal-title">
+                🎓 من نحن
+            </div>
+            
+            <div class="modal-body-text">
+                تم إنشاء هذه المنصة بهدف تنظيم جدول التدريبات الرياضية، وتسهيل التواصل بين أعضاء ولاعبي نادي الصبية الرياضي، وتوفير الشفافية الكاملة لأرقام الخزينة والأنشطة الإعلامية للجمعية والنادي في مكان واحد.
+            </div>
+
+            <div class="credits-box">
+                <div class="credits-label">✨ تطوير وإدارة المنصة:</div>
+                <div class="credits-name">عمر عبد المنعم محمد أحمد</div>
             </div>
         </div>
-
-        <!-- قسم الواتساب -->
-        <div class="section" style="text-align: center;">
-            <h2>💬 انضم إلى مجتمع النادي</h2>
-            <p style="color: #486581; font-size: 0.95rem;">كن على إطلاع بمواعيد التمارين والفعاليات عبر مجموعة الواتساب.</p>
-            <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE" target="_blank" class="btn-whatsapp">
-                📱 انضم إلى مجموعة الواتساب
-            </a>
-        </div>
-
     </div>
 
-    <!-- شريط التنقل السفلي -->
-    <div class="bottom-nav">
-        <a href="index.html" class="active"><span>🏠</span>الرئيسية</a>
-        <a href="about.html"><span>📜</span>عن النادي</a>
-        <a href="finance.html"><span>💳</span>الخزينة</a>
-        <a href="members.html"><span>⚽</span>الأعضاء</a>
-        <a href="media.html"><span>📢</span>الإعلامي</a>
-    </div>
+    <script>
+        const modal = document.getElementById('aboutModal');
+        const openBtn = document.getElementById('openAboutModal');
+        const closeBtn = document.getElementById('closeAboutModal');
+        const shareBtn = document.getElementById('shareBtn');
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
-    </footer>
+        openBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
 
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        shareBtn.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'نادي الصبية الرياضي',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('تم نسخ رابط الموقع بنجاح!');
+            }
+        });
+    </script>
 </body>
 </html>
