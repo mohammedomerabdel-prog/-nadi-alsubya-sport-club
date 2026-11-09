@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
     <style>
-        /* التنسیقات (CSS) المدمجة */
+        /* التنسیقات (CSS) بألوان الأزرق الرياضي */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,23 +14,25 @@
         }
 
         body {
-            background-color: #f8f9fa;
-            color: #212529;
+            background-color: #f0f4f8;
+            color: #102a43;
             line-height: 1.6;
         }
 
         header {
-            background-color: #1b4332;
+            background-color: #0b2545;
             color: #ffffff;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         header .logo {
             font-size: 1.4rem;
             font-weight: bold;
+            color: #63b3ed;
         }
 
         nav a {
@@ -41,52 +43,68 @@
         }
 
         nav a:hover {
-            color: #52b788;
+            color: #63b3ed;
         }
 
         .hero {
-            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85));
+            background: linear-gradient(135deg, rgba(11, 37, 69, 0.92), rgba(20, 70, 130, 0.92));
             color: #ffffff;
             text-align: center;
-            padding: 80px 20px;
+            padding: 90px 20px;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             margin-bottom: 15px;
+            color: #ffffff;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin-bottom: 25px;
+            color: #cbd5e1;
         }
 
         .hero button {
-            background-color: #52b788;
-            color: #081c15;
+            background-color: #3182ce;
+            color: #ffffff;
             border: none;
             padding: 12px 30px;
             font-size: 1rem;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(49, 130, 206, 0.4);
         }
 
         .hero button:hover {
-            background-color: #74c69d;
+            background-color: #2b6cb0;
+            transform: translateY(-2px);
         }
 
         .section {
             max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(11, 37, 69, 0.05);
             text-align: center;
         }
 
+        .section h2 {
+            color: #0b2545;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            color: #486581;
+        }
+
         footer {
-            background-color: #081c15;
-            color: #a7c957;
+            background-color: #0b2545;
+            color: #9fb3c8;
             text-align: center;
             padding: 20px;
             margin-top: 50px;
@@ -115,7 +133,7 @@
     <!-- قسم التعريف بالنادي -->
     <section id="about" class="section">
         <h2>عن النادي</h2>
-        <p>نادي الصبية الرياضي هو ملتقى رياضي واجتماعي يهدف إلى تنمية المواهب الشابة وتقديم أفضل الأنشطة والتدريبات الرياضية.</p>
+        <p>نادي الصبية الرياضي هو ملتقى رياضي واجتماعي يهدف إلى تنمية المواهب الشابة وتقديم أفضل الأنشطة والتدريبات الرياضية بأعلى كفاءة.</p>
     </section>
 
     <!-- الفوتر -->
@@ -124,7 +142,7 @@
     </footer>
 
     <script>
-        // الأكواد البرمجية التفاعلية (JavaScript) المدمجة
+        // الأكواد التفاعلية
         document.getElementById('joinBtn').addEventListener('click', function() {
             alert('مرحباً بك في نادي الصبية الرياضي! سيتم فتح استمارة الانضمام قريباً.');
         });
