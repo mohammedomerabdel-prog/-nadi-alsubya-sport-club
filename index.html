@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
     <style>
-        /* التنسیقات (CSS) بألوان الأزرق الرياضي */
+        /* التنسيقات (CSS) بألوان الأزرق الرياضي */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -65,21 +65,44 @@
             color: #cbd5e1;
         }
 
-        .hero button {
-            background-color: #3182ce;
-            color: #ffffff;
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
             border: none;
             padding: 12px 30px;
             font-size: 1rem;
             font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
+            text-decoration: none;
             transition: background 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #3182ce;
+            color: #ffffff;
             box-shadow: 0 4px 12px rgba(49, 130, 206, 0.4);
         }
 
-        .hero button:hover {
+        .btn-primary:hover {
             background-color: #2b6cb0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #0b2545;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
             transform: translateY(-2px);
         }
 
@@ -117,8 +140,9 @@
     <header>
         <div class="logo">نادي الصبية الرياضي 🏆</div>
         <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="finance.html">خزينة النادي 💳</a>
             <a href="#about">عن النادي</a>
-            <a href="#activities">الأنشطة</a>
             <a href="#contact">تواصل معنا</a>
         </nav>
     </header>
@@ -127,7 +151,10 @@
     <section class="hero">
         <h1>مرحباً بكم في الموقع الرسمي لنادي الصبية الرياضي</h1>
         <p>نعمل على تطوير المهارات الرياضية وبناء الجيل القادم بروح رياضية عالية.</p>
-        <button id="joinBtn">انضم إلينا الان</button>
+        <div class="hero-buttons">
+            <button id="joinBtn" class="btn btn-primary">انضم إلينا الآن</button>
+            <a href="finance.html" class="btn btn-secondary">خزينة النادي والمساهمات 💳</a>
+        </div>
     </section>
 
     <!-- قسم التعريف بالنادي -->
