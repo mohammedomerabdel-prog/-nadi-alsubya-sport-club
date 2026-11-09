@@ -1,61 +1,613 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خزينة النادي - نادي الصبية الرياضي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background-color: #f4f6f9; color: #1e293b; line-height: 1.6; padding-bottom: 70px; }
-        header { background-color: #0b2545; color: #ffffff; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-        header .logo { font-size: 1.4rem; font-weight: 700; color: #63b3ed; text-decoration: none; }
-        .container { max-width: 950px; margin: 25px auto; padding: 0 15px; }
-        .section { background: #ffffff; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05); }
-        .section h2 { color: #0b2545; margin-bottom: 18px; font-size: 1.3rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
-        .payment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-        .payment-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; text-align: center; }
-        .payment-box h3 { color: #1e3a8a; margin-bottom: 8px; font-size: 1.1rem; }
-        .account-number { font-size: 1.1rem; font-weight: bold; color: #0b2545; background: #e0f2fe; padding: 6px; border-radius: 6px; margin: 8px 0; display: inline-block; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0b2545; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); z-index: 1000; }
-        .bottom-nav a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-        .bottom-nav a.active, .bottom-nav a:hover { color: #63b3ed; }
-        footer { background-color: #0b2545; color: #9fb3c8; text-align: center; padding: 20px 15px; font-size: 0.85rem; margin-top: 30px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خزينة النادي | نادي الصبية الرياضي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
+:root{
+ --navy:#0b2545;
+ --blue:#1765a8;
+ --light:#eaf4fc;
+ --bg:#f3f6fa;
+ --text:#1e293b;
+ --muted:#718096;
+ --green:#168653;
+ --red:#d34b4b;
+}
+body{background:var(--bg);color:var(--text);line-height:1.7;padding-bottom:75px}
+header{
+ background:linear-gradient(135deg,#0b2545,#164d80);
+ color:white;text-align:center;padding:25px 15px;
+ box-shadow:0 3px 12px #0b254520
+}
+header a{color:#8ed0ff;text-decoration:none;font-size:1.35rem;font-weight:800}
+header p{font-size:.85rem;color:#d4e6f5;margin-top:5px}
+.container{max-width:1050px;margin:25px auto;padding:0 15px}
+.section{
+ background:white;border-radius:16px;padding:22px;
+ margin-bottom:20px;box-shadow:0 4px 16px #0b25450b;
+}
+.section-title{
+ color:var(--navy);font-size:1.2rem;font-weight:800;
+ border-bottom:2px solid #e8eef5;padding-bottom:12px;margin-bottom:18px
+}
+.intro{
+ background:linear-gradient(135deg,#0b2545,#1765a8);
+ color:white;border-radius:17px;padding:23px;margin-bottom:20px;
+}
+.intro h2{font-size:1.35rem;margin-bottom:5px}
+.intro p{font-size:.9rem;color:#d9eafa}
+.stats{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:13px;
+ margin-bottom:20px
+}
+.stat{
+ background:white;border-radius:14px;padding:17px 12px;
+ text-align:center;box-shadow:0 3px 12px #0b25450b;
+ border:1px solid #edf1f6
+}
+.stat .symbol{font-size:1.4rem}
+.stat h3{font-size:.83rem;color:var(--muted);margin:5px 0}
+.stat strong{font-size:1.15rem;color:var(--navy);display:block;overflow-wrap:anywhere}
+.stat.balance{border-top:4px solid var(--blue)}
+.stat.income{border-top:4px solid var(--green)}
+.stat.expense{border-top:4px solid var(--red)}
+.currency{font-size:.72rem;color:var(--muted);font-weight:500}
+.payment-grid{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:15px
+}
+.payment-box{
+ border:1px solid #e2eaf2;background:#fbfdff;
+ border-radius:14px;padding:17px;text-align:center;
+}
+.payment-box img{
+ width:76px;height:76px;object-fit:contain;
+ border-radius:13px;margin-bottom:8px
+}
+.payment-box h3{color:var(--navy);font-size:1rem}
+.payment-box p{font-size:.8rem;color:var(--muted);margin:5px 0}
+.account-number{
+ background:var(--light);color:var(--navy);padding:8px;
+ border-radius:8px;font-weight:800;display:block;
+ overflow-wrap:anywhere;margin:10px 0
+}
+.btn{
+ border:0;border-radius:9px;padding:9px 13px;
+ cursor:pointer;font-weight:700;font-size:.82rem;
+ text-decoration:none;display:inline-block
+}
+.copy-btn{background:var(--navy);color:white;width:100%}
+.copy-btn:disabled{background:#aab6c3;cursor:not-allowed}
+.notice{
+ background:#fff8e8;border:1px solid #f2d99c;
+ color:#76561b;padding:13px;border-radius:10px;
+ font-size:.83rem;margin-top:16px
+}
+.whatsapp{
+ background:#168653;color:white;text-align:center;
+ display:block;margin-top:12px;padding:12px;
+ border-radius:10px;text-decoration:none;font-weight:700
+}
+.report-controls{
+ display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+ margin-bottom:18px
+}
+.report-controls label{font-weight:700;color:var(--navy)}
+input[type="month"]{
+ border:1px solid #ccd8e5;border-radius:9px;
+ padding:9px 12px;color:var(--navy);background:white
+}
+.month-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.month-card{
+ background:#f7faff;border:1px solid #e5edf5;
+ border-radius:12px;padding:14px;text-align:center
+}
+.month-card span{font-size:.78rem;color:var(--muted)}
+.month-card strong{display:block;color:var(--navy);font-size:1.05rem;margin-top:5px}
+.chart-list{display:flex;flex-direction:column;gap:16px}
+.chart-row{
+ display:grid;grid-template-columns:75px 1fr;gap:12px;align-items:center
+}
+.chart-month{font-size:.78rem;color:var(--muted);font-weight:700}
+.bars{display:flex;flex-direction:column;gap:5px}
+.bar-line{display:flex;align-items:center;gap:7px;font-size:.72rem}
+.bar-track{height:11px;background:#edf1f5;border-radius:20px;flex:1;overflow:hidden}
+.bar-fill{height:100%;border-radius:20px;min-width:0}
+.income-fill{background:#20a36b}
+.expense-fill{background:#e16a6a}
+.chart-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:.8rem}
+.legend-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:5px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:440px}
+th,td{padding:12px 10px;text-align:right;border-bottom:1px solid #edf1f5;font-size:.84rem}
+th{background:#f5f8fc;color:var(--navy)}
+.income-text{color:var(--green);font-weight:800}
+.expense-text{color:var(--red);font-weight:800}
+.empty{
+ text-align:center;color:var(--muted);padding:25px 10px;
+ background:#f8fafc;border-radius:10px;font-size:.88rem
+}
+.bottom-nav{
+ position:fixed;bottom:0;left:0;right:0;background:var(--navy);
+ display:flex;justify-content:space-around;padding:9px 0;
+ box-shadow:0 -3px 12px #0002;z-index:1000
+}
+.bottom-nav a{
+ color:#cbd5e1;text-decoration:none;font-size:.72rem;
+ display:flex;flex-direction:column;align-items:center;gap:2px
+}
+.bottom-nav a.active,.bottom-nav a:hover{color:#63b3ed}
+.bottom-nav span{font-size:1.15rem}
+footer{
+ background:var(--navy);color:#a9bfd3;
+ text-align:center;padding:20px;font-size:.8rem
+}
+@media(max-width:650px){
+ .stats{grid-template-columns:1fr}
+ .payment-grid{grid-template-columns:1fr}
+ .month-cards{grid-template-columns:1fr}
+ .section{padding:17px}
+ .stat{display:flex;align-items:center;justify-content:space-between;text-align:right}
+ .stat h3{margin:0}
+ .stat .symbol{margin-left:8px}
+ .stat strong{font-size:1rem}
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <a href="index.html" class="logo">نادي الصبية الرياضي 🏆</a>
-    </header>
 
-    <div class="container">
-        <div class="section">
-            <h2>💳 أرقام الحسابات وطرق الدفع</h2>
-            <div class="payment-grid">
-                <div class="payment-box">
-                    <h3>بنك الخرطوم (BOK)</h3>
-                    <p>نادي الصبية الرياضي</p>
-                    <div class="account-number">123456789</div>
-                </div>
-                <div class="payment-box">
-                    <h3>محفظة أوكاش (OCash)</h3>
-                    <p>رقم المحفظة:</p>
-                    <div class="account-number">0912345678</div>
-                </div>
-            </div>
-        </div>
-    </div>
+<header>
+ <a href="index.html">نادي الصبية الرياضي 🏆</a>
+ <p>الصبية تعيش | الخزينة المالية للنادي</p>
+</header>
 
-    <div class="bottom-nav">
-        <a href="index.html"><span>🏠</span>الرئيسية</a>
-        <a href="about.html"><span>📜</span>عن النادي</a>
-        <a href="finance.html" class="active"><span>💳</span>الخزينة</a>
-        <a href="members.html"><span>⚽</span>الأعضاء</a>
-        <a href="media.html"><span>📢</span>الإعلامي</a>
-    </div>
+<main class="container">
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
-    </footer>
+ <div class="intro">
+  <h2>💙 خزينة نادي الصبية الرياضي</h2>
+  <p>معاً من أجل دعم النادي واستمرار مسيرته. الشفافية مسؤوليتنا جميعاً.</p>
+ </div>
+
+ <!-- الملخص المالي -->
+ <div class="stats">
+  <div class="stat balance">
+   <div class="symbol">💰</div>
+   <div>
+    <h3>الرصيد الحالي</h3>
+    <strong id="balance">0</strong>
+    <span class="currency">جنيه سوداني</span>
+   </div>
+  </div>
+  <div class="stat income">
+   <div class="symbol">📈</div>
+   <div>
+    <h3>إجمالي الإيرادات</h3>
+    <strong id="totalIncome">0</strong>
+    <span class="currency">جنيه سوداني</span>
+   </div>
+  </div>
+  <div class="stat expense">
+   <div class="symbol">📉</div>
+   <div>
+    <h3>إجمالي المصروفات</h3>
+    <strong id="totalExpense">0</strong>
+    <span class="currency">جنيه سوداني</span>
+   </div>
+  </div>
+ </div>
+
+ <!-- وسائل الدفع -->
+ <section class="section">
+  <h2 class="section-title">💳 وسائل الدفع والتحويل</h2>
+
+  <div class="payment-grid">
+
+   <div class="payment-box">
+    <img src="images/payment-apps/fawry.png" alt="شعار فوري">
+    <h3>فوري</h3>
+    <p>رقم حساب التحويل</p>
+    <span class="account-number" id="fawryNumber">سيُضاف رقم الحساب لاحقاً</span>
+    <button class="btn copy-btn" onclick="copyAccount('fawry')">📋 نسخ رقم الحساب</button>
+   </div>
+
+   <div class="payment-box">
+    <img src="images/payment-apps/bankak.png" alt="شعار بنكك">
+    <h3>بنكك</h3>
+    <p>رقم حساب التحويل</p>
+    <span class="account-number" id="bankakNumber">سيُضاف رقم الحساب لاحقاً</span>
+    <button class="btn copy-btn" onclick="copyAccount('bankak')">📋 نسخ رقم الحساب</button>
+   </div>
+
+   <div class="payment-box">
+    <img src="images/payment-apps/ocash.png" alt="شعار أوكاش">
+    <h3>أوكاش</h3>
+    <p>رقم حساب التحويل</p>
+    <span class="account-number" id="ocashNumber">سيُضاف رقم الحساب لاحقاً</span>
+    <button class="btn copy-btn" onclick="copyAccount('ocash')">📋 نسخ رقم الحساب</button>
+   </div>
+
+  </div>
+
+  <div class="notice">
+   ⚠️ <strong>تنبيه مهم:</strong>
+   بعد إتمام التحويل، يرجى إرسال إشعار التحويل إلى رقم واتساب الخزينة حتى يتم التأكد من المبلغ وتسجيله في المنصة.
+  </div>
+
+  <a class="whatsapp" id="whatsappLink" target="_blank" rel="noopener">
+   <span>📱 إرسال إشعار التحويل عبر واتساب</span>
+  </a>
+ </section>
+
+ <!-- التقرير الشهري -->
+ <section class="section">
+  <h2 class="section-title">📅 التقارير المالية الشهرية</h2>
+
+  <div class="report-controls">
+   <label for="monthPicker">اختر الشهر:</label>
+   <input type="month" id="monthPicker">
+  </div>
+
+  <div class="month-cards">
+   <div class="month-card">
+    <span>إيرادات الشهر</span>
+    <strong id="monthIncome">0 ج.س</strong>
+   </div>
+   <div class="month-card">
+    <span>مصروفات الشهر</span>
+    <strong id="monthExpense">0 ج.س</strong>
+   </div>
+   <div class="month-card">
+    <span>صافي الشهر</span>
+    <strong id="monthNet">0 ج.س</strong>
+   </div>
+  </div>
+ </section>
+
+ <!-- الرسم البياني -->
+ <section class="section">
+  <h2 class="section-title">📊 حركة الإيرادات والمصروفات</h2>
+  <p style="font-size:.8rem;color:#718096;margin-bottom:17px">
+   مقارنة الحركة المالية خلال آخر ستة أشهر حتى الشهر المحدد.
+  </p>
+  <div class="chart-list" id="chartList"></div>
+  <div class="chart-legend">
+   <span><i class="legend-dot" style="background:#20a36b"></i>الإيرادات</span>
+   <span><i class="legend-dot" style="background:#e16a6a"></i>المصروفات</span>
+  </div>
+ </section>
+
+ <!-- سجل العمليات -->
+ <section class="section">
+  <h2 class="section-title">📋 سجل العمليات المالية</h2>
+  <p style="font-size:.8rem;color:#718096;margin-bottom:15px">
+   سجل الإيرادات والمصروفات المسجلة في خزينة النادي.
+  </p>
+  <div class="table-wrap">
+   <table>
+    <thead>
+     <tr>
+      <th>التاريخ</th>
+      <th>البيان</th>
+      <th>النوع</th>
+      <th>المبلغ</th>
+     </tr>
+    </thead>
+    <tbody id="transactionsBody"></tbody>
+   </table>
+  </div>
+  <div class="empty" id="emptyTransactions" style="display:none">
+   لا توجد عمليات مالية مسجلة حتى الآن.
+  </div>
+ </section>
+
+</main>
+
+<footer>
+ <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
+ <p>الصبية تعيش 💙</p>
+</footer>
+
+<nav class="bottom-nav">
+ <a href="index.html"><span>🏠</span>الرئيسية</a>
+ <a href="about.html"><span>📜</span>عن النادي</a>
+ <a href="finance.html" class="active"><span>💳</span>الخزينة</a>
+ <a href="members.html"><span>⚽</span>الأعضاء</a>
+ <a href="media.html"><span>📢</span>الإعلامي</a>
+</nav>
+
+<script>
+/* =========================================
+   1. بيانات حسابات الدفع
+   أضف الأرقام الصحيحة بين علامتي التنصيص.
+========================================= */
+
+const paymentAccounts = {
+ fawry: "",
+ bankak: "",
+ ocash: ""
+};
+
+/* =========================================
+   2. رقم واتساب مسؤول الخزينة
+========================================= */
+
+const whatsappNumber = "249113991528";
+
+/* =========================================
+   3. سجل العمليات المالية
+
+   لإضافة عملية جديدة انسخ أحد الأمثلة
+   واكتب بيانات العملية الصحيحة.
+
+   النوع:
+   income = إيراد
+   expense = مصروف
+
+   لا تكتب أسماء الأشخاص هنا.
+========================================= */
+
+const transactions = [
+
+ // مثال لإضافة إيراد:
+ // { date: "2026-11-09", description: "اشتراكات النادي", type: "income", amount: 50000 },
+
+ // مثال لإضافة مصروف:
+ // { date: "2026-11-10", description: "مستلزمات رياضية", type: "expense", amount: 15000 },
+
+];
+
+/* =========================================
+   4. وظائف الخزينة
+========================================= */
+
+const money = value =>
+ new Intl.NumberFormat("en-US").format(value);
+
+const total = type =>
+ transactions
+  .filter(item => item.type === type)
+  .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+
+const income = total("income");
+const expense = total("expense");
+const balance = income - expense;
+
+document.getElementById("balance").textContent = money(balance);
+document.getElementById("totalIncome").textContent = money(income);
+document.getElementById("totalExpense").textContent = money(expense);
+
+/* عرض أرقام الحسابات */
+
+Object.keys(paymentAccounts).forEach(key => {
+ const number = paymentAccounts[key];
+ const numberElement = document.getElementById(key + "Number");
+ const button = numberElement.nextElementSibling;
+
+ if(number){
+  numberElement.textContent = number;
+  button.disabled = false;
+ }else{
+  numberElement.textContent = "سيُضاف رقم الحساب لاحقاً";
+  button.disabled = true;
+ }
+});
+
+/* نسخ رقم الحساب وإظهار التنبيه */
+
+async function copyAccount(type){
+ const number = paymentAccounts[type];
+
+ if(!number){
+  alert("لم تتم إضافة رقم الحساب حتى الآن.");
+  return;
+ }
+
+ try{
+  await navigator.clipboard.writeText(number);
+  alert(
+   "تم نسخ رقم الحساب بنجاح.\n\n" +
+   "تنبيه مهم: بعد إتمام التحويل، يرجى إرسال إشعار التحويل إلى واتساب الخزينة حتى يتم التأكد من المبلغ وتسجيله في المنصة."
+  );
+ }catch(error){
+  alert("تعذر نسخ الرقم تلقائياً. يرجى نسخه يدوياً.");
+ }
+}
+
+/* رابط واتساب */
+
+const whatsappMessage =
+ "السلام عليكم، أريد إرسال إشعار تحويل لخزينة نادي الصبية الرياضي.";
+
+document.getElementById("whatsappLink").href =
+ "https://wa.me/" + whatsappNumber +
+ "?text=" + encodeURIComponent(whatsappMessage);
+
+/* عرض سجل العمليات دون أسماء */
+
+const transactionsBody = document.getElementById("transactionsBody");
+const emptyTransactions = document.getElementById("emptyTransactions");
+
+const sortedTransactions = [...transactions].sort(
+ (a,b) => b.date.localeCompare(a.date)
+);
+
+if(sortedTransactions.length === 0){
+ emptyTransactions.style.display = "block";
+}else{
+ sortedTransactions.forEach(item => {
+  const row = document.createElement("tr");
+
+  const date = document.createElement("td");
+  date.textContent = item.date;
+
+  const description = document.createElement("td");
+  description.textContent = item.description;
+
+  const type = document.createElement("td");
+  type.textContent = item.type === "income" ? "إيراد" : "مصروف";
+  type.className = item.type === "income" ? "income-text" : "expense-text";
+
+  const amount = document.createElement("td");
+  amount.textContent = money(item.amount) + " ج.س";
+  amount.className = type.className;
+
+  row.append(date,description,type,amount);
+  transactionsBody.appendChild(row);
+ });
+}
+
+/* =========================================
+   5. التقرير الشهري
+========================================= */
+
+const monthPicker = document.getElementById("monthPicker");
+const now = new Date();
+
+const currentMonth =
+ now.getFullYear() + "-" +
+ String(now.getMonth()+1).padStart(2,"0");
+
+monthPicker.value = currentMonth;
+
+function getMonthTotals(month){
+ const items = transactions.filter(item => item.date.startsWith(month));
+
+ const monthIncome = items
+  .filter(item => item.type === "income")
+  .reduce((sum,item) => sum + Number(item.amount || 0),0);
+
+ const monthExpense = items
+  .filter(item => item.type === "expense")
+  .reduce((sum,item) => sum + Number(item.amount || 0),0);
+
+ return {
+  income: monthIncome,
+  expense: monthExpense,
+  net: monthIncome - monthExpense
+ };
+}
+
+function renderMonthlyReport(){
+ const month = monthPicker.value;
+ if(!month) return;
+
+ const data = getMonthTotals(month);
+
+ document.getElementById("monthIncome").textContent =
+  money(data.income) + " ج.س";
+
+ document.getElementById("monthExpense").textContent =
+  money(data.expense) + " ج.س";
+
+ document.getElementById("monthNet").textContent =
+  money(data.net) + " ج.س";
+
+ renderChart(month);
+}
+
+/* =========================================
+   6. الرسم البياني لآخر ستة أشهر
+========================================= */
+
+function renderChart(selectedMonth){
+ const chart = document.getElementById("chartList");
+ chart.innerHTML = "";
+
+ const [year,month] = selectedMonth.split("-").map(Number);
+ const selectedDate = new Date(year,month-1,1);
+
+ const months = [];
+
+ for(let i=5;i>=0;i--){
+  const date = new Date(
+   selectedDate.getFullYear(),
+   selectedDate.getMonth()-i,
+   1
+  );
+
+  const key =
+   date.getFullYear() + "-" +
+   String(date.getMonth()+1).padStart(2,"0");
+
+  months.push({
+   key,
+   label: date.toLocaleDateString("ar-EG",{
+    month:"short",
+    year:"numeric"
+   }),
+   ...getMonthTotals(key)
+  });
+ }
+
+ const maxValue = Math.max(
+  1,
+  ...months.map(item => Math.max(item.income,item.expense))
+ );
+
+ months.forEach(item => {
+  const row = document.createElement("div");
+  row.className = "chart-row";
+
+  const label = document.createElement("div");
+  label.className = "chart-month";
+  label.textContent = item.label;
+
+  const bars = document.createElement("div");
+  bars.className = "bars";
+
+  const incomeLine = createBar(
+   "إيراد",
+   item.income,
+   maxValue,
+   "income-fill"
+  );
+
+  const expenseLine = createBar(
+   "مصروف",
+   item.expense,
+   maxValue,
+   "expense-fill"
+  );
+
+  bars.append(incomeLine,expenseLine);
+  row.append(label,bars);
+  chart.appendChild(row);
+ });
+}
+
+function createBar(label,value,maxValue,className){
+ const line = document.createElement("div");
+ line.className = "bar-line";
+
+ const title = document.createElement("span");
+ title.textContent = label;
+
+ const track = document.createElement("div");
+ track.className = "bar-track";
+
+ const fill = document.createElement("div");
+ fill.className = "bar-fill " + className;
+ fill.style.width = (value/maxValue*100) + "%";
+
+ const number = document.createElement("span");
+ number.textContent = money(value);
+
+ track.appendChild(fill);
+ line.append(title,track,number);
+
+ return line;
+}
+
+monthPicker.addEventListener("change",renderMonthlyReport);
+renderMonthlyReport();
+
+</script>
+
 </body>
 </html>
