@@ -151,30 +151,36 @@
             color: #b45309;
         }
 
-        /* زر "من نحن" المخصص لفتح النافذة المنبثقة */
-        .about-trigger-card {
+        /* تصميم قسم "من نحن" بنفس ستايل المنصة وموقع جامعة بحري */
+        .about-card {
             background: #ffffff;
             border-right: 4px solid #3182ce;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            cursor: pointer;
-            transition: background 0.3s;
         }
 
-        .about-trigger-card:hover {
-            background-color: #f8fafc;
-        }
-
-        .about-trigger-card h3 {
+        .about-card h3 {
             color: #0b2545;
             font-size: 1.2rem;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
 
-        .about-trigger-card p {
-            color: #64748b;
-            font-size: 0.9rem;
+        .about-card p {
+            color: #486581;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .about-supervisor {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 10px 15px;
+            display: inline-block;
+            color: #0b2545;
+            font-weight: 700;
+            font-size: 0.95rem;
         }
 
         /* زر الواتساب */
@@ -222,86 +228,6 @@
             color: #63b3ed;
         }
 
-        /* نافذة Pop-up من نحن */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: #ffffff;
-            color: #0f172a;
-            border-radius: 20px;
-            max-width: 420px;
-            width: 100%;
-            padding: 25px;
-            position: relative;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            animation: popIn 0.3s ease;
-        }
-
-        @keyframes popIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.3rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #64748b;
-        }
-
-        .modal-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #0b2545;
-            margin-bottom: 15px;
-        }
-
-        .modal-body-text {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            text-align: right;
-        }
-
-        .credits-box {
-            background: #0b2545;
-            color: #ffffff;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .credits-label {
-            color: #63b3ed;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .credits-name {
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-
         footer {
             background-color: #0b2545;
             color: #9fb3c8;
@@ -329,6 +255,10 @@
 
         <!-- بطاقات التنقل الرئيسية في منتصف الصفحة -->
         <div class="nav-cards-grid">
+            <a href="about.html" class="nav-card">
+                <span class="nav-card-icon">📜</span>
+                <span>عن النادي</span>
+            </a>
             <a href="finance.html" class="nav-card">
                 <span class="nav-card-icon">💳</span>
                 <span>الخزينة</span>
@@ -386,12 +316,15 @@
             </div>
         </div>
 
-        <!-- قسم "من نحن" التفاعلي (النافذة المنبثقة) -->
+        <!-- قسم "من نحن" بنفس طريقة وأسلوب بطاقات الموقع والمنصة -->
         <div class="section">
             <h2>ℹ️ من نحن</h2>
-            <div class="about-trigger-card" id="openAboutModal">
-                <h3>نادي الصبية الرياضي 📌</h3>
-                <p>اضغط هنا لعرض التفاصيل وأهداف إنشاء المنصة والمسؤول</p>
+            <div class="about-card">
+                <h3>نادي الصبية الرياضي</h3>
+                <p>ملتقى رياضي اجتماعي يهدف لتنمية المواهب الشبابية وترسيخ قيم الرياضة والشفافية والتطوير المستمر.</p>
+                <div class="about-supervisor">
+                    👤 المسؤول العام: عمر عبد المنعم محمد أحمد
+                </div>
             </div>
         </div>
 
@@ -406,24 +339,10 @@
 
     </div>
 
-    <!-- النافذة المنبثقة (Pop-up من نحن) -->
-    <div class="modal-overlay" id="aboutModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeAboutModal">✕</button>
-            <div class="modal-title">📌 من نحن</div>
-            <div class="modal-body-text">
-                تم إنشاء هذه المنصة بهدف تنظيم جدول التدريبات الرياضية، وتسهيل التواصل بين أعضاء ولاعبي نادي الصبية الرياضي، وتوفير الشفافية الكاملة لأرقام الخزينة والأنشطة الإعلامية في مكان واحد.
-            </div>
-            <div class="credits-box">
-                <div class="credits-label">✨ المؤسس والمسؤول:</div>
-                <div class="credits-name">عمر عبد المنعم محمد أحمد</div>
-            </div>
-        </div>
-    </div>
-
     <!-- شريط التنقل السفلي -->
     <div class="bottom-nav">
         <a href="index.html" class="active"><span>🏠</span>الرئيسية</a>
+        <a href="about.html"><span>📜</span>عن النادي</a>
         <a href="finance.html"><span>💳</span>الخزينة</a>
         <a href="members.html"><span>⚽</span>الأعضاء</a>
         <a href="media.html"><span>📢</span>الإعلامي</a>
@@ -433,24 +352,5 @@
         <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
     </footer>
 
-    <script>
-        const modal = document.getElementById('aboutModal');
-        const openBtn = document.getElementById('openAboutModal');
-        const closeBtn = document.getElementById('closeAboutModal');
-
-        openBtn.addEventListener('click', () => {
-            modal.style.display = 'flex';
-        });
-
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
