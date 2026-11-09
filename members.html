@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أعضاء النادي واللاعبين - نادي الصبية الرياضي</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #102a43;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0b2545;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #63b3ed;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #63b3ed;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0b2545;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            color: #486581;
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(11, 37, 69, 0.05);
+        }
+
+        .card h2 {
+            color: #0b2545;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        /* شبكة عرض الأعضاء واللاعبين */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(11, 37, 69, 0.08);
+        }
+
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            background-color: #e0f2fe;
+            color: #0b2545;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            font-weight: bold;
+        }
+
+        .member-card h3 {
+            color: #0b2545;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .member-role {
+            color: #3182ce;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .member-info {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        footer {
+            background-color: #0b2545;
+            color: #9fb3c8;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">نادي الصبية الرياضي 🏆</div>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="finance.html">خزينة النادي</a>
+            <a href="members.html">الأعضاء واللاعبين</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div class="page-title">
+            <h1>قائمة أعضاء النادي واللاعبين</h1>
+            <p>تعرف على مجلس الإدارة، الجهاز الفني، وكوكبة لاعبي نادي الصبية الرياضي</p>
+        </div>
+
+        <!-- 1. مجلس الإدارة والجهاز الفني -->
+        <div class="card">
+            <h2>👔 إدارة وجهاز النادي</h2>
+            <div class="members-grid">
+                
+                <div class="member-card">
+                    <div class="member-avatar">إ</div>
+                    <h3>عمر عبد المنعم</h3>
+                    <div class="member-role">رئيس النادي والمؤسس</div>
+                    <div class="member-info">إدارة وتطوير المشاريع الرياضية</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">م</div>
+                    <h3>أمين المالي</h3>
+                    <div class="member-role">مسؤول الخزينة والدعم</div>
+                    <div class="member-info">إدارة المساهمات وحسابات الدفع</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">د</div>
+                    <h3>مدرب الفريق</h3>
+                    <div class="member-role">الجهاز الفني والتدريب</div>
+                    <div class="member-info">الإشراف على التدريبات والخطط</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 2. قائمة اللاعبين -->
+        <div class="card">
+            <h2>⚽ قائمة لاعبي الفريق</h2>
+            <div class="members-grid">
+                
+                <div class="member-card">
+                    <div class="member-avatar">01</div>
+                    <h3>لاعب 1</h3>
+                    <div class="member-role">خط الهجوم</div>
+                    <div class="member-info">رقم القميص: 9</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">02</div>
+                    <h3>لاعب 2</h3>
+                    <div class="member-role">خط الوسط</div>
+                    <div class="member-info">رقم القميص: 8</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">03</div>
+                    <h3>لاعب 3</h3>
+                    <div class="member-role">خط الدفاع</div>
+                    <div class="member-info">رقم القميص: 4</div>
+                </div>
+
+                <div class="member-card">
+                    <div class="member-avatar">04</div>
+                    <h3>حارس المرمى</h3>
+                    <div class="member-role">حراسة المرمى</div>
+                    <div class="member-info">رقم القميص: 1</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
+    </footer>
+
+</body>
+</html>
