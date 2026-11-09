@@ -151,38 +151,6 @@
             color: #b45309;
         }
 
-        /* تصميم قسم "من نحن" بنفس ستايل المنصة وموقع جامعة بحري */
-        .about-card {
-            background: #ffffff;
-            border-right: 4px solid #3182ce;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .about-card h3 {
-            color: #0b2545;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .about-card p {
-            color: #486581;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .about-supervisor {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            padding: 10px 15px;
-            display: inline-block;
-            color: #0b2545;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
         /* زر الواتساب */
         .btn-whatsapp {
             display: block;
@@ -198,6 +166,42 @@
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        /* تصميم أزرار "من نحن" و "مشاركة المنصة" تماماً مثل الصورة */
+        .footer-action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 1px solid #334155;
+            padding: 12px 28px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-action-primary {
+            background: #2563eb;
+            border-color: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
         }
 
         /* شريط التنقل السفلي */
@@ -226,6 +230,86 @@
 
         .bottom-nav a.active, .bottom-nav a:hover {
             color: #63b3ed;
+        }
+
+        /* نافذة Pop-up من نحن */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            color: #0f172a;
+            border-radius: 20px;
+            max-width: 420px;
+            width: 100%;
+            padding: 25px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: popIn 0.3s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.3rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0b2545;
+            margin-bottom: 15px;
+        }
+
+        .modal-body-text {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .credits-box {
+            background: #0b2545;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .credits-label {
+            color: #63b3ed;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .credits-name {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-top: 4px;
         }
 
         footer {
@@ -316,18 +400,6 @@
             </div>
         </div>
 
-        <!-- قسم "من نحن" بنفس طريقة وأسلوب بطاقات الموقع والمنصة -->
-        <div class="section">
-            <h2>ℹ️ من نحن</h2>
-            <div class="about-card">
-                <h3>نادي الصبية الرياضي</h3>
-                <p>ملتقى رياضي اجتماعي يهدف لتنمية المواهب الشبابية وترسيخ قيم الرياضة والشفافية والتطوير المستمر.</p>
-                <div class="about-supervisor">
-                    👤 المسؤول العام: عمر عبد المنعم محمد أحمد
-                </div>
-            </div>
-        </div>
-
         <!-- قسم الواتساب -->
         <div class="section" style="text-align: center;">
             <h2>💬 انضم إلى مجتمع النادي</h2>
@@ -337,6 +409,31 @@
             </a>
         </div>
 
+        <!-- أزرار "مشاركة المنصة" و "من نحن" في الأسفل تماماً مثل الصورة -->
+        <div class="footer-action-buttons">
+            <button class="btn-action" id="shareBtn">
+                مشاركة المنصة 🔗
+            </button>
+            <button class="btn-action btn-action-primary" id="openAboutModal">
+                👥 من نحن
+            </button>
+        </div>
+
+    </div>
+
+    <!-- نافذة Pop-up "من نحن" -->
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeAboutModal">✕</button>
+            <div class="modal-title">👥 من نحن</div>
+            <div class="modal-body-text">
+                تم إنشاء هذه المنصة بهدف تنظيم جدول التدريبات الرياضية، وتسهيل التواصل بين أعضاء ولاعبي نادي الصبية الرياضي، وتوفير الشفافية الكاملة لأرقام الخزينة والأنشطة الإعلامية في مكان واحد.
+            </div>
+            <div class="credits-box">
+                <div class="credits-label">✨ المؤسس والمسؤول:</div>
+                <div class="credits-name">عمر عبد المنعم محمد أحمد</div>
+            </div>
+        </div>
     </div>
 
     <!-- شريط التنقل السفلي -->
@@ -352,5 +449,39 @@
         <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
     </footer>
 
+    <script>
+        // تفاعل نافذة من نحن
+        const modal = document.getElementById('aboutModal');
+        const openBtn = document.getElementById('openAboutModal');
+        const closeBtn = document.getElementById('closeAboutModal');
+
+        openBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // زر مشاركة الصفحة طبيعياً
+        const shareBtn = document.getElementById('shareBtn');
+        shareBtn.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'نادي الصبية الرياضي',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('تم نسخ رابط الموقع بنجاح!');
+            }
+        });
+    </script>
 </body>
 </html>
