@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -17,6 +16,8 @@
       --navy: #071d38;
       --blue: #0c3970;
       --blue-light: #1764ad;
+      --green-wa: #25d366;
+      --green-wa-dark: #1da851;
       --white: #ffffff;
       --bg: #f3f7fc;
       --text: #14243a;
@@ -178,6 +179,15 @@
       border: 1px solid rgba(255,255,255,.6);
       color: white;
       background: transparent;
+    }
+
+    .btn-whatsapp {
+      background: var(--green-wa);
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background: var(--green-wa-dark);
     }
 
     .section { padding: 48px 0 10px; }
@@ -357,37 +367,6 @@
       font-weight: 800;
     }
 
-    .match-versus {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      gap: 10px;
-      margin: 18px 0;
-      text-align: center;
-    }
-
-    .team-placeholder {
-      width: 65px;
-      height: 65px;
-      display: grid;
-      place-items: center;
-      background: #edf4fc;
-      border-radius: 50%;
-      font-size: 29px;
-    }
-
-    .versus {
-      color: var(--muted);
-      font-weight: 900;
-      font-size: 13px;
-    }
-
-    .match-team strong {
-      display: block;
-      font-size: 12px;
-      margin-top: 7px;
-    }
-
     .info-line {
       border-top: 1px solid var(--border);
       padding-top: 12px;
@@ -541,6 +520,15 @@
       padding: 8px 14px;
       font-size: 12px;
       font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-btn.wa-btn {
+      color: var(--green-wa-dark);
+      border-color: #c2f0d2;
+      background: #f4fbf6;
     }
 
     .modal {
@@ -643,8 +631,9 @@
             نسعى إلى تطوير قدرات لاعبينا وبناء فريق يشرّف اسمه وجمهوره.
           </p>
           <div class="hero-actions">
-            <a href="#schedule" class="btn btn-white">📅 جدول التمارين</a>
-            <a href="about.html" class="btn btn-outline">تعرف على النادي</a>
+            <a href="https://chat.whatsapp.com/LViSvGCeWAT1Q9lQfI8y1T?s=cl&p=a&iam=2" target="_blank" class="btn btn-whatsapp">💬 قروب الواتساب</a>
+            <a href="https://wa.me/249113991528?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D9%8C%D8%8C%20%D9%84%D8%AF%D9%8A%20%D8%A7%D9%82%D8%AA%D8%B1%D8%A7%D8%AD%20%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B5%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%3A%20" target="_blank" class="btn btn-white">💡 إرسال اقتراحات</a>
+            <a href="#schedule" class="btn btn-outline">📅 جدول التمارين</a>
           </div>
           <div class="hero-slogan">الصبية تعيش 💙</div>
         </div>
@@ -900,6 +889,8 @@
   <!-- التذييل -->
   <footer>
     <div class="footer-actions">
+      <a href="https://wa.me/249113991528?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D9%8C%D8%8C%20%D9%84%D8%AF%D9%8A%20%D8%A7%D9%82%D8%AA%D8%B1%D8%A7%D8%AD%20%D9%84%D9%86%D8%A7%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B5%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%D9%8A%3A%20" target="_blank" class="footer-btn wa-btn">💡 إرسال اقتراح</a>
+      <a href="https://chat.whatsapp.com/LViSvGCeWAT1Q9lQfI8y1T?s=cl&p=a&iam=2" target="_blank" class="footer-btn wa-btn">💬 قروب الواتساب</a>
       <button class="footer-btn" onclick="sharePlatform()">🔗 مشاركة المنصة</button>
       <button class="footer-btn" onclick="openAbout()">👥 من نحن</button>
     </div>
