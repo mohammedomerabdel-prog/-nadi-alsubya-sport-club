@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- أيقونة الموقع (Favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -13,11 +17,15 @@
             font-family: 'Cairo', sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #f4f6f9;
             color: #1e293b;
             line-height: 1.6;
-            padding-bottom: 70px;
+            padding-bottom: 75px;
         }
 
         /* هيدر مبسط وأنيق */
@@ -56,13 +64,44 @@
             margin: 0 auto;
         }
 
+        /* مؤشر حالة التمرين الحي اليوم */
+        .live-status {
+            display: none;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.15);
+            animation: pulse 2s infinite;
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
         .container {
             max-width: 950px;
             margin: 25px auto;
             padding: 0 15px;
         }
 
-        /* بطاقات الأقسام الرئيسية في وسط الصفحة */
+        /* بطاقات التنقل وسط الصفحة */
         .nav-cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -81,7 +120,7 @@
             font-weight: 700;
             font-size: 0.95rem;
             box-shadow: 0 4px 10px rgba(11, 37, 69, 0.04);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -90,7 +129,8 @@
 
         .nav-card:hover {
             border-color: #3182ce;
-            transform: translateY(-3px);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(49, 130, 206, 0.15);
             background-color: #f8fafc;
         }
 
@@ -133,6 +173,11 @@
             font-weight: 700;
         }
 
+        .today-highlight {
+            background-color: #eff6ff !important;
+            font-weight: bold;
+        }
+
         .badge {
             display: inline-block;
             padding: 3px 8px;
@@ -166,9 +211,15 @@
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
         }
 
-        /* تصميم أزرار "من نحن" و "مشاركة المنصة" تماماً مثل الصورة */
+        .btn-whatsapp:hover {
+            transform: scale(1.02);
+            background-color: #20ba5a;
+        }
+
+        /* أزرار الفوتر التفاعلية */
         .footer-action-buttons {
             display: flex;
             justify-content: center;
@@ -186,7 +237,7 @@
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.25s ease;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -201,7 +252,8 @@
         }
 
         .btn-action:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
         }
 
         /* شريط التنقل السفلي */
@@ -226,6 +278,7 @@
             flex-direction: column;
             align-items: center;
             gap: 3px;
+            transition: color 0.2s;
         }
 
         .bottom-nav a.active, .bottom-nav a:hover {
@@ -337,6 +390,11 @@
 
     <div class="container">
 
+        <!-- شريط التنبيه المباشر لتمرين اليوم -->
+        <div class="live-status" id="liveStatus">
+            <span class="live-dot"></span> <span id="liveText">تمرين اليوم قائم في تمام الساعة 3:30 مساءً!</span>
+        </div>
+
         <!-- بطاقات التنقل الرئيسية في منتصف الصفحة -->
         <div class="nav-cards-grid">
             <a href="about.html" class="nav-card">
@@ -371,25 +429,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr id="day-0">
                             <td><strong>الأحد</strong></td>
                             <td>لياقة بدنية وتكنيك كروي</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
-                        <tr>
+                        <tr id="day-2">
                             <td><strong>الثلاثاء</strong></td>
                             <td>تكتيك وتقسيمة مباريات</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
-                        <tr>
+                        <tr id="day-4">
                             <td><strong>الخميس</strong></td>
                             <td>إعداد للبطولات واللقاءات الودية</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
-                        <tr>
+                        <tr id="day-5">
                             <td><strong>الجمعة</strong></td>
                             <td>تمرين خاص وتجميعي</td>
                             <td><span class="badge badge-senior">كبار السن</span></td>
@@ -409,7 +467,7 @@
             </a>
         </div>
 
-        <!-- أزرار "مشاركة المنصة" و "من نحن" في الأسفل تماماً مثل الصورة -->
+        <!-- أزرار العمل السفلية -->
         <div class="footer-action-buttons">
             <button class="btn-action" id="shareBtn">
                 مشاركة المنصة 🔗
@@ -450,6 +508,27 @@
     </footer>
 
     <script>
+        // البرمجة الذكية لمؤشر حالة التمرين الحي حسب اليوم الحقيقي
+        const today = new Date().getDay(); // 0 = الأحد, 2 = الثلاثاء, 4 = الخميس, 5 = الجمعة
+        const liveStatus = document.getElementById('liveStatus');
+        const liveText = document.getElementById('liveText');
+        
+        const scheduleDays = {
+            0: "اليوم الأحد: تمرين لياقة بدنية وتكنيك كروي قائم في 3:30 مساءً! ⚽",
+            2: "اليوم الثلاثاء: تمرين تكتيكي وتقسيمة مباريات قائم في 3:30 مساءً! ⚽",
+            4: "اليوم الخميس: تمرين إعداد للبطولات واللقاءات الودية قائم في 3:30 مساءً! ⚽",
+            5: "اليوم الجمعة: تمرين خاص وتجميعي لكبار السن قائم في 3:30 مساءً! ⚽"
+        };
+
+        if (scheduleDays[today]) {
+            liveStatus.style.display = 'block';
+            liveText.innerText = scheduleDays[today];
+            const targetRow = document.getElementById(`day-${today}`);
+            if (targetRow) {
+                targetRow.classList.add('today-highlight');
+            }
+        }
+
         // تفاعل نافذة من نحن
         const modal = document.getElementById('aboutModal');
         const openBtn = document.getElementById('openAboutModal');
@@ -469,7 +548,7 @@
             }
         });
 
-        // زر مشاركة الصفحة طبيعياً
+        // زر مشاركة الصفحة
         const shareBtn = document.getElementById('shareBtn');
         shareBtn.addEventListener('click', () => {
             if (navigator.share) {
