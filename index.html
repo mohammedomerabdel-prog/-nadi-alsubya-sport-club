@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
+    <!-- استدعاء خط Cairo الثابت والاحترافي -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -19,7 +20,7 @@
             line-height: 1.6;
         }
 
-        /* الهيدر وشريط التصفح المنظم */
+        /* الهيدر وشريط التصفح الكلاسيكي والنظيف */
         header {
             background-color: #0b2545;
             color: #ffffff;
@@ -31,14 +32,14 @@
         }
 
         header .logo {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #63b3ed;
         }
 
         nav {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -48,7 +49,7 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 6px;
             transition: background 0.3s, color 0.3s;
         }
@@ -63,7 +64,7 @@
             background: linear-gradient(135deg, #0b2545, #134074);
             color: #ffffff;
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px;
         }
 
         .hero h1 {
@@ -143,60 +144,65 @@
             color: #b45309;
         }
 
-        /* الفوتر السفلي المحدث */
-        footer {
-            background-color: #0b2545;
-            color: #ffffff;
-            padding: 40px 20px 20px 20px;
-            margin-top: 50px;
+        /* صندوق "من نحن" التفاعلي */
+        .info-box {
+            background-color: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
         }
 
-        .footer-content {
-            max-width: 950px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: right;
+        .info-box:hover {
+            border-color: #3182ce;
+            background-color: #f0f4f8;
         }
 
-        .footer-section h3 {
-            color: #63b3ed;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-
-        .footer-section p {
-            color: #cbd5e1;
-            font-size: 0.95rem;
+        .info-box h3 {
+            color: #0b2545;
             margin-bottom: 8px;
+            font-size: 1.2rem;
         }
 
-        .btn-join {
-            background-color: #3182ce;
+        .info-content {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        /* زر انضم إلينا (رابط الواتساب) */
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
             color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 0.95rem;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 1rem;
             font-weight: 700;
             border-radius: 6px;
-            cursor: pointer;
             transition: background 0.3s;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .btn-join:hover {
-            background-color: #2b6cb0;
-        }
-
-        .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
+        }
+
+        /* الفوتر السفلي */
+        footer {
+            background-color: #0b2545;
             color: #9fb3c8;
+            text-align: center;
+            padding: 25px;
             font-size: 0.9rem;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -222,7 +228,7 @@
 
     <div class="container">
         
-        <!-- جدول التمارين والأنشطة -->
+        <!-- جدول التمارين والأنشطة (الساعة 3:30 عصراً) -->
         <div class="section">
             <h2>📅 جدول التمارين والنشاط الأسبوعي</h2>
             <div style="overflow-x: auto;">
@@ -265,34 +271,46 @@
             </div>
         </div>
 
+        <!-- صندوق "من نحن" التفاعلي -->
+        <div class="section">
+            <div class="info-box" id="aboutBox">
+                <h3>📌 من نحن (اضغط هنا لعرض التفاصيل)</h3>
+                <p style="color: #64748b; font-size: 0.9rem;">انقر على الصندوق لمعرفة المسؤول عن إدارة وتأسيس النادي</p>
+                <div class="info-content" id="aboutContent">
+                    نادي الصبية الرياضي هو ملتقى رياضي واجتماعي يهدف لتنمية المواهب الشابة.<br>
+                    <strong>إشراف وإدارة:</strong> عمر عبد المنعم محمد أحمد
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الانضمام لمجموعة الواتساب -->
+        <div class="section" style="text-align: center;">
+            <h2>💬 انضم إلى مجتمع النادي</h2>
+            <p style="color: #486581; margin-bottom: 15px;">كن على إطلاع دائم بكل مواعيد التمارين والفعاليات عبر مجموعة الواتساب الرسمية.</p>
+            <!-- استبدل الرابط أدناه برابط جروب الواتساب الخاص بك -->
+            <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE" target="_blank" class="btn-whatsapp">
+                📱 انضم إلى مجموعة الواتساب
+            </a>
+        </div>
+
     </div>
 
-    <!-- الفوتر السفلي المطور -->
+    <!-- الفوتر -->
     <footer>
-        <div class="footer-content">
-            
-            <div class="footer-section">
-                <h3>من نحن</h3>
-                <p>نادي الصبية الرياضي هو ملتقى رياضي وثقافي يهدف لتنمية المواهب الشابة وترسيخ قيم الرياضة والشفافية.</p>
-                <p><strong>المسؤول:</strong> عمر عبد المنعم محمد أحمد</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>الانضمام للنادي</h3>
-                <p>هل ترغب في الانضمام للتمارين أو عضوية النادي؟ يسعدنا انضمامك إلينا في أي وقت.</p>
-                <button id="joinBtn" class="btn-join">انضم إلينا الآن ⚽</button>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
-        </div>
+        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
     </footer>
 
     <script>
-        document.getElementById('joinBtn').addEventListener('click', function() {
-            alert('مرحباً بك في نادي الصبية الرياضي! سيتم فتح استمارة الانضمام قريباً.');
+        // برمجة صندوق "من نحن" التفاعلي ليظهر الاسم عند الضغط
+        const aboutBox = document.getElementById('aboutBox');
+        const aboutContent = document.getElementById('aboutContent');
+
+        aboutBox.addEventListener('click', function() {
+            if (aboutContent.style.display === 'block') {
+                aboutContent.style.display = 'none';
+            } else {
+                aboutContent.style.display = 'block';
+            }
         });
     </script>
 </body>
