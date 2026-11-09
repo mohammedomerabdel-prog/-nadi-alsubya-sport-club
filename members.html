@@ -4,179 +4,652 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#102d50">
-<title>اللاعبون | نادي الصبية الرياضي</title>
+<meta name="theme-color" content="#09172a">
+<title>لاعبونا | نادي الصبية الرياضي</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --primary:#12365d;
-    --dark:#0b2340;
-    --secondary:#1d5b91;
-    --gold:#d8ad55;
-    --bg:#f3f6fa;
+:root{
+    --bg:#09172a;
+    --bg2:#10233d;
+    --blue:#1d5b91;
+    --blue-light:#eaf2fa;
+    --gold:#d7b36a;
     --white:#fff;
-    --text:#172b43;
+    --text:#142b46;
     --muted:#718096;
-    --border:#e4eaf1;
-    --shadow:0 8px 25px rgba(16,45,80,.08);
+    --line:#e8edf3;
+    --shadow:0 12px 35px rgba(0,0,0,.18);
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+    font-family:'Cairo',sans-serif;
+    background:var(--bg);
+    color:white;
+    min-height:100vh;
+}
+
 button,input{font-family:inherit}
 a{text-decoration:none;color:inherit}
 
-header{
-    background:linear-gradient(135deg,var(--dark),var(--primary),var(--secondary));
-    color:white;padding:28px 18px 35px;text-align:center;
-    position:relative;overflow:hidden
+/* Header */
+.topbar{
+    height:68px;
+    padding:0 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    background:rgba(7,19,35,.8);
 }
-header:before,header:after{
-    content:"";position:absolute;border:1px solid rgba(255,255,255,.08);
-    border-radius:50%;width:240px;height:240px
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:17px;
+    font-weight:900;
 }
-header:before{top:-150px;right:-70px}
-header:after{bottom:-190px;left:-80px}
-.header-content{position:relative;z-index:1}
-.club-name{font-size:25px;font-weight:900}
-.header-subtitle{font-size:13px;opacity:.8}
-.header-line{width:55px;height:3px;background:var(--gold);margin:17px auto 0;border-radius:10px}
 
-.container{width:min(1100px,92%);margin:28px auto 100px}
-.page-intro{text-align:center;margin-bottom:25px}
-.page-intro h1{font-size:25px;font-weight:900;color:var(--primary)}
-.page-intro p{color:var(--muted);font-size:13px;margin-top:5px}
+.brand-mark{
+    width:37px;
+    height:37px;
+    border-radius:11px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#d7b36a,#a77d36);
+    color:#09172a;
+    font-size:20px;
+}
 
+.top-label{
+    color:#b5c3d3;
+    font-size:12px;
+}
+
+/* Hero */
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:65px 6% 85px;
+    background:
+      radial-gradient(ellipse at 85% 20%,rgba(35,100,158,.4),transparent 45%),
+      linear-gradient(115deg,#0b1c33,#102d4c 65%,#0a1a30);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    left:-100px;
+    top:-160px;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:1px solid rgba(215,179,106,.2);
+    border-radius:50%;
+    left:-30px;
+    bottom:-130px;
+}
+
+.hero-content{
+    max-width:1100px;
+    margin:auto;
+    position:relative;
+    z-index:1;
+}
+
+.hero-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--gold);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.5px;
+    margin-bottom:13px;
+}
+
+.kicker-dot{
+    width:7px;
+    height:7px;
+    background:var(--gold);
+    border-radius:50%;
+}
+
+.hero h1{
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.25;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.hero h1 span{color:var(--gold)}
+
+.hero p{
+    color:#b9c9db;
+    font-size:14px;
+    line-height:2;
+    max-width:520px;
+}
+
+.hero-bottom{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:25px;
+}
+
+.hero-line{
+    width:55px;
+    height:3px;
+    background:var(--gold);
+    border-radius:5px;
+}
+
+.hero-slogan{
+    color:#d8e3ef;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* Main */
+.container{
+    max-width:1100px;
+    width:90%;
+    margin:-30px auto 110px;
+    position:relative;
+    z-index:2;
+}
+
+/* Statistics */
 .stats-grid{
-    display:grid;grid-template-columns:repeat(5,1fr);
-    gap:12px;margin-bottom:30px
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-bottom:38px;
 }
+
 .stat-card{
-    background:white;padding:17px 8px;border-radius:15px;
-    text-align:center;box-shadow:var(--shadow);border:1px solid var(--border)
+    background:#fff;
+    color:var(--text);
+    padding:18px 10px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(255,255,255,.5);
+    transition:.2s;
 }
-.stat-icon{font-size:23px;margin-bottom:5px}
-.stat-number{font-size:23px;font-weight:900;color:var(--primary);line-height:1.4}
-.stat-label{font-size:11px;color:var(--muted);font-weight:700}
 
-.search-box{position:relative;margin-bottom:25px}
+.stat-card:hover{transform:translateY(-4px)}
+
+.stat-icon{
+    font-size:23px;
+    margin-bottom:5px;
+}
+
+.stat-number{
+    font-size:26px;
+    line-height:1.4;
+    font-weight:900;
+    color:#17436e;
+}
+
+.stat-label{
+    font-size:11px;
+    color:#77879a;
+    font-weight:800;
+}
+
+/* Search */
+.search-area{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.search-title h2{
+    font-size:21px;
+    font-weight:900;
+}
+
+.search-title p{
+    color:#a8b8ca;
+    font-size:12px;
+    margin-top:3px;
+}
+
+.search-box{
+    position:relative;
+    width:min(350px,100%);
+}
+
 .search-box input{
-    width:100%;padding:15px 48px 15px 45px;border:1px solid var(--border);
-    background:white;border-radius:14px;font-size:14px;outline:none;box-shadow:var(--shadow)
-}
-.search-box input:focus{border-color:var(--secondary)}
-.search-icon{position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:19px}
-.clear-search{
-    position:absolute;left:13px;top:50%;transform:translateY(-50%);
-    border:none;background:#edf1f6;color:var(--muted);width:27px;height:27px;
-    border-radius:50%;cursor:pointer;display:none
+    width:100%;
+    padding:13px 45px 13px 40px;
+    border-radius:12px;
+    border:1px solid #dce4ee;
+    background:#fff;
+    color:var(--text);
+    font-size:13px;
+    outline:none;
 }
 
-.position-section{margin-bottom:30px;scroll-margin-top:15px}
+.search-box input:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(215,179,106,.16);
+}
+
+.search-icon{
+    position:absolute;
+    right:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#72849a;
+}
+
+.clear-search{
+    display:none;
+    position:absolute;
+    left:10px;
+    top:50%;
+    transform:translateY(-50%);
+    width:25px;
+    height:25px;
+    border:0;
+    border-radius:50%;
+    background:#edf1f6;
+    color:#52677f;
+    cursor:pointer;
+    font-size:17px;
+}
+
+/* Position sections */
+.position-section{
+    margin-bottom:43px;
+    scroll-margin-top:20px;
+}
+
 .section-heading{
-    display:flex;align-items:center;justify-content:space-between;
-    margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border)
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.13);
+    padding-bottom:14px;
+    margin-bottom:19px;
 }
-.section-title{display:flex;align-items:center;gap:9px;color:var(--primary);font-size:18px;font-weight:900}
+
+.section-heading-main{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.section-icon{
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;
+    font-size:21px;
+}
+
+.section-title{
+    font-size:19px;
+    font-weight:900;
+}
+
+.section-subtitle{
+    color:#93a7bd;
+    font-size:11px;
+}
+
 .section-count{
-    background:#e6edf5;color:var(--primary);padding:4px 12px;
-    border-radius:20px;font-size:12px;font-weight:800
+    color:var(--gold);
+    font-size:12px;
+    font-weight:800;
+    border:1px solid rgba(215,179,106,.35);
+    padding:6px 13px;
+    border-radius:20px;
 }
-.players-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+
+/* Player cards */
+.players-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:16px;
+}
 
 .player-card{
-    background:white;border:1px solid var(--border);border-radius:17px;
-    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;
-    transition:transform .2s,box-shadow .2s;text-align:center
+    background:#fff;
+    color:var(--text);
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid #e8edf3;
+    box-shadow:0 8px 22px rgba(0,0,0,.13);
+    cursor:pointer;
+    transition:transform .25s,box-shadow .25s;
+    position:relative;
 }
-.player-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(16,45,80,.13)}
-.player-photo{
-    height:175px;background:linear-gradient(135deg,#e5edf6,#f5f8fc);
-    display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative
-}
-.player-photo img{width:100%;height:100%;object-fit:cover}
-.photo-placeholder{font-size:58px;opacity:.65}
-.player-number{
-    position:absolute;top:10px;right:10px;background:var(--primary);color:white;
-    min-width:31px;height:31px;padding:0 7px;border-radius:9px;
-    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px
-}
-.player-info{padding:14px 10px 16px}
-.player-name{font-size:16px;font-weight:900;color:var(--primary);margin-bottom:4px}
-.player-position{color:var(--muted);font-size:12px;font-weight:700}
-.view-details{
-    display:inline-block;margin-top:12px;padding:7px 17px;
-    background:#edf3f9;color:var(--primary);border-radius:20px;
-    font-size:11px;font-weight:800
-}
-.no-results,.empty-section{
-    background:white;border:1px dashed #cbd6e2;padding:23px 15px;
-    text-align:center;border-radius:14px;color:var(--muted);font-size:13px
-}
-.no-results{display:none;border:none;box-shadow:var(--shadow);padding:35px 15px}
-.no-results div{font-size:35px;margin-bottom:10px}
-.empty-section span{display:block;font-size:27px;margin-bottom:5px}
 
+.player-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 35px rgba(0,0,0,.25);
+}
+
+.player-photo{
+    height:185px;
+    background:linear-gradient(145deg,#e4edf7,#f4f7fb);
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.player-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-placeholder{
+    font-size:65px;
+    opacity:.55;
+}
+
+.player-number{
+    position:absolute;
+    top:11px;
+    right:11px;
+    min-width:34px;
+    height:34px;
+    padding:0 7px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    background:#102d4c;
+    color:white;
+    font-size:13px;
+    font-weight:900;
+}
+
+.player-card-body{
+    padding:15px 13px 16px;
+    text-align:center;
+}
+
+.player-name{
+    font-size:15px;
+    font-weight:900;
+    color:#163b61;
+    margin-bottom:4px;
+}
+
+.player-position{
+    font-size:11px;
+    color:#78889a;
+    font-weight:700;
+}
+
+.player-card-footer{
+    border-top:1px solid #edf0f4;
+    margin-top:12px;
+    padding-top:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    color:#245681;
+    font-size:11px;
+    font-weight:900;
+}
+
+.player-card-footer span:last-child{
+    color:var(--gold);
+    font-size:15px;
+}
+
+.empty-section{
+    grid-column:1/-1;
+    background:rgba(255,255,255,.06);
+    border:1px dashed rgba(255,255,255,.2);
+    border-radius:13px;
+    text-align:center;
+    padding:25px;
+    color:#a9b9cb;
+    font-size:13px;
+}
+
+.no-results{
+    display:none;
+    background:white;
+    color:var(--text);
+    text-align:center;
+    padding:35px;
+    border-radius:15px;
+    margin-bottom:30px;
+}
+
+.no-results div{font-size:34px;margin-bottom:10px}
+
+/* Modal */
 .modal{
-    position:fixed;inset:0;background:rgba(5,18,34,.75);z-index:1000;
-    display:none;align-items:center;justify-content:center;padding:15px;overflow-y:auto
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(2,9,19,.85);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    overflow-y:auto;
 }
+
 .modal.active{display:flex}
+
 .modal-content{
-    background:white;width:min(520px,100%);border-radius:20px;
-    overflow:hidden;position:relative;max-height:90vh;overflow-y:auto;
-    animation:modalIn .25s ease
+    width:min(520px,100%);
+    max-height:92vh;
+    overflow-y:auto;
+    background:#fff;
+    color:var(--text);
+    border-radius:20px;
+    position:relative;
+    animation:showModal .25s ease;
 }
-@keyframes modalIn{
+
+@keyframes showModal{
     from{opacity:0;transform:translateY(15px)}
     to{opacity:1;transform:translateY(0)}
 }
+
 .modal-close{
-    position:absolute;top:12px;left:12px;z-index:2;width:36px;height:36px;
-    border:none;background:rgba(255,255,255,.95);border-radius:50%;
-    font-size:21px;cursor:pointer;color:var(--primary)
+    position:absolute;
+    top:12px;
+    left:12px;
+    z-index:2;
+    width:36px;
+    height:36px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.95);
+    color:#102d4c;
+    font-size:22px;
+    cursor:pointer;
 }
+
 .modal-photo{
-    height:230px;background:linear-gradient(135deg,#e5edf6,#f5f8fc);
-    display:flex;align-items:center;justify-content:center;overflow:hidden
+    height:255px;
+    background:linear-gradient(145deg,#e4edf7,#f4f7fb);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
 }
-.modal-photo img{width:100%;height:100%;object-fit:cover}
-.modal-photo .photo-placeholder{font-size:75px}
-.modal-body{padding:22px}
-.modal-name{color:var(--primary);font-size:22px;font-weight:900}
-.modal-position{color:var(--secondary);font-size:13px;font-weight:800;margin-top:3px}
-.detail-divider{height:1px;background:var(--border);margin:17px 0}
-.detail-item{margin-bottom:15px}
-.detail-item h4{color:var(--primary);font-size:13px;margin-bottom:5px}
-.detail-item p{color:#66768a;font-size:13px;line-height:1.9}
-.skills-list{display:flex;flex-wrap:wrap;gap:7px}
-.skill-tag{background:#edf3f9;color:var(--primary);border-radius:20px;padding:5px 11px;font-size:11px;font-weight:800}
-.stats-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.stats-detail div{background:#f3f6fa;border-radius:10px;text-align:center;padding:10px 5px}
-.stats-detail strong{display:block;font-size:19px;color:var(--primary)}
-.stats-detail span{font-size:10px;color:var(--muted)}
 
+.modal-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.modal-body{padding:23px}
+
+.modal-name{
+    font-size:23px;
+    font-weight:900;
+    color:#153b61;
+}
+
+.modal-position{
+    font-size:12px;
+    color:#9b773c;
+    font-weight:800;
+    margin-top:3px;
+}
+
+.modal-divider{
+    height:1px;
+    background:#e8edf3;
+    margin:17px 0;
+}
+
+.detail-item{margin-bottom:17px}
+
+.detail-item h4{
+    color:#1a426a;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.detail-item p{
+    color:#697b90;
+    font-size:13px;
+    line-height:1.9;
+}
+
+.skills-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.skill-tag{
+    padding:6px 11px;
+    border-radius:20px;
+    background:#edf3f9;
+    color:#245681;
+    font-size:11px;
+    font-weight:800;
+}
+
+.stats-detail{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+}
+
+.stats-detail div{
+    background:#f2f6fa;
+    border-radius:11px;
+    text-align:center;
+    padding:12px 5px;
+}
+
+.stats-detail strong{
+    display:block;
+    color:#17436e;
+    font-size:19px;
+}
+
+.stats-detail span{
+    color:#8190a1;
+    font-size:10px;
+}
+
+/* Footer */
+.footer{
+    text-align:center;
+    padding:25px 10px 100px;
+    color:#8fa1b5;
+    font-size:11px;
+    border-top:1px solid rgba(255,255,255,.09);
+}
+
+.footer strong{color:var(--gold)}
+
+/* Navigation */
 .bottom-nav{
-    position:fixed;bottom:0;right:0;left:0;background:white;
-    display:flex;justify-content:space-around;align-items:center;
-    padding:10px 4px;box-shadow:0 -4px 20px rgba(0,0,0,.07);
-    z-index:100;border-top:1px solid var(--border)
+    position:fixed;
+    z-index:100;
+    bottom:0;
+    left:0;
+    right:0;
+    background:#fff;
+    border-top:1px solid #e5eaf0;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:9px 4px;
+    box-shadow:0 -5px 22px rgba(0,0,0,.14);
 }
-.nav-item{
-    display:flex;flex-direction:column;align-items:center;gap:2px;
-    color:#8996a6;font-size:10px;font-weight:700;min-width:50px
-}
-.nav-item span:first-child{font-size:19px}
-.nav-item.active{color:var(--primary)}
-footer{text-align:center;padding:15px 10px 25px;color:var(--muted);font-size:11px}
 
-@media(max-width:700px){
-    .stats-grid{grid-template-columns:repeat(3,1fr)}
-    .players-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-    .player-photo{height:145px}
-    .page-intro h1{font-size:22px}
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    min-width:50px;
+    color:#8996a6;
+    font-size:10px;
+    font-weight:700;
 }
-@media(max-width:360px){
+
+.nav-item span:first-child{font-size:19px}
+.nav-item.active{color:#17436e}
+
+/* Responsive */
+@media(max-width:800px){
+    .players-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+@media(max-width:600px){
+    .topbar{padding:0 5%;height:60px}
+    .brand{font-size:14px}
+    .top-label{font-size:10px}
+    .hero{padding:48px 5% 75px}
+    .hero p{font-size:12px}
+    .container{width:92%}
+    .stats-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+    .stat-card{padding:13px 5px}
+    .stat-number{font-size:22px}
+    .stat-label{font-size:10px}
+    .search-area{align-items:flex-start;flex-direction:column}
+    .search-box{width:100%}
+    .players-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+    .player-photo{height:150px}
+    .player-name{font-size:13px}
+    .section-title{font-size:16px}
+    .section-icon{width:38px;height:38px}
+}
+
+@media(max-width:350px){
     .players-grid{grid-template-columns:1fr}
     .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -185,42 +658,63 @@ footer{text-align:center;padding:15px 10px 25px;color:var(--muted);font-size:11p
 
 <body>
 
-<header>
-    <div class="header-content">
-        <div class="club-name">نادي الصبية الرياضي</div>
-        <div class="header-subtitle">المنصة الرسمية للنادي | الصبية تعيش</div>
-        <div class="header-line"></div>
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-mark">⚽</div>
+        <span>نادي الصبية الرياضي</span>
     </div>
+    <div class="top-label">المنصة الرياضية الرسمية</div>
 </header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-kicker">
+            <span class="kicker-dot"></span>
+            SQUAD PROFILE
+        </div>
+
+        <h1>نجوم <span>الصبية</span></h1>
+
+        <p>
+            هنا حكاية اللاعبين الذين يحملون ألوان النادي،
+            يجمعهم الشغف وتوحدهم الروح والطموح.
+        </p>
+
+        <div class="hero-bottom">
+            <div class="hero-line"></div>
+            <div class="hero-slogan">الصبية تعيش 💙</div>
+        </div>
+    </div>
+</section>
 
 <main class="container">
 
-    <div class="page-intro">
-        <h1>⚽ لاعبونا</h1>
-        <p>نجوم الفريق.. روح واحدة وطموح واحد</p>
-    </div>
-
-    <section class="stats-grid" aria-label="إحصائيات اللاعبين">
+    <!-- إحصائيات الفريق -->
+    <section class="stats-grid">
         <div class="stat-card">
             <div class="stat-icon">👥</div>
             <div class="stat-number" id="totalPlayers">0</div>
             <div class="stat-label">إجمالي اللاعبين</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">🧤</div>
             <div class="stat-number" id="goalkeeperCount">0</div>
             <div class="stat-label">حراس المرمى</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">🛡️</div>
             <div class="stat-number" id="defenderCount">0</div>
             <div class="stat-label">خط الدفاع</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">⚙️</div>
             <div class="stat-number" id="midfielderCount">0</div>
             <div class="stat-label">خط الوسط</div>
         </div>
+
         <div class="stat-card">
             <div class="stat-icon">⚽</div>
             <div class="stat-number" id="forwardCount">0</div>
@@ -228,45 +722,83 @@ footer{text-align:center;padding:15px 10px 25px;color:var(--muted);font-size:11p
         </div>
     </section>
 
-    <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="search" id="playerSearch" placeholder="ابحث عن لاعب باسمه..." autocomplete="off" aria-label="البحث عن لاعب">
-        <button class="clear-search" id="clearSearch" aria-label="مسح البحث">×</button>
+    <!-- البحث -->
+    <div class="search-area">
+        <div class="search-title">
+            <h2>قائمة اللاعبين</h2>
+            <p>اكتشف لاعبي الفريق وتعرّف عليهم</p>
+        </div>
+
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input id="playerSearch" type="search"
+                   placeholder="ابحث عن اسم اللاعب..."
+                   autocomplete="off">
+            <button class="clear-search" id="clearSearch">×</button>
+        </div>
     </div>
 
     <div class="no-results" id="noResults">
-        <div>🔎</div>
-        <strong>لم نعثر على لاعب بهذا الاسم</strong>
-        <p>تأكد من كتابة الاسم بصورة صحيحة.</p>
+        <div>🔍</div>
+        <strong>لم يتم العثور على لاعب</strong>
+        <p>جرّب كتابة الاسم بطريقة مختلفة.</p>
     </div>
 
+    <!-- حراس المرمى -->
     <section class="position-section" id="goalkeepersSection">
         <div class="section-heading">
-            <h2 class="section-title">🧤 حراس المرمى</h2>
+            <div class="section-heading-main">
+                <div class="section-icon">🧤</div>
+                <div>
+                    <h2 class="section-title">حراس المرمى</h2>
+                    <p class="section-subtitle">آخر خط دفاع عن الشباك</p>
+                </div>
+            </div>
             <span class="section-count" id="goalkeepersBadge">0 لاعب</span>
         </div>
         <div class="players-grid" id="goalkeepersGrid"></div>
     </section>
 
+    <!-- خط الدفاع -->
     <section class="position-section" id="defendersSection">
         <div class="section-heading">
-            <h2 class="section-title">🛡️ خط الدفاع</h2>
+            <div class="section-heading-main">
+                <div class="section-icon">🛡️</div>
+                <div>
+                    <h2 class="section-title">خط الدفاع</h2>
+                    <p class="section-subtitle">قوة وثبات في حماية الفريق</p>
+                </div>
+            </div>
             <span class="section-count" id="defendersBadge">0 لاعب</span>
         </div>
         <div class="players-grid" id="defendersGrid"></div>
     </section>
 
+    <!-- خط الوسط -->
     <section class="position-section" id="midfieldersSection">
         <div class="section-heading">
-            <h2 class="section-title">⚙️ خط الوسط</h2>
+            <div class="section-heading-main">
+                <div class="section-icon">⚙️</div>
+                <div>
+                    <h2 class="section-title">خط الوسط</h2>
+                    <p class="section-subtitle">حلقة الوصل وصناعة اللعب</p>
+                </div>
+            </div>
             <span class="section-count" id="midfieldersBadge">0 لاعب</span>
         </div>
         <div class="players-grid" id="midfieldersGrid"></div>
     </section>
 
+    <!-- خط الهجوم -->
     <section class="position-section" id="forwardsSection">
         <div class="section-heading">
-            <h2 class="section-title">⚽ خط الهجوم</h2>
+            <div class="section-heading-main">
+                <div class="section-icon">⚽</div>
+                <div>
+                    <h2 class="section-title">خط الهجوم</h2>
+                    <p class="section-subtitle">صناعة الفرص وهز الشباك</p>
+                </div>
+            </div>
             <span class="section-count" id="forwardsBadge">0 لاعب</span>
         </div>
         <div class="players-grid" id="forwardsGrid"></div>
@@ -274,65 +806,80 @@ footer{text-align:center;padding:15px 10px 25px;color:var(--muted);font-size:11p
 
 </main>
 
-<div class="modal" id="playerModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+<!-- نافذة تفاصيل اللاعب -->
+<div class="modal" id="playerModal" role="dialog"
+     aria-modal="true" aria-labelledby="modalName">
+
     <div class="modal-content">
         <button class="modal-close" id="closeModal" aria-label="إغلاق">×</button>
+
         <div class="modal-photo" id="modalPhoto">
             <span class="photo-placeholder">⚽</span>
         </div>
+
         <div class="modal-body">
             <h2 class="modal-name" id="modalName"></h2>
             <div class="modal-position" id="modalPosition"></div>
-            <div class="detail-divider"></div>
+
+            <div class="modal-divider"></div>
 
             <div class="detail-item" id="numberDetail">
-                <h4>🔢 رقم اللاعب</h4>
+                <h4>رقم القميص</h4>
                 <p id="modalNumber"></p>
             </div>
 
             <div class="detail-item">
-                <h4>📝 نبذة عن اللاعب</h4>
+                <h4>نبذة عن اللاعب</h4>
                 <p id="modalBio"></p>
             </div>
 
             <div class="detail-item">
-                <h4>💪 المهارات والقدرات</h4>
+                <h4>المهارات والقدرات</h4>
                 <div class="skills-list" id="modalSkills"></div>
             </div>
 
             <div class="detail-item">
-                <h4>🏆 إحصائيات اللاعب</h4>
+                <h4>إحصائيات اللاعب</h4>
                 <div class="stats-detail" id="modalStats"></div>
             </div>
         </div>
     </div>
 </div>
 
-<nav class="bottom-nav">
-    <a href="index.html" class="nav-item"><span>🏠</span><span>الرئيسية</span></a>
-    <a href="about.html" class="nav-item"><span>ℹ️</span><span>عن النادي</span></a>
-    <a href="finance.html" class="nav-item"><span>💰</span><span>الخزنة</span></a>
-    <a href="members.html" class="nav-item active"><span>👥</span><span>اللاعبون</span></a>
-    <a href="media.html" class="nav-item"><span>🖼️</span><span>الوسائط</span></a>
-</nav>
-
-<footer>
-    © 2026 نادي الصبية الرياضي | الصبية تعيش 💙
+<footer class="footer">
+    <strong>نادي الصبية الرياضي</strong><br>
+    الصبية تعيش | © 2026
 </footer>
+
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-item">
+        <span>🏠</span><span>الرئيسية</span>
+    </a>
+    <a href="about.html" class="nav-item">
+        <span>ℹ️</span><span>عن النادي</span>
+    </a>
+    <a href="finance.html" class="nav-item">
+        <span>💰</span><span>الخزنة</span>
+    </a>
+    <a href="members.html" class="nav-item active">
+        <span>👥</span><span>اللاعبون</span>
+    </a>
+    <a href="media.html" class="nav-item">
+        <span>🖼️</span><span>الوسائط</span>
+    </a>
+</nav>
 
 <script>
 /*
   بيانات اللاعبين الحالية.
-  photo: مسار الصورة داخل images/players/
-  number: رقم اللاعب إن توفر
-  bio: نبذة اللاعب
-  skills: المهارات والقدرات
-  stats: المباريات والأهداف والتمريرات الحاسمة
+  لإضافة صورة لاحقاً:
+  photo: "images/players/player-name.jpg"
 
-  لا توجد بيانات افتراضية للصور أو الإحصائيات.
+  لا توجد صور أو أرقام أو إحصائيات افتراضية.
 */
 
 const players = [
+
     // حراس المرمى
     {name:"محمد عمر",position:"goalkeeper",customPosition:"حارس مرمى"},
     {name:"مختار حمزة",position:"goalkeeper",customPosition:"حارس مرمى"},
@@ -374,7 +921,7 @@ const players = [
     {name:"مصطفى",position:"midfielder",customPosition:"وسط"},
     {name:"خطري",position:"midfielder",customPosition:"وسط"},
 
-    // خط الهجوم
+    // الهجوم
     {name:"محمد عثمان",position:"forward",customPosition:"مهاجم"},
     {name:"حسام",position:"forward",customPosition:"مهاجم"},
     {name:"مجاهد",position:"forward",customPosition:"مهاجم"},
@@ -384,33 +931,36 @@ const players = [
     {name:"أحمد مصعب",position:"forward",customPosition:"مهاجم"}
 ];
 
-const positionSettings = {
+const settings = {
     goalkeeper:{
-        grid:"goalkeepersGrid",section:"goalkeepersSection",
-        badge:"goalkeepersBadge",stat:"goalkeeperCount",
+        grid:"goalkeepersGrid",
+        section:"goalkeepersSection",
+        badge:"goalkeepersBadge",
+        stat:"goalkeeperCount",
         empty:"لم تتم إضافة حراس المرمى حتى الآن."
     },
     defender:{
-        grid:"defendersGrid",section:"defendersSection",
-        badge:"defendersBadge",stat:"defenderCount",
+        grid:"defendersGrid",
+        section:"defendersSection",
+        badge:"defendersBadge",
+        stat:"defenderCount",
         empty:"لم تتم إضافة لاعبي الدفاع حتى الآن."
     },
     midfielder:{
-        grid:"midfieldersGrid",section:"midfieldersSection",
-        badge:"midfieldersBadge",stat:"midfielderCount",
+        grid:"midfieldersGrid",
+        section:"midfieldersSection",
+        badge:"midfieldersBadge",
+        stat:"midfielderCount",
         empty:"لم تتم إضافة لاعبي الوسط حتى الآن."
     },
     forward:{
-        grid:"forwardsGrid",section:"forwardsSection",
-        badge:"forwardsBadge",stat:"forwardCount",
-        empty:"لم تتم إضافة لاعبي الهجوم حتى الآن."
+        grid:"forwardsGrid",
+        section:"forwardsSection",
+        badge:"forwardsBadge",
+        stat:"forwardCount",
+        empty:"لم تتم إضافة المهاجمين حتى الآن."
     }
 };
-
-const searchInput=document.getElementById("playerSearch");
-const clearSearch=document.getElementById("clearSearch");
-const noResults=document.getElementById("noResults");
-const modal=document.getElementById("playerModal");
 
 function escapeHTML(value){
     return String(value??"").replace(/[&<>"']/g,char=>({
@@ -426,103 +976,118 @@ function normalizeArabic(value){
         .replace(/\s+/g," ");
 }
 
-function playerPhotoHTML(player){
-    if(player.photo){
-        const safePhoto=escapeHTML(player.photo);
-        return `
-            <img src="${safePhoto}" alt="${escapeHTML(player.name)}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-            <span class="photo-placeholder" style="display:none;">⚽</span>
-        `;
+function photoHTML(player){
+    if(!player.photo){
+        return '<span class="photo-placeholder">⚽</span>';
     }
-    return '<span class="photo-placeholder">⚽</span>';
+
+    return `
+        <img src="${escapeHTML(player.photo)}"
+             alt="${escapeHTML(player.name)}"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="photo-placeholder" style="display:none;">⚽</span>
+    `;
 }
 
-function createPlayerCard(player,index){
+function createCard(player,index){
     return `
         <article class="player-card" tabindex="0" role="button"
-        aria-label="عرض تفاصيل ${escapeHTML(player.name)}"
-        data-player-index="${index}">
+                 data-index="${index}"
+                 aria-label="عرض تفاصيل ${escapeHTML(player.name)}">
+
             <div class="player-photo">
-                ${playerPhotoHTML(player)}
+                ${photoHTML(player)}
+                ${player.number!==undefined && player.number!==null && player.number!==""
+                    ? `<span class="player-number">${escapeHTML(player.number)}</span>`
+                    : ""}
             </div>
-            <div class="player-info">
+
+            <div class="player-card-body">
                 <h3 class="player-name">${escapeHTML(player.name)}</h3>
                 <div class="player-position">${escapeHTML(player.customPosition)}</div>
-                <span class="view-details">عرض التفاصيل ←</span>
+                <div class="player-card-footer">
+                    <span>عرض الملف الشخصي</span>
+                    <span>←</span>
+                </div>
             </div>
         </article>
     `;
 }
 
-function updateStatistics(){
+function updateStats(){
     document.getElementById("totalPlayers").textContent=players.length;
 
-    Object.entries(positionSettings).forEach(([position,settings])=>{
+    Object.entries(settings).forEach(([position,item])=>{
         const count=players.filter(p=>p.position===position).length;
-        document.getElementById(settings.stat).textContent=count;
-        document.getElementById(settings.badge).textContent=`${count} لاعب`;
+        document.getElementById(item.stat).textContent=count;
+        document.getElementById(item.badge).textContent=count+" لاعب";
     });
 }
 
 function renderPlayers(query=""){
-    const normalizedQuery=normalizeArabic(query);
-    let visibleCount=0;
+    const search=normalizeArabic(query);
+    let visible=0;
 
-    Object.entries(positionSettings).forEach(([position,settings])=>{
-        const grid=document.getElementById(settings.grid);
-        const section=document.getElementById(settings.section);
+    Object.entries(settings).forEach(([position,item])=>{
+        const grid=document.getElementById(item.grid);
+        const section=document.getElementById(item.section);
 
         const filtered=players.map((player,index)=>({player,index}))
             .filter(({player})=>
                 player.position===position &&
-                normalizeArabic(player.name).includes(normalizedQuery)
+                normalizeArabic(player.name).includes(search)
             );
 
-        visibleCount+=filtered.length;
+        visible+=filtered.length;
 
-        if(filtered.length===0){
-            grid.innerHTML=`
-                <div class="empty-section" style="grid-column:1/-1;">
-                    <span>⚽</span>
-                    ${normalizedQuery?"لا يوجد لاعب مطابق في هذا القسم.":settings.empty}
-                </div>`;
+        if(filtered.length){
+            grid.innerHTML=filtered.map(({player,index})=>
+                createCard(player,index)
+            ).join("");
         }else{
-            grid.innerHTML=filtered
-                .map(({player,index})=>createPlayerCard(player,index)).join("");
+            grid.innerHTML=`
+                <div class="empty-section">
+                    ${search?"لا يوجد لاعب مطابق في هذا القسم.":item.empty}
+                </div>`;
         }
 
         section.style.display=
-            normalizedQuery&&filtered.length===0?"none":"block";
+            search && filtered.length===0?"none":"block";
     });
 
-    noResults.style.display=
-        normalizedQuery&&visibleCount===0?"block":"none";
+    document.getElementById("noResults").style.display=
+        search && visible===0?"block":"none";
 
-    clearSearch.style.display=query?"block":"none";
+    document.getElementById("clearSearch").style.display=
+        query?"block":"none";
 }
+
+const modal=document.getElementById("playerModal");
 
 function openPlayer(index){
     const player=players[index];
     if(!player)return;
 
-    document.getElementById("modalPhoto").innerHTML=playerPhotoHTML(player);
+    document.getElementById("modalPhoto").innerHTML=photoHTML(player);
     document.getElementById("modalName").textContent=player.name;
     document.getElementById("modalPosition").textContent=player.customPosition;
 
     const numberDetail=document.getElementById("numberDetail");
     numberDetail.style.display=
-        player.number!==undefined&&player.number!==null&&player.number!==""?"block":"none";
+        player.number!==undefined && player.number!==null && player.number!==""
+        ?"block":"none";
 
     document.getElementById("modalNumber").textContent=player.number??"";
 
     document.getElementById("modalBio").textContent=
-        player.bio||"لم تتم إضافة نبذة تعريفية عن اللاعب بعد.";
+        player.bio || "لم تتم إضافة نبذة تعريفية عن اللاعب بعد.";
 
     document.getElementById("modalSkills").innerHTML=
-        player.skills&&player.skills.length
-        ?player.skills.map(skill=>`<span class="skill-tag">${escapeHTML(skill)}</span>`).join("")
-        :'<span class="skill-tag">لم تتم إضافة المهارات بعد</span>';
+        player.skills && player.skills.length
+        ? player.skills.map(skill=>
+            `<span class="skill-tag">${escapeHTML(skill)}</span>`
+          ).join("")
+        : '<span class="skill-tag">لم تتم إضافة المهارات بعد</span>';
 
     const statItems=[
         ["matches","المباريات"],
@@ -531,66 +1096,73 @@ function openPlayer(index){
     ];
 
     const hasStats=statItems.some(([key])=>
-        player.stats&&player.stats[key]!==undefined&&
-        player.stats[key]!==null&&player.stats[key]!==""
+        player.stats && player.stats[key]!==undefined &&
+        player.stats[key]!==null && player.stats[key]!==""
     );
 
-    document.getElementById("modalStats").innerHTML=hasStats
+    document.getElementById("modalStats").innerHTML=
+        hasStats
         ?statItems.map(([key,label])=>`
             <div>
                 <strong>${escapeHTML(player.stats?.[key]??"—")}</strong>
                 <span>${label}</span>
             </div>`).join("")
-        :'<div style="grid-column:1/-1;">لم تتم إضافة الإحصائيات بعد.</div>';
+        :'<div style="grid-column:1/-1">لم تتم إضافة الإحصائيات بعد.</div>';
 
     modal.classList.add("active");
     document.body.style.overflow="hidden";
     document.getElementById("closeModal").focus();
 }
 
-function closePlayerModal(){
+function closePlayer(){
     modal.classList.remove("active");
     document.body.style.overflow="";
 }
 
+/* فتح بطاقات اللاعبين */
 document.querySelectorAll(".players-grid").forEach(grid=>{
     grid.addEventListener("click",event=>{
         const card=event.target.closest(".player-card");
-        if(card)openPlayer(Number(card.dataset.playerIndex));
+        if(card)openPlayer(Number(card.dataset.index));
     });
 
     grid.addEventListener("keydown",event=>{
-        if(event.key!=="Enter"&&event.key!==" ")return;
+        if(event.key!=="Enter" && event.key!==" ")return;
         const card=event.target.closest(".player-card");
         if(!card)return;
         event.preventDefault();
-        openPlayer(Number(card.dataset.playerIndex));
+        openPlayer(Number(card.dataset.index));
     });
 });
+
+/* البحث */
+const searchInput=document.getElementById("playerSearch");
 
 searchInput.addEventListener("input",()=>{
     renderPlayers(searchInput.value);
 });
 
-clearSearch.addEventListener("click",()=>{
+document.getElementById("clearSearch").addEventListener("click",()=>{
     searchInput.value="";
     renderPlayers();
     searchInput.focus();
 });
 
-document.getElementById("closeModal").addEventListener("click",closePlayerModal);
+/* إغلاق النافذة */
+document.getElementById("closeModal").addEventListener("click",closePlayer);
 
 modal.addEventListener("click",event=>{
-    if(event.target===modal)closePlayerModal();
+    if(event.target===modal)closePlayer();
 });
 
 document.addEventListener("keydown",event=>{
-    if(event.key==="Escape"&&modal.classList.contains("active")){
-        closePlayerModal();
+    if(event.key==="Escape" && modal.classList.contains("active")){
+        closePlayer();
     }
 });
 
-updateStatistics();
+/* التشغيل */
+updateStats();
 renderPlayers();
 </script>
 
