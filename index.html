@@ -19,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* الهيدر وشريط التصفح */
+        /* الهيدر وشريط التصفح المنظم */
         header {
             background-color: #0b2545;
             color: #ffffff;
@@ -38,7 +38,7 @@
 
         nav {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -46,9 +46,9 @@
         nav a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 6px;
             transition: background 0.3s, color 0.3s;
         }
@@ -63,60 +63,20 @@
             background: linear-gradient(135deg, #0b2545, #134074);
             color: #ffffff;
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         .hero h1 {
-            font-size: 2.3rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 25px;
+            font-size: 1.05rem;
             color: #cbd5e1;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            border: none;
-            padding: 10px 22px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: #3182ce;
-            color: #ffffff;
-            box-shadow: 0 4px 10px rgba(49, 130, 206, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: #2b6cb0;
-        }
-
-        .btn-secondary {
-            background-color: #ffffff;
-            color: #0b2545;
-        }
-
-        .btn-secondary:hover {
-            background-color: #e2e8f0;
+            margin: 0 auto;
         }
 
         /* الحاويات والأقسام */
@@ -183,28 +143,74 @@
             color: #b45309;
         }
 
-        /* الفوتر */
+        /* الفوتر السفلي المحدث */
         footer {
             background-color: #0b2545;
-            color: #9fb3c8;
+            color: #ffffff;
+            padding: 40px 20px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 950px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: right;
+        }
+
+        .footer-section h3 {
+            color: #63b3ed;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-section p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .btn-join {
+            background-color: #3182ce;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .btn-join:hover {
+            background-color: #2b6cb0;
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 20px;
+            padding-top: 20px;
+            color: #9fb3c8;
             font-size: 0.9rem;
-            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر وشريط التصفح المستقل للأيقونات -->
+    <!-- الهيدر وشريط التصفح -->
     <header>
         <div class="logo">نادي الصبية الرياضي 🏆</div>
         <nav>
-            <a href="index.html" class="active">الرئيسية 🏠</a>
-            <a href="about.html">عن النادي 📜</a>
-            <a href="finance.html">الخزينة 💳</a>
-            <a href="members.html">الأعضاء ⚽</a>
-            <a href="media.html">المركز الإعلامي 📰</a>
+            <a href="index.html" class="active">الرئيسية</a>
+            <a href="about.html">عن النادي</a>
+            <a href="finance.html">الخزينة</a>
+            <a href="members.html">الأعضاء</a>
+            <a href="media.html">المركز الإعلامي</a>
         </nav>
     </header>
 
@@ -212,18 +218,11 @@
     <section class="hero">
         <h1>الموقع الرسمي لنادي الصبية الرياضي</h1>
         <p>نعمل على تطوير المهارات الرياضية وبناء الجيل القادم بروح رياضية عالية.</p>
-        <div class="hero-buttons">
-            <button id="joinBtn" class="btn btn-primary">انضم إلينا الآن</button>
-            <a href="about.html" class="btn btn-secondary">عن النادي 📜</a>
-            <a href="finance.html" class="btn btn-secondary">الخزينة 💳</a>
-            <a href="members.html" class="btn btn-secondary">الأعضاء ⚽</a>
-            <a href="media.html" class="btn btn-secondary">المركز الإعلامي 📰</a>
-        </div>
     </section>
 
     <div class="container">
         
-        <!-- جدول التمارين والأنشطة في الصفحة الرئيسية -->
+        <!-- جدول التمارين والأنشطة -->
         <div class="section">
             <h2>📅 جدول التمارين والنشاط الأسبوعي</h2>
             <div style="overflow-x: auto;">
@@ -241,25 +240,25 @@
                             <td><strong>الأحد</strong></td>
                             <td>تمرين لياقة بدنية وتكنيك كروي</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
-                            <td>4:30 مساءً</td>
+                            <td>3:30 مساءً</td>
                         </tr>
                         <tr>
                             <td><strong>الثلاثاء</strong></td>
                             <td>تمرين تكتيكي وتقسيمة مباريات</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
-                            <td>4:30 مساءً</td>
+                            <td>3:30 مساءً</td>
                         </tr>
                         <tr>
                             <td><strong>الخميس</strong></td>
                             <td>تمرين الإعداد للبطولات واللقاءات الودية</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
-                            <td>4:30 مساءً</td>
+                            <td>3:30 مساءً</td>
                         </tr>
                         <tr>
                             <td><strong>الجمعة</strong></td>
                             <td>تمرين خاص وتجميعي (كبار السن)</td>
                             <td><span class="badge badge-senior">كبار السن / قدامى النادي</span></td>
-                            <td>4:00 مساءً</td>
+                            <td>3:30 مساءً</td>
                         </tr>
                     </tbody>
                 </table>
@@ -268,9 +267,27 @@
 
     </div>
 
-    <!-- الفوتر -->
+    <!-- الفوتر السفلي المطور -->
     <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h3>من نحن</h3>
+                <p>نادي الصبية الرياضي هو ملتقى رياضي وثقافي يهدف لتنمية المواهب الشابة وترسيخ قيم الرياضة والشفافية.</p>
+                <p><strong>المسؤول:</strong> عمر عبد المنعم محمد أحمد</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>الانضمام للنادي</h3>
+                <p>هل ترغب في الانضمام للتمارين أو عضوية النادي؟ يسعدنا انضمامك إلينا في أي وقت.</p>
+                <button id="joinBtn" class="btn-join">انضم إلينا الآن ⚽</button>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
+        </div>
     </footer>
 
     <script>
