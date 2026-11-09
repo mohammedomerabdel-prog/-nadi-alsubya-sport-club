@@ -6,11 +6,9 @@
   <meta name="theme-color" content="#071d38">
   <meta name="description" content="الموقع الرسمي لنادي الصبية الرياضي - الصبية تعيش">
   <title>نادي الصبية الرياضي | الصبية تعيش</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --navy: #071d38;
@@ -28,11 +26,7 @@
       --radius: 20px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
@@ -47,10 +41,7 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
+    .container { width: min(1120px, 92%); margin: auto; }
 
     header {
       background: var(--navy);
@@ -110,10 +101,7 @@
       overflow: hidden;
     }
 
-    .hero-content {
-      max-width: 720px;
-      padding: 75px 0;
-    }
+    .hero-content { max-width: 720px; padding: 75px 0; }
 
     .eyebrow {
       display: inline-block;
@@ -150,11 +138,7 @@
       margin-top: 18px;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
     .btn {
       display: inline-flex;
@@ -186,22 +170,10 @@
       margin-bottom: 20px;
     }
 
-    .section-heading h2 {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--navy);
-    }
+    .section-heading h2 { font-size: 22px; font-weight: 900; color: var(--navy); }
+    .section-heading p { color: var(--muted); font-size: 12px; }
 
-    .section-heading p {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .section-title { display: flex; align-items: center; gap: 10px; }
 
     .section-title .symbol {
       width: 40px;
@@ -242,11 +214,7 @@
       white-space: nowrap;
     }
 
-    .news-message {
-      padding: 8px 12px;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .news-message { padding: 8px 12px; color: var(--muted); font-size: 13px; }
 
     .training-status {
       display: flex;
@@ -306,40 +274,16 @@
       font-size: 25px;
     }
 
-    .quick-card strong {
-      display: block;
-      color: var(--navy);
-      font-size: 14px;
-    }
+    .quick-card strong { display: block; color: var(--navy); font-size: 14px; }
+    .quick-card small { color: var(--muted); font-size: 11px; }
 
-    .quick-card small {
-      color: var(--muted);
-      font-size: 11px;
-    }
+    .two-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
+    .empty-state { text-align: center; padding: 25px 12px; color: var(--muted); }
 
-    .empty-state {
-      text-align: center;
-      padding: 25px 12px;
-      color: var(--muted);
-    }
+    .empty-state .empty-icon { font-size: 30px; display: block; margin-bottom: 8px; }
 
-    .empty-state .empty-icon {
-      font-size: 30px;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .empty-state strong {
-      display: block;
-      color: var(--navy);
-      margin-bottom: 5px;
-    }
+    .empty-state strong { display: block; color: var(--navy); margin-bottom: 5px; }
 
     .empty-state p { font-size: 12px; }
 
@@ -362,47 +306,117 @@
       text-align: center;
     }
 
+    /* بطاقة نتيجة المباراة */
+    .scoreboard {
+      margin-top: 16px;
+      border-radius: 18px;
+      padding: 22px 12px 18px;
+      color: white;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(141,197,255,.25), transparent 55%),
+        linear-gradient(135deg, #071d38, #0c3970);
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-badge {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 6px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      font-size: 26px;
+    }
+
+    .team-name { font-weight: 900; font-size: 15px; }
+
+    .score-box {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 2px 16px;
+      direction: ltr;
+      white-space: nowrap;
+    }
+
+    .score-meta {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #cfe3fa;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+    }
+
+    .result-pill {
+      display: inline-block;
+      margin-top: 10px;
+      background: #f5b82e;
+      color: #3a2a00;
+      font-weight: 900;
+      font-size: 12px;
+      padding: 3px 14px;
+      border-radius: 30px;
+    }
+
+    /* المباراة القادمة */
+    .next-match { text-align: center; padding: 14px 4px 4px; }
+
+    .next-match .vs-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 14px;
+    }
+
+    .next-match .team-badge {
+      background: #eaf3ff;
+      border-color: #cfe3fa;
+    }
+
+    .next-match .team-name { color: var(--navy); }
+
+    .vs-text { font-weight: 900; color: var(--blue-light); font-size: 18px; }
+
+    .match-details {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
     .schedule-wrap { overflow-x: auto; }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 500px;
-      font-size: 13px;
-    }
+    table { width: 100%; border-collapse: collapse; min-width: 500px; font-size: 13px; }
 
-    th {
-      background: var(--navy);
-      color: white;
-      padding: 13px 10px;
-      text-align: right;
-    }
+    th { background: var(--navy); color: white; padding: 13px 10px; text-align: right; }
 
     th:first-child { border-radius: 0 10px 0 0; }
     th:last-child { border-radius: 10px 0 0 0; }
 
-    td {
-      padding: 13px 10px;
-      border-bottom: 1px solid var(--border);
-    }
+    td { padding: 13px 10px; border-bottom: 1px solid var(--border); }
 
     tr:last-child td { border-bottom: 0; }
 
-    .day {
-      font-weight: 900;
-      color: var(--blue);
-    }
+    .day { font-weight: 900; color: var(--blue); }
+    .time { font-weight: 800; white-space: nowrap; }
 
-    .time {
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 
     .feature-card {
       background: white;
@@ -412,21 +426,9 @@
       text-align: center;
     }
 
-    .feature-card .feature-icon {
-      font-size: 29px;
-      margin-bottom: 7px;
-    }
-
-    .feature-card h3 {
-      color: var(--navy);
-      font-size: 15px;
-      margin-bottom: 5px;
-    }
-
-    .feature-card p {
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .feature-card .feature-icon { font-size: 29px; margin-bottom: 7px; }
+    .feature-card h3 { color: var(--navy); font-size: 15px; margin-bottom: 5px; }
+    .feature-card p { font-size: 11px; color: var(--muted); }
 
     .about-strip {
       background: var(--navy);
@@ -438,23 +440,9 @@
       overflow: hidden;
     }
 
-    .about-strip h2 {
-      font-size: 23px;
-      margin-bottom: 10px;
-    }
-
-    .about-strip p {
-      color: #d9e7f7;
-      font-size: 13px;
-      max-width: 850px;
-    }
-
-    .about-strip .slogan {
-      color: #9bcfff;
-      font-size: 20px;
-      font-weight: 900;
-      margin-top: 13px;
-    }
+    .about-strip h2 { font-size: 23px; margin-bottom: 10px; }
+    .about-strip p { color: #d9e7f7; font-size: 13px; max-width: 850px; }
+    .about-strip .slogan { color: #9bcfff; font-size: 20px; font-weight: 900; margin-top: 13px; }
 
     .bottom-nav {
       position: fixed;
@@ -483,12 +471,7 @@
     .bottom-nav a span { font-size: 20px; }
     .bottom-nav a.active { color: var(--blue); font-weight: 900; }
 
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 11px;
-      padding: 30px 10px 15px;
-    }
+    footer { text-align: center; color: var(--muted); font-size: 11px; padding: 30px 10px 15px; }
 
     .footer-actions {
       display: flex;
@@ -544,16 +527,8 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .modal-content h2 {
-      color: var(--navy);
-      margin-bottom: 12px;
-      font-size: 21px;
-    }
-
-    .modal-content p {
-      color: #52647a;
-      font-size: 13px;
-    }
+    .modal-content h2 { color: var(--navy); margin-bottom: 12px; font-size: 21px; }
+    .modal-content p { color: #52647a; font-size: 13px; }
 
     .close-modal {
       position: absolute;
@@ -591,7 +566,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <header>
@@ -629,7 +603,7 @@
       <!-- شريط الأخبار -->
       <div class="news-bar">
         <div class="news-label">📢 أخبار النادي</div>
-        <div class="news-message">لا توجد أخبار جديدة حالياً – تابعونا لمعرفة آخر أخبار نادي الصبية.</div>
+        <div class="news-message">مباراتنا القادمة ضد فريق الحلة كوكو غداً في ملعبهم – ندعمكم ونتمنى لكم التوفيق يا صبية 💙</div>
       </div>
 
       <!-- حالة التمرين -->
@@ -690,23 +664,54 @@
         </div>
 
         <div class="two-columns">
+          <!-- آخر مباراة -->
           <div class="card">
             <span class="match-label">آخر مباراة</span>
-            <div class="empty-state">
-              <span class="empty-icon">⚽</span>
-              <strong>لا توجد نتائج مسجلة حالياً</strong>
-              <p>ستظهر هنا نتائج المباريات الودية والرسمية بعد تسجيلها.</p>
+
+            <div class="scoreboard">
+              <div class="score-row">
+                <div>
+                  <div class="team-badge">🏆</div>
+                  <div class="team-name">الصبية</div>
+                </div>
+                <div class="score-box">3 - 3</div>
+                <div>
+                  <div class="team-badge">⚽</div>
+                  <div class="team-name">التكناب</div>
+                </div>
+              </div>
+              <span class="result-pill">تعادل</span>
+              <div class="score-meta">
+                <span>🏟️ في ملعبنا</span>
+                <span>🤝 الصبية 3 × 3 التكناب</span>
+              </div>
             </div>
           </div>
 
+          <!-- المباراة القادمة -->
           <div class="card">
             <span class="match-label">المباراة القادمة</span>
-            <div class="empty-state">
-              <span class="empty-icon">📅</span>
-              <strong>موعد المباراة يُعلن قريباً</strong>
-              <p>سيتم عرض المنافس والتاريخ والوقت ومكان المباراة عند اعتمادها.</p>
+
+            <div class="next-match">
+              <div class="vs-row">
+                <div>
+                  <div class="team-badge">🏆</div>
+                  <div class="team-name">الصبية</div>
+                </div>
+                <div class="vs-text">VS</div>
+                <div>
+                  <div class="team-badge">⚽</div>
+                  <div class="team-name">الحلة كوكو</div>
+                </div>
+              </div>
+
+              <div class="match-details">
+                <span>📅 غداً – الثلاثاء 10 نوفمبر 2026</span>
+                <span>🏟️ في ملعب الحلة كوكو</span>
+              </div>
             </div>
-            <div class="info-line">⏳ العد التنازلي يظهر بعد تحديد الموعد الرسمي.</div>
+
+            <div class="info-line">💙 كلنا خلفكم يا أبطال الصبية!</div>
           </div>
         </div>
       </section>
@@ -808,27 +813,21 @@
             </thead>
             <tbody>
               <tr>
-                <td class="day">الأحد</td>
+                <td class="day">السبت</td>
                 <td>لياقة بدنية وتكنيك كروي</td>
                 <td>الفريق العام</td>
                 <td class="time">3:30 مساءً</td>
               </tr>
               <tr>
-                <td class="day">الثلاثاء</td>
+                <td class="day">الاثنين</td>
                 <td>تكتيك وتقسيمة مباريات</td>
                 <td>الفريق العام</td>
                 <td class="time">3:30 مساءً</td>
               </tr>
               <tr>
-                <td class="day">الخميس</td>
+                <td class="day">الأربعاء</td>
                 <td>إعداد للبطولات واللقاءات الودية</td>
                 <td>الفريق العام</td>
-                <td class="time">3:30 مساءً</td>
-              </tr>
-              <tr>
-                <td class="day">الجمعة</td>
-                <td>تمرين خاص وتجميعي</td>
-                <td>كبار السن</td>
                 <td class="time">3:30 مساءً</td>
               </tr>
             </tbody>
@@ -868,6 +867,7 @@
       </section>
 
     </div>
+
   </main>
 
   <!-- التذييل -->
@@ -925,15 +925,14 @@
   <script>
     // إظهار حالة تمرين اليوم دون الادعاء بأن التمرين قائم طوال اليوم
     function updateTrainingStatus() {
-      const day = new Date().getDay();
+      const day = new Date().getDay(); // 0 الأحد ... 6 السبت
       const text = document.getElementById("trainingText");
       const status = document.getElementById("trainingStatus");
 
       const trainingDays = {
-        0: "اليوم الأحد: تمرين لياقة بدنية وتكنيك كروي الساعة 3:30 مساءً.",
-        2: "اليوم الثلاثاء: تمرين تكتيك وتقسيمة مباريات الساعة 3:30 مساءً.",
-        4: "اليوم الخميس: إعداد للبطولات واللقاءات الودية الساعة 3:30 مساءً.",
-        5: "اليوم الجمعة: تمرين خاص وتجميعي لكبار السن الساعة 3:30 مساءً."
+        6: "اليوم السبت: تمرين لياقة بدنية وتكنيك كروي الساعة 3:30 مساءً.",
+        1: "اليوم الاثنين: تمرين تكتيك وتقسيمة مباريات الساعة 3:30 مساءً.",
+        3: "اليوم الأربعاء: إعداد للبطولات واللقاءات الودية الساعة 3:30 مساءً."
       };
 
       if (trainingDays[day]) {
