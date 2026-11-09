@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خزينة ومساهمات النادي - نادي الصبية الرياضي</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            color: #102a43;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0b2545;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #63b3ed;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #63b3ed;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0b2545;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            color: #486581;
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(11, 37, 69, 0.05);
+        }
+
+        .card h2 {
+            color: #0b2545;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        /* تنسيق أرقام الحسابات وطرق الدفع */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .payment-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .payment-box h3 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .account-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0b2545;
+            background: #e0f2fe;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        /* تنسيق الإحصائيات والنواقص */
+        .stats-item {
+            margin-bottom: 20px;
+        }
+
+        .stats-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 14px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3182ce;
+            border-radius: 10px;
+        }
+
+        /* جدول توزيع الصرف والادخار */
+        .allocation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .allocation-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-right: 4px solid #3182ce;
+        }
+
+        .allocation-card h4 {
+            color: #0b2545;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .allocation-card p {
+            color: #486581;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            background-color: #0b2545;
+            color: #9fb3c8;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">نادي الصبية الرياضي 🏆</div>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="finance.html">الخزينة والمساهمات</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div class="page-title">
+            <h1>خزينة النادي والمساهمات المالية</h1>
+            <p>نافذة شفافة لمتابعة الدعم المالي، النواقص، ووجهة الصرف والادخار</p>
+        </div>
+
+        <!-- 1. أرقام الحسابات وطرق الدفع -->
+        <div class="card">
+            <h2>💳 أرقام الحسابات وطرق الدفع والمساهمة</h2>
+            <div class="payment-grid">
+                
+                <div class="payment-box">
+                    <h3>بنك الخرطوم (BOK)</h3>
+                    <p>اسم الحساب: نادي الصبية الرياضي</p>
+                    <div class="account-number">123456789</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">تحويل مباشر عبر التطبيق</p>
+                </div>
+
+                <div class="payment-box">
+                    <h3>تطبيق فوري (Fawry)</h3>
+                    <p>رقم الحساب / التاجر:</p>
+                    <div class="account-number">987654321</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">عبر الأمين المالي للنادي</p>
+                </div>
+
+                <div class="payment-box">
+                    <h3>محفظة أوكاش (OCash)</h3>
+                    <p>رقم المحفظة:</p>
+                    <div class="account-number">0912345678</div>
+                    <p style="font-size: 0.9rem; color: #64748b;">مخصص لدعم المساهمات السريعة</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 2. إحصائيات النواقص والاحتياجات -->
+        <div class="card">
+            <h2>📊 إحصائيات الاحتياجات والنواقص الحالية</h2>
+            
+            <div class="stats-item">
+                <div class="stats-info">
+                    <span>معدات التدريب الرياضية (كراسي، أقماع، شباك)</span>
+                    <span>تم توفير 70%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%;"></div>
+                </div>
+            </div>
+
+            <div class="stats-item">
+                <div class="stats-info">
+                    <span>الزي الرياضي الموحد للفريق</span>
+                    <span>تم توفير 40%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%; background-color: #d97706;"></div>
+                </div>
+            </div>
+
+            <div class="stats-item">
+                <div class="stats-info">
+                    <span>المصاريف التشغيلية وصيانة الملعب</span>
+                    <span>تم توفير 85%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%; background-color: #16a34a;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. وجهة الصرف والادخار -->
+        <div class="card">
+            <h2>🎯 أين ستصرف وتدخر الأموال والمواد؟</h2>
+            <div class="allocation-grid">
+                
+                <div class="allocation-card">
+                    <h4>📦 توجيه المواد والأدوات</h4>
+                    <p>تُصرف مباشرة لتجهيز الملعب وتلبية الاحتياجات اليومية للاعبين والتدريبات الرسمية.</p>
+                </div>
+
+                <div class="allocation-card">
+                    <h4>💰 صندوق الطوارئ والادخار</h4>
+                    <p>يتم ادخار نسبة 20% من كل مساهمة في صندوق الاحتياطي لمواجهة البطولات المفاجئة أو الإصلاحات الطارئة.</p>
+                </div>
+
+                <div class="allocation-card">
+                    <h4>📝 تقارير الشفافية</h4>
+                    <p>يتم تحديث هذه الأرقام أسبوعياً بناءً على الواردات الفعلية والفواتير المعتمدة من إدارة النادي.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
+    </footer>
+
+</body>
+</html>
