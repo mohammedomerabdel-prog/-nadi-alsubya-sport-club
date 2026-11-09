@@ -14,7 +14,6 @@
     --bg:#09172a;
     --bg2:#10233d;
     --blue:#1d5b91;
-    --blue-light:#eaf2fa;
     --gold:#d7b36a;
     --white:#fff;
     --text:#142b46;
@@ -65,10 +64,7 @@ a{text-decoration:none;color:inherit}
     font-size:20px;
 }
 
-.top-label{
-    color:#b5c3d3;
-    font-size:12px;
-}
+.top-label{color:#b5c3d3;font-size:12px}
 
 /* Hero */
 .hero{
@@ -116,7 +112,6 @@ a{text-decoration:none;color:inherit}
     color:var(--gold);
     font-size:12px;
     font-weight:800;
-    letter-spacing:.5px;
     margin-bottom:13px;
 }
 
@@ -193,10 +188,7 @@ a{text-decoration:none;color:inherit}
 
 .stat-card:hover{transform:translateY(-4px)}
 
-.stat-icon{
-    font-size:23px;
-    margin-bottom:5px;
-}
+.stat-icon{font-size:23px;margin-bottom:5px}
 
 .stat-number{
     font-size:26px;
@@ -220,10 +212,7 @@ a{text-decoration:none;color:inherit}
     margin-bottom:35px;
 }
 
-.search-title h2{
-    font-size:21px;
-    font-weight:900;
-}
+.search-title h2{font-size:21px;font-weight:900}
 
 .search-title p{
     color:#a8b8ca;
@@ -308,10 +297,7 @@ a{text-decoration:none;color:inherit}
     font-size:21px;
 }
 
-.section-title{
-    font-size:19px;
-    font-weight:900;
-}
+.section-title{font-size:19px;font-weight:900}
 
 .section-subtitle{
     color:#93a7bd;
@@ -690,6 +676,7 @@ a{text-decoration:none;color:inherit}
 <main class="container">
 
     <!-- إحصائيات الفريق -->
+
     <section class="stats-grid">
         <div class="stat-card">
             <div class="stat-icon">👥</div>
@@ -723,6 +710,7 @@ a{text-decoration:none;color:inherit}
     </section>
 
     <!-- البحث -->
+
     <div class="search-area">
         <div class="search-title">
             <h2>قائمة اللاعبين</h2>
@@ -745,6 +733,7 @@ a{text-decoration:none;color:inherit}
     </div>
 
     <!-- حراس المرمى -->
+
     <section class="position-section" id="goalkeepersSection">
         <div class="section-heading">
             <div class="section-heading-main">
@@ -760,6 +749,7 @@ a{text-decoration:none;color:inherit}
     </section>
 
     <!-- خط الدفاع -->
+
     <section class="position-section" id="defendersSection">
         <div class="section-heading">
             <div class="section-heading-main">
@@ -775,6 +765,7 @@ a{text-decoration:none;color:inherit}
     </section>
 
     <!-- خط الوسط -->
+
     <section class="position-section" id="midfieldersSection">
         <div class="section-heading">
             <div class="section-heading-main">
@@ -790,6 +781,7 @@ a{text-decoration:none;color:inherit}
     </section>
 
     <!-- خط الهجوم -->
+
     <section class="position-section" id="forwardsSection">
         <div class="section-heading">
             <div class="section-heading-main">
@@ -807,6 +799,7 @@ a{text-decoration:none;color:inherit}
 </main>
 
 <!-- نافذة تفاصيل اللاعب -->
+
 <div class="modal" id="playerModal" role="dialog"
      aria-modal="true" aria-labelledby="modalName">
 
@@ -870,9 +863,11 @@ a{text-decoration:none;color:inherit}
 </nav>
 
 <script>
+
 /*
-  بيانات اللاعبين الحالية.
-  لإضافة صورة لاحقاً:
+  بيانات لاعبي نادي الصبية الرياضي.
+
+  لإضافة صورة لاعب لاحقاً:
   photo: "images/players/player-name.jpg"
 
   لا توجد صور أو أرقام أو إحصائيات افتراضية.
@@ -880,11 +875,17 @@ a{text-decoration:none;color:inherit}
 
 const players = [
 
+    // =========================
     // حراس المرمى
+    // =========================
+
     {name:"محمد عمر",position:"goalkeeper",customPosition:"حارس مرمى"},
     {name:"مختار حمزة",position:"goalkeeper",customPosition:"حارس مرمى"},
 
+    // =========================
     // قلب الدفاع
+    // =========================
+
     {name:"محمد حمزة",position:"defender",customPosition:"قلب دفاع"},
     {name:"عمر حسين",position:"defender",customPosition:"قلب دفاع"},
     {name:"عباس البشير",position:"defender",customPosition:"قلب دفاع"},
@@ -894,42 +895,65 @@ const players = [
     {name:"مؤمن عبد الرحمن",position:"defender",customPosition:"قلب دفاع"},
     {name:"بدري الخزين",position:"defender",customPosition:"قلب دفاع"},
 
+    // =========================
     // الظهير الأيسر
+    // =========================
+
     {name:"أحمد علي",position:"defender",customPosition:"ظهير أيسر"},
     {name:"محمد صديق",position:"defender",customPosition:"ظهير أيسر"},
     {name:"جماع",position:"defender",customPosition:"ظهير أيسر"},
 
+    // =========================
     // الظهير الأيمن
+    // =========================
+
     {name:"محمد ضياء الدين",position:"defender",customPosition:"ظهير أيمن"},
     {name:"بلال إبراهيم",position:"defender",customPosition:"ظهير أيمن"},
     {name:"محمد عمر",position:"defender",customPosition:"ظهير أيمن"},
 
+    // =========================
     // وسط الارتكاز
-    {name:"هالند",position:"midfielder",customPosition:"وسط ارتكاز"},
-    {name:"نزار أحمد هرة",position:"midfielder",customPosition:"وسط ارتكاز"},
+    // =========================
 
+    {name:"محمد بابكر",position:"midfielder",customPosition:"وسط ارتكاز"},
+    {name:"نزار عثمان",position:"midfielder",customPosition:"وسط ارتكاز"},
+    {name:"أحمد هجو",position:"midfielder",customPosition:"وسط ارتكاز"},
+
+    // =========================
     // خط الوسط
+    // =========================
+
     {name:"عمر عبد المنعم",position:"midfielder",customPosition:"وسط"},
     {name:"كتلوني",position:"midfielder",customPosition:"وسط"},
     {name:"معاذ",position:"midfielder",customPosition:"وسط"},
-    {name:"مأمون",position:"midfielder",customPosition:"وسط"},
+    {name:"مومن محمد",position:"midfielder",customPosition:"وسط"},
     {name:"بن إدريس البشير",position:"midfielder",customPosition:"وسط"},
-    {name:"زرقة",position:"midfielder",customPosition:"وسط"},
+    {name:"مصطفى بابكر",position:"midfielder",customPosition:"وسط"},
     {name:"عبد الرحمن علي",position:"midfielder",customPosition:"وسط"},
     {name:"أحمد بابكر",position:"midfielder",customPosition:"وسط"},
     {name:"صديق",position:"midfielder",customPosition:"وسط"},
     {name:"مصطفى",position:"midfielder",customPosition:"وسط"},
     {name:"خطري",position:"midfielder",customPosition:"وسط"},
+    {name:"محمد مصطفى",position:"midfielder",customPosition:"وسط"},
 
-    // الهجوم
+    // =========================
+    // خط الهجوم
+    // =========================
+
     {name:"محمد عثمان",position:"forward",customPosition:"مهاجم"},
-    {name:"حسام",position:"forward",customPosition:"مهاجم"},
-    {name:"مجاهد",position:"forward",customPosition:"مهاجم"},
+    {name:"حسام فيصل",position:"forward",customPosition:"مهاجم"},
+    {name:"صديق مجاهد",position:"forward",customPosition:"مهاجم"},
     {name:"عمر",position:"forward",customPosition:"مهاجم"},
-    {name:"صديق",position:"forward",customPosition:"مهاجم"},
     {name:"محمد عبد المنعم",position:"forward",customPosition:"مهاجم"},
-    {name:"أحمد مصعب",position:"forward",customPosition:"مهاجم"}
+    {name:"أحمد مصعب",position:"forward",customPosition:"مهاجم"},
+    {name:"مؤتمن مصطفى",position:"forward",customPosition:"مهاجم"},
+    {name:"أبوبكر عمر",position:"forward",customPosition:"مهاجم"},
+    {name:"كاتولي",position:"forward",customPosition:"مهاجم"}
+
 ];
+
+
+// إعدادات الأقسام
 
 const settings = {
     goalkeeper:{
@@ -939,6 +963,7 @@ const settings = {
         stat:"goalkeeperCount",
         empty:"لم تتم إضافة حراس المرمى حتى الآن."
     },
+
     defender:{
         grid:"defendersGrid",
         section:"defendersSection",
@@ -946,6 +971,7 @@ const settings = {
         stat:"defenderCount",
         empty:"لم تتم إضافة لاعبي الدفاع حتى الآن."
     },
+
     midfielder:{
         grid:"midfieldersGrid",
         section:"midfieldersSection",
@@ -953,6 +979,7 @@ const settings = {
         stat:"midfielderCount",
         empty:"لم تتم إضافة لاعبي الوسط حتى الآن."
     },
+
     forward:{
         grid:"forwardsGrid",
         section:"forwardsSection",
@@ -962,11 +989,21 @@ const settings = {
     }
 };
 
+
+// حماية النصوص عند العرض
+
 function escapeHTML(value){
     return String(value??"").replace(/[&<>"']/g,char=>({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
     })[char]);
 }
+
+
+// توحيد الحروف العربية لتسهيل البحث
 
 function normalizeArabic(value){
     return String(value??"").trim().toLowerCase()
@@ -976,7 +1013,11 @@ function normalizeArabic(value){
         .replace(/\s+/g," ");
 }
 
+
+// عرض الصورة أو الرمز المؤقت
+
 function photoHTML(player){
+
     if(!player.photo){
         return '<span class="photo-placeholder">⚽</span>';
     }
@@ -985,54 +1026,90 @@ function photoHTML(player){
         <img src="${escapeHTML(player.photo)}"
              alt="${escapeHTML(player.name)}"
              onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+
         <span class="photo-placeholder" style="display:none;">⚽</span>
     `;
 }
 
+
+// إنشاء بطاقة اللاعب
+
 function createCard(player,index){
+
     return `
-        <article class="player-card" tabindex="0" role="button"
+        <article class="player-card"
+                 tabindex="0"
+                 role="button"
                  data-index="${index}"
                  aria-label="عرض تفاصيل ${escapeHTML(player.name)}">
 
             <div class="player-photo">
+
                 ${photoHTML(player)}
-                ${player.number!==undefined && player.number!==null && player.number!==""
+
+                ${player.number!==undefined &&
+                  player.number!==null &&
+                  player.number!==""
                     ? `<span class="player-number">${escapeHTML(player.number)}</span>`
                     : ""}
+
             </div>
 
             <div class="player-card-body">
-                <h3 class="player-name">${escapeHTML(player.name)}</h3>
-                <div class="player-position">${escapeHTML(player.customPosition)}</div>
+
+                <h3 class="player-name">
+                    ${escapeHTML(player.name)}
+                </h3>
+
+                <div class="player-position">
+                    ${escapeHTML(player.customPosition)}
+                </div>
+
                 <div class="player-card-footer">
                     <span>عرض الملف الشخصي</span>
                     <span>←</span>
                 </div>
+
             </div>
         </article>
     `;
 }
 
+
+// تحديث الإحصائيات تلقائياً
+
 function updateStats(){
+
     document.getElementById("totalPlayers").textContent=players.length;
 
     Object.entries(settings).forEach(([position,item])=>{
-        const count=players.filter(p=>p.position===position).length;
+
+        const count=players.filter(
+            p=>p.position===position
+        ).length;
+
         document.getElementById(item.stat).textContent=count;
+
         document.getElementById(item.badge).textContent=count+" لاعب";
+
     });
 }
 
+
+// عرض اللاعبين والبحث
+
 function renderPlayers(query=""){
+
     const search=normalizeArabic(query);
     let visible=0;
 
     Object.entries(settings).forEach(([position,item])=>{
+
         const grid=document.getElementById(item.grid);
         const section=document.getElementById(item.section);
 
-        const filtered=players.map((player,index)=>({player,index}))
+        const filtered=players
+            .map((player,index)=>({player,index}))
             .filter(({player})=>
                 player.position===position &&
                 normalizeArabic(player.name).includes(search)
@@ -1041,53 +1118,86 @@ function renderPlayers(query=""){
         visible+=filtered.length;
 
         if(filtered.length){
+
             grid.innerHTML=filtered.map(({player,index})=>
                 createCard(player,index)
             ).join("");
+
         }else{
+
             grid.innerHTML=`
                 <div class="empty-section">
-                    ${search?"لا يوجد لاعب مطابق في هذا القسم.":item.empty}
-                </div>`;
+                    ${search
+                        ?"لا يوجد لاعب مطابق في هذا القسم."
+                        :item.empty}
+                </div>
+            `;
+
         }
 
         section.style.display=
-            search && filtered.length===0?"none":"block";
+            search && filtered.length===0
+                ?"none"
+                :"block";
+
     });
 
     document.getElementById("noResults").style.display=
-        search && visible===0?"block":"none";
+        search && visible===0
+            ?"block"
+            :"none";
 
     document.getElementById("clearSearch").style.display=
-        query?"block":"none";
+        query
+            ?"block"
+            :"none";
 }
+
+
+// نافذة تفاصيل اللاعب
 
 const modal=document.getElementById("playerModal");
 
 function openPlayer(index){
+
     const player=players[index];
+
     if(!player)return;
 
-    document.getElementById("modalPhoto").innerHTML=photoHTML(player);
-    document.getElementById("modalName").textContent=player.name;
-    document.getElementById("modalPosition").textContent=player.customPosition;
+    document.getElementById("modalPhoto").innerHTML=
+        photoHTML(player);
 
-    const numberDetail=document.getElementById("numberDetail");
+    document.getElementById("modalName").textContent=
+        player.name;
+
+    document.getElementById("modalPosition").textContent=
+        player.customPosition;
+
+    const numberDetail=
+        document.getElementById("numberDetail");
+
     numberDetail.style.display=
-        player.number!==undefined && player.number!==null && player.number!==""
-        ?"block":"none";
+        player.number!==undefined &&
+        player.number!==null &&
+        player.number!==""
+            ?"block"
+            :"none";
 
-    document.getElementById("modalNumber").textContent=player.number??"";
+    document.getElementById("modalNumber").textContent=
+        player.number??"";
 
     document.getElementById("modalBio").textContent=
-        player.bio || "لم تتم إضافة نبذة تعريفية عن اللاعب بعد.";
+        player.bio ||
+        "لم تتم إضافة نبذة تعريفية عن اللاعب بعد.";
 
     document.getElementById("modalSkills").innerHTML=
         player.skills && player.skills.length
-        ? player.skills.map(skill=>
-            `<span class="skill-tag">${escapeHTML(skill)}</span>`
-          ).join("")
-        : '<span class="skill-tag">لم تتم إضافة المهارات بعد</span>';
+            ?player.skills.map(skill=>`
+                <span class="skill-tag">
+                    ${escapeHTML(skill)}
+                </span>
+            `).join("")
+            :'<span class="skill-tag">لم تتم إضافة المهارات بعد</span>';
 
     const statItems=[
         ["matches","المباريات"],
@@ -1096,74 +1206,137 @@ function openPlayer(index){
     ];
 
     const hasStats=statItems.some(([key])=>
-        player.stats && player.stats[key]!==undefined &&
-        player.stats[key]!==null && player.stats[key]!==""
+        player.stats &&
+        player.stats[key]!==undefined &&
+        player.stats[key]!==null &&
+        player.stats[key]!==""
     );
 
     document.getElementById("modalStats").innerHTML=
+
         hasStats
+
         ?statItems.map(([key,label])=>`
             <div>
-                <strong>${escapeHTML(player.stats?.[key]??"—")}</strong>
+                <strong>
+                    ${escapeHTML(player.stats?.[key]??"—")}
+                </strong>
                 <span>${label}</span>
-            </div>`).join("")
+            </div>
+        `).join("")
+
         :'<div style="grid-column:1/-1">لم تتم إضافة الإحصائيات بعد.</div>';
 
     modal.classList.add("active");
+
     document.body.style.overflow="hidden";
+
     document.getElementById("closeModal").focus();
+
 }
+
+
+// إغلاق النافذة
 
 function closePlayer(){
+
     modal.classList.remove("active");
+
     document.body.style.overflow="";
+
 }
 
-/* فتح بطاقات اللاعبين */
+
+// فتح بطاقات اللاعبين
+
 document.querySelectorAll(".players-grid").forEach(grid=>{
+
     grid.addEventListener("click",event=>{
+
         const card=event.target.closest(".player-card");
-        if(card)openPlayer(Number(card.dataset.index));
+
+        if(card){
+            openPlayer(Number(card.dataset.index));
+        }
+
     });
 
     grid.addEventListener("keydown",event=>{
+
         if(event.key!=="Enter" && event.key!==" ")return;
+
         const card=event.target.closest(".player-card");
+
         if(!card)return;
+
         event.preventDefault();
+
         openPlayer(Number(card.dataset.index));
+
     });
+
 });
 
-/* البحث */
+
+// البحث
+
 const searchInput=document.getElementById("playerSearch");
 
 searchInput.addEventListener("input",()=>{
+
     renderPlayers(searchInput.value);
+
 });
+
+
+// مسح البحث
 
 document.getElementById("clearSearch").addEventListener("click",()=>{
+
     searchInput.value="";
+
     renderPlayers();
+
     searchInput.focus();
+
 });
 
-/* إغلاق النافذة */
+
+// زر إغلاق النافذة
+
 document.getElementById("closeModal").addEventListener("click",closePlayer);
 
-modal.addEventListener("click",event=>{
-    if(event.target===modal)closePlayer();
-});
 
-document.addEventListener("keydown",event=>{
-    if(event.key==="Escape" && modal.classList.contains("active")){
+// الإغلاق بالنقر خارج النافذة
+
+modal.addEventListener("click",event=>{
+
+    if(event.target===modal){
         closePlayer();
     }
+
 });
 
-/* التشغيل */
+
+// الإغلاق بزر Escape
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key==="Escape" &&
+       modal.classList.contains("active")){
+
+        closePlayer();
+
+    }
+
+});
+
+
+// تشغيل الصفحة
+
 updateStats();
 renderPlayers();
+
 </script>
 
 </body>
