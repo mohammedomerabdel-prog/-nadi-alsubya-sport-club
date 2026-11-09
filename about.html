@@ -3,185 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عن النادي وتاريخ التأسيس - نادي الصبية الرياضي</title>
+    <title>عن النادي - نادي الصبية الرياضي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', system-ui, sans-serif;
-        }
-
-        body {
-            background-color: #f0f4f8;
-            color: #102a43;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #0b2545;
-            color: #ffffff;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        header .logo {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #63b3ed;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-right: 15px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #63b3ed;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #0b2545;
-        }
-
-        .page-title h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .page-title p {
-            color: #486581;
-            font-size: 1.1rem;
-        }
-
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(11, 37, 69, 0.05);
-        }
-
-        .card h2 {
-            color: #0b2545;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-        }
-
-        .card p {
-            color: #334155;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-
-        /* تنسيق الأهداف والرسالة بطاقات */
-        .goals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .goal-box {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .goal-box h3 {
-            color: #1e3a8a;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .goal-box p {
-            color: #486581;
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        footer {
-            background-color: #0b2545;
-            color: #9fb3c8;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: #f4f6f9; color: #1e293b; line-height: 1.6; padding-bottom: 70px; }
+        header { background-color: #0b2545; color: #ffffff; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+        header .logo { font-size: 1.4rem; font-weight: 700; color: #63b3ed; text-decoration: none; }
+        .container { max-width: 950px; margin: 25px auto; padding: 0 15px; }
+        .section { background: #ffffff; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05); }
+        .section h2 { color: #0b2545; margin-bottom: 18px; font-size: 1.3rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+        .section p { color: #486581; margin-bottom: 12px; font-size: 0.95rem; }
+        .about-card { background: #ffffff; border-right: 4px solid #3182ce; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0b2545; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); z-index: 1000; }
+        .bottom-nav a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+        .bottom-nav a.active, .bottom-nav a:hover { color: #63b3ed; }
+        footer { background-color: #0b2545; color: #9fb3c8; text-align: center; padding: 20px 15px; font-size: 0.85rem; margin-top: 30px; }
     </style>
 </head>
 <body>
-
-    <!-- الهيدر -->
     <header>
-        <div class="logo">نادي الصبية الرياضي 🏆</div>
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="about.html">عن النادي</a>
-            <a href="finance.html">خزينة النادي</a>
-            <a href="members.html">الأعضاء واللاعبين</a>
-        </nav>
+        <a href="index.html" class="logo">نادي الصبية الرياضي 🏆</a>
     </header>
 
     <div class="container">
-        
-        <div class="page-title">
-            <h1>عن نادي الصبية الرياضي</h1>
-            <p>تعرف على قصتنا، تاريخ تأسيسنا، ورؤيتنا المستقبلية في تطوير الرياضة</p>
-        </div>
-
-        <!-- 1. نبذة وتاريخ التأسيس -->
-        <div class="card">
-            <h2>📜 نبذة تاريخية وتأسيس النادي</h2>
-            <p>تأسس <strong>نادي الصبية الرياضي</strong> ليكون حاضنة رئيسية للمواهب الرياضية والشبابية، ومنصة مجتمعية تهدف إلى نشر الروح الرياضية، المنافسة الشريفة، والاهتمام باللياقة البدنية وتطوير المهارات.</p>
-            <p>منذ انطلاقته، حرص النادي على بناء كيان رياضي منظم يعتمد على الشفافية الإدارية والمالية، ويجمع الشباب تحت سقف واحد لتحقيق التميز في مختلف الأنشطة والفعاليات الرياضية.</p>
-        </div>
-
-        <!-- 2. الرؤية والرسالة والأهداف -->
-        <div class="card">
-            <h2>🎯 رؤيتنا ورسالتنا</h2>
-            <div class="goals-grid">
-                
-                <div class="goal-box">
-                    <h3>رؤيتنا</h3>
-                    <p>أن نكون النادي الرائد في اكتشاف وصقل المواهب الرياضية الشابة وتقديم نموذج إداري ورياضي متكامل.</p>
-                </div>
-
-                <div class="goal-box">
-                    <h3>رسالتنا</h3>
-                    <p>توفر بيئة رياضية احترافية ومحفزة للشباب، مع تعزيز قيم التعاون، الالتزام، والشفافية المالية.</p>
-                </div>
-
-                <div class="goal-box">
-                    <h3>أهدافنا</h3>
-                    <p>تنظيم بطولات محلية متميزة، تطوير البنية التحتية للتدريب، وبناء مجتمع رياضي واعٍ وقوي.</p>
-                </div>
-
+        <div class="section">
+            <h2>📜 عن نادي الصبية الرياضي</h2>
+            <div class="about-card">
+                <p>تأسس نادي الصبية الرياضي ليكون حاضنة رئيسية للمواهب الرياضية والشبابية، ومنصة مجتمعية تهدف إلى نشر الروح الرياضية والمنافسة الشريفة.</p>
+                <p>حرص النادي منذ انطلاقته على بناء كيان منظم يعتمد على الشفافية الإدارية والمالية، ويجمع الشباب تحت سقف واحد لتحقيق التميز الرياضي.</p>
             </div>
         </div>
-
     </div>
 
-    <!-- الفوتر -->
+    <div class="bottom-nav">
+        <a href="index.html"><span>🏠</span>الرئيسية</a>
+        <a href="about.html" class="active"><span>📜</span>عن النادي</a>
+        <a href="finance.html"><span>💳</span>الخزينة</a>
+        <a href="members.html"><span>⚽</span>الأعضاء</a>
+        <a href="media.html"><span>📢</span>الإعلامي</a>
+    </div>
+
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
     </footer>
-
 </body>
 </html>
