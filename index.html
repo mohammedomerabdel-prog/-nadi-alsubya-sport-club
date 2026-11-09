@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نادي الصبية الرياضي</title>
-    <!-- استدعاء خط Cairo الثابت والاحترافي -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -18,102 +17,114 @@
             background-color: #f4f6f9;
             color: #1e293b;
             line-height: 1.6;
+            padding-bottom: 70px; /* مساحة لشريط التصفح السفلي */
         }
 
-        /* الهيدر وشريط التصفح الكلاسيكي والنظيف */
+        /* هيدر نظيف وغير متكدس */
         header {
             background-color: #0b2545;
             color: #ffffff;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 1rem;
+            text-align: center;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         header .logo {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: #63b3ed;
         }
 
-        nav {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 6px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        nav a:hover, nav a.active {
-            color: #63b3ed;
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        /* قسم الترحيب الرئيسي */
+        /* واجهة الترحب الرئيسية */
         .hero {
             background: linear-gradient(135deg, #0b2545, #134074);
             color: #ffffff;
             text-align: center;
-            padding: 70px 20px;
+            padding: 40px 20px;
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
+            font-size: 2rem;
+            margin-bottom: 10px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #cbd5e1;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* الحاويات والأقسام */
         .container {
             max-width: 950px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        /* شبكة أزرار/بطاقات الأقسام الرئيسة في وسط الصفحة للتصفح المريح */
+        .nav-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .nav-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #0b2545;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(11, 37, 69, 0.04);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-card:hover {
+            border-color: #3182ce;
+            transform: translateY(-3px);
+            background-color: #f8fafc;
+        }
+
+        .nav-card-icon {
+            font-size: 1.5rem;
         }
 
         .section {
             background: #ffffff;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05);
         }
 
         .section h2 {
             color: #0b2545;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
+            margin-bottom: 18px;
+            font-size: 1.3rem;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
-        /* جدول الأنشطة والتمارين */
+        /* جدول التمارين */
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
             text-align: right;
         }
 
         .schedule-table th, .schedule-table td {
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
         }
 
         .schedule-table th {
@@ -122,15 +133,11 @@
             font-weight: 700;
         }
 
-        .schedule-table tr:hover {
-            background-color: #f8fafc;
-        }
-
         .badge {
             display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
             font-weight: 700;
         }
 
@@ -148,87 +155,123 @@
         .info-box {
             background-color: #f8fafc;
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 18px;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-align: center;
+            transition: background 0.3s;
         }
 
         .info-box:hover {
-            border-color: #3182ce;
-            background-color: #f0f4f8;
+            background-color: #edf2f7;
         }
 
         .info-box h3 {
             color: #0b2545;
-            margin-bottom: 8px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
         }
 
         .info-content {
             display: none;
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px dashed #cbd5e1;
-            color: #334155;
+            color: #1e293b;
             font-weight: 600;
         }
 
-        /* زر انضم إلينا (رابط الواتساب) */
+        /* زر الواتساب */
         .btn-whatsapp {
-            display: inline-block;
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            margin: 15px auto 0 auto;
             background-color: #25d366;
             color: #ffffff;
             text-decoration: none;
-            padding: 12px 25px;
+            padding: 12px 20px;
             font-size: 1rem;
             font-weight: 700;
-            border-radius: 6px;
-            transition: background 0.3s;
+            border-radius: 8px;
             text-align: center;
-            margin-top: 15px;
             box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
 
-        .btn-whatsapp:hover {
-            background-color: #20ba5a;
+        /* شريط التنقل السفلي المثبت لسهولة التصفح على الموبايل */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #0b2545;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+            z-index: 1000;
         }
 
-        /* الفوتر السفلي */
+        .bottom-nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .bottom-nav a.active, .bottom-nav a:hover {
+            color: #63b3ed;
+        }
+
         footer {
             background-color: #0b2545;
             color: #9fb3c8;
             text-align: center;
-            padding: 25px;
-            font-size: 0.9rem;
-            margin-top: 40px;
+            padding: 20px 15px;
+            font-size: 0.85rem;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر وشريط التصفح -->
+    <!-- هيدر مبسط لشاشة الموبايل بدون تكدس -->
     <header>
         <div class="logo">نادي الصبية الرياضي 🏆</div>
-        <nav>
-            <a href="index.html" class="active">الرئيسية</a>
-            <a href="about.html">عن النادي</a>
-            <a href="finance.html">الخزينة</a>
-            <a href="members.html">الأعضاء</a>
-            <a href="media.html">المركز الإعلامي</a>
-        </nav>
     </header>
 
-    <!-- قسم الترحيب الرئيسي -->
+    <!-- قسم الترحيب -->
     <section class="hero">
-        <h1>الموقع الرسمي لنادي الصبية الرياضي</h1>
+        <h1>الموقع الرسمي لنادي الصبية</h1>
         <p>نعمل على تطوير المهارات الرياضية وبناء الجيل القادم بروح رياضية عالية.</p>
     </section>
 
     <div class="container">
-        
-        <!-- جدول التمارين والأنشطة (الساعة 3:30 عصراً) -->
+
+        <!-- بطاقات التصفح الرئيسية في منتصف الصفحة بدلاً من الهيدر المتكدس -->
+        <div class="nav-cards-grid">
+            <a href="about.html" class="nav-card">
+                <span class="nav-card-icon">📜</span>
+                <span>عن النادي</span>
+            </a>
+            <a href="finance.html" class="nav-card">
+                <span class="nav-card-icon">💳</span>
+                <span>الخزينة</span>
+            </a>
+            <a href="members.html" class="nav-card">
+                <span class="nav-card-icon">⚽</span>
+                <span>الأعضاء</span>
+            </a>
+            <a href="media.html" class="nav-card">
+                <span class="nav-card-icon">📢</span>
+                <span>المركز الإعلامي</span>
+            </a>
+        </div>
+
+        <!-- جدول التمارين (الساعة 3:30 مساءً) -->
         <div class="section">
             <h2>📅 جدول التمارين والنشاط الأسبوعي</h2>
             <div style="overflow-x: auto;">
@@ -236,34 +279,34 @@
                     <thead>
                         <tr>
                             <th>اليوم</th>
-                            <th>نوع النشاط / التمرين</th>
-                            <th>الفئة المستهدفة</th>
+                            <th>التمرين</th>
+                            <th>الفئة</th>
                             <th>التوقيت</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>الأحد</strong></td>
-                            <td>تمرين لياقة بدنية وتكنيك كروي</td>
+                            <td>لياقة بدنية وتكنيك كروي</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
                         <tr>
                             <td><strong>الثلاثاء</strong></td>
-                            <td>تمرين تكتيكي وتقسيمة مباريات</td>
+                            <td>تكتيك وتقسيمة مباريات</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
                         <tr>
                             <td><strong>الخميس</strong></td>
-                            <td>تمرين الإعداد للبطولات واللقاءات الودية</td>
+                            <td>إعداد للبطولات واللقاءات الودية</td>
                             <td><span class="badge badge-main">الفريق العام</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
                         <tr>
                             <td><strong>الجمعة</strong></td>
-                            <td>تمرين خاص وتجميعي (كبار السن)</td>
-                            <td><span class="badge badge-senior">كبار السن / قدامى النادي</span></td>
+                            <td>تمرين خاص وتجميعي</td>
+                            <td><span class="badge badge-senior">كبار السن</span></td>
                             <td>3:30 مساءً</td>
                         </tr>
                     </tbody>
@@ -274,20 +317,19 @@
         <!-- صندوق "من نحن" التفاعلي -->
         <div class="section">
             <div class="info-box" id="aboutBox">
-                <h3>📌 من نحن (اضغط هنا لعرض التفاصيل)</h3>
-                <p style="color: #64748b; font-size: 0.9rem;">انقر على الصندوق لمعرفة المسؤول عن إدارة وتأسيس النادي</p>
+                <h3>📌 من نحن (اضغط لعرض التفاصيل)</h3>
+                <p style="color: #64748b; font-size: 0.85rem;">اضغط هنا لفتح تفاصيل الإدارة والمسؤول</p>
                 <div class="info-content" id="aboutContent">
-                    نادي الصبية الرياضي هو ملتقى رياضي واجتماعي يهدف لتنمية المواهب الشابة.<br>
-                    <strong>إشراف وإدارة:</strong> عمر عبد المنعم محمد أحمد
+                    نادي الصبية الرياضي هو ملتقى رياضي واجتماعي يهدف لتنمية المواهب الشابة.<br><br>
+                    <strong>المسؤول:</strong> عمر عبد المنعم محمد أحمد
                 </div>
             </div>
         </div>
 
-        <!-- قسم الانضمام لمجموعة الواتساب -->
+        <!-- قسم الانضمام للواتساب -->
         <div class="section" style="text-align: center;">
             <h2>💬 انضم إلى مجتمع النادي</h2>
-            <p style="color: #486581; margin-bottom: 15px;">كن على إطلاع دائم بكل مواعيد التمارين والفعاليات عبر مجموعة الواتساب الرسمية.</p>
-            <!-- استبدل الرابط أدناه برابط جروب الواتساب الخاص بك -->
+            <p style="color: #486581; font-size: 0.95rem;">كن على إطلاع بمواعيد التمارين والفعاليات عبر مجموعة الواتساب.</p>
             <a href="https://chat.whatsapp.com/YOUR_GROUP_LINK_HERE" target="_blank" class="btn-whatsapp">
                 📱 انضم إلى مجموعة الواتساب
             </a>
@@ -295,13 +337,20 @@
 
     </div>
 
-    <!-- الفوتر -->
+    <!-- فوتر ثابت في الأسفل لتسهيل التنقل والتصفح -->
+    <div class="bottom-nav">
+        <a href="index.html" class="active"><span>🏠</span>الرئيسية</a>
+        <a href="about.html"><span>📜</span>عن النادي</a>
+        <a href="finance.html"><span>💳</span>الخزينة</a>
+        <a href="members.html"><span>⚽</span>الأعضاء</a>
+        <a href="media.html"><span>📢</span>الإعلامي</a>
+    </div>
+
     <footer>
         <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
     </footer>
 
     <script>
-        // برمجة صندوق "من نحن" التفاعلي ليظهر الاسم عند الضغط
         const aboutBox = document.getElementById('aboutBox');
         const aboutContent = document.getElementById('aboutContent');
 
