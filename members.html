@@ -1,55 +1,598 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأعضاء واللاعبين - نادي الصبية الرياضي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background-color: #f4f6f9; color: #1e293b; line-height: 1.6; padding-bottom: 70px; }
-        header { background-color: #0b2545; color: #ffffff; padding: 1rem; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-        header .logo { font-size: 1.4rem; font-weight: 700; color: #63b3ed; text-decoration: none; }
-        .container { max-width: 950px; margin: 25px auto; padding: 0 15px; }
-        .section { background: #ffffff; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05); }
-        .section h2 { color: #0b2545; margin-bottom: 18px; font-size: 1.3rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
-        .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .member-card { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; text-align: center; }
-        .member-card h3 { color: #0b2545; font-size: 1.1rem; margin-bottom: 5px; }
-        .member-role { color: #3182ce; font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; }
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0b2545; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.15); z-index: 1000; }
-        .bottom-nav a { color: #cbd5e1; text-decoration: none; font-size: 0.75rem; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-        .bottom-nav a.active, .bottom-nav a:hover { color: #63b3ed; }
-        footer { background-color: #0b2545; color: #9fb3c8; text-align: center; padding: 20px 15px; font-size: 0.85rem; margin-top: 30px; }
-    </style>
-</head>
-<body>
-    <header>
-        <a href="index.html" class="logo">نادي الصبية الرياضي 🏆</a>
-    </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102d50">
+<title>اللاعبون | نادي الصبية الرياضي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <div class="container">
-        <div class="section">
-            <h2>👔 إدارة وجهاز النادي</h2>
-            <div class="members-grid">
-                <div class="member-card">
-                    <h3>عمر عبد المنعم</h3>
-                    <div class="member-role">رئيس النادي والمؤسس</div>
-                </div>
+<style>
+:root {
+    --primary:#12365d;
+    --dark:#0b2340;
+    --secondary:#1d5b91;
+    --gold:#d8ad55;
+    --bg:#f3f6fa;
+    --white:#fff;
+    --text:#172b43;
+    --muted:#718096;
+    --border:#e4eaf1;
+    --shadow:0 8px 25px rgba(16,45,80,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+button,input{font-family:inherit}
+a{text-decoration:none;color:inherit}
+
+header{
+    background:linear-gradient(135deg,var(--dark),var(--primary),var(--secondary));
+    color:white;padding:28px 18px 35px;text-align:center;
+    position:relative;overflow:hidden
+}
+header:before,header:after{
+    content:"";position:absolute;border:1px solid rgba(255,255,255,.08);
+    border-radius:50%;width:240px;height:240px
+}
+header:before{top:-150px;right:-70px}
+header:after{bottom:-190px;left:-80px}
+.header-content{position:relative;z-index:1}
+.club-name{font-size:25px;font-weight:900}
+.header-subtitle{font-size:13px;opacity:.8}
+.header-line{width:55px;height:3px;background:var(--gold);margin:17px auto 0;border-radius:10px}
+
+.container{width:min(1100px,92%);margin:28px auto 100px}
+.page-intro{text-align:center;margin-bottom:25px}
+.page-intro h1{font-size:25px;font-weight:900;color:var(--primary)}
+.page-intro p{color:var(--muted);font-size:13px;margin-top:5px}
+
+.stats-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    gap:12px;margin-bottom:30px
+}
+.stat-card{
+    background:white;padding:17px 8px;border-radius:15px;
+    text-align:center;box-shadow:var(--shadow);border:1px solid var(--border)
+}
+.stat-icon{font-size:23px;margin-bottom:5px}
+.stat-number{font-size:23px;font-weight:900;color:var(--primary);line-height:1.4}
+.stat-label{font-size:11px;color:var(--muted);font-weight:700}
+
+.search-box{position:relative;margin-bottom:25px}
+.search-box input{
+    width:100%;padding:15px 48px 15px 45px;border:1px solid var(--border);
+    background:white;border-radius:14px;font-size:14px;outline:none;box-shadow:var(--shadow)
+}
+.search-box input:focus{border-color:var(--secondary)}
+.search-icon{position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:19px}
+.clear-search{
+    position:absolute;left:13px;top:50%;transform:translateY(-50%);
+    border:none;background:#edf1f6;color:var(--muted);width:27px;height:27px;
+    border-radius:50%;cursor:pointer;display:none
+}
+
+.position-section{margin-bottom:30px;scroll-margin-top:15px}
+.section-heading{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border)
+}
+.section-title{display:flex;align-items:center;gap:9px;color:var(--primary);font-size:18px;font-weight:900}
+.section-count{
+    background:#e6edf5;color:var(--primary);padding:4px 12px;
+    border-radius:20px;font-size:12px;font-weight:800
+}
+.players-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+
+.player-card{
+    background:white;border:1px solid var(--border);border-radius:17px;
+    overflow:hidden;box-shadow:var(--shadow);cursor:pointer;
+    transition:transform .2s,box-shadow .2s;text-align:center
+}
+.player-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(16,45,80,.13)}
+.player-photo{
+    height:175px;background:linear-gradient(135deg,#e5edf6,#f5f8fc);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative
+}
+.player-photo img{width:100%;height:100%;object-fit:cover}
+.photo-placeholder{font-size:58px;opacity:.65}
+.player-number{
+    position:absolute;top:10px;right:10px;background:var(--primary);color:white;
+    min-width:31px;height:31px;padding:0 7px;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px
+}
+.player-info{padding:14px 10px 16px}
+.player-name{font-size:16px;font-weight:900;color:var(--primary);margin-bottom:4px}
+.player-position{color:var(--muted);font-size:12px;font-weight:700}
+.view-details{
+    display:inline-block;margin-top:12px;padding:7px 17px;
+    background:#edf3f9;color:var(--primary);border-radius:20px;
+    font-size:11px;font-weight:800
+}
+.no-results,.empty-section{
+    background:white;border:1px dashed #cbd6e2;padding:23px 15px;
+    text-align:center;border-radius:14px;color:var(--muted);font-size:13px
+}
+.no-results{display:none;border:none;box-shadow:var(--shadow);padding:35px 15px}
+.no-results div{font-size:35px;margin-bottom:10px}
+.empty-section span{display:block;font-size:27px;margin-bottom:5px}
+
+.modal{
+    position:fixed;inset:0;background:rgba(5,18,34,.75);z-index:1000;
+    display:none;align-items:center;justify-content:center;padding:15px;overflow-y:auto
+}
+.modal.active{display:flex}
+.modal-content{
+    background:white;width:min(520px,100%);border-radius:20px;
+    overflow:hidden;position:relative;max-height:90vh;overflow-y:auto;
+    animation:modalIn .25s ease
+}
+@keyframes modalIn{
+    from{opacity:0;transform:translateY(15px)}
+    to{opacity:1;transform:translateY(0)}
+}
+.modal-close{
+    position:absolute;top:12px;left:12px;z-index:2;width:36px;height:36px;
+    border:none;background:rgba(255,255,255,.95);border-radius:50%;
+    font-size:21px;cursor:pointer;color:var(--primary)
+}
+.modal-photo{
+    height:230px;background:linear-gradient(135deg,#e5edf6,#f5f8fc);
+    display:flex;align-items:center;justify-content:center;overflow:hidden
+}
+.modal-photo img{width:100%;height:100%;object-fit:cover}
+.modal-photo .photo-placeholder{font-size:75px}
+.modal-body{padding:22px}
+.modal-name{color:var(--primary);font-size:22px;font-weight:900}
+.modal-position{color:var(--secondary);font-size:13px;font-weight:800;margin-top:3px}
+.detail-divider{height:1px;background:var(--border);margin:17px 0}
+.detail-item{margin-bottom:15px}
+.detail-item h4{color:var(--primary);font-size:13px;margin-bottom:5px}
+.detail-item p{color:#66768a;font-size:13px;line-height:1.9}
+.skills-list{display:flex;flex-wrap:wrap;gap:7px}
+.skill-tag{background:#edf3f9;color:var(--primary);border-radius:20px;padding:5px 11px;font-size:11px;font-weight:800}
+.stats-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stats-detail div{background:#f3f6fa;border-radius:10px;text-align:center;padding:10px 5px}
+.stats-detail strong{display:block;font-size:19px;color:var(--primary)}
+.stats-detail span{font-size:10px;color:var(--muted)}
+
+.bottom-nav{
+    position:fixed;bottom:0;right:0;left:0;background:white;
+    display:flex;justify-content:space-around;align-items:center;
+    padding:10px 4px;box-shadow:0 -4px 20px rgba(0,0,0,.07);
+    z-index:100;border-top:1px solid var(--border)
+}
+.nav-item{
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    color:#8996a6;font-size:10px;font-weight:700;min-width:50px
+}
+.nav-item span:first-child{font-size:19px}
+.nav-item.active{color:var(--primary)}
+footer{text-align:center;padding:15px 10px 25px;color:var(--muted);font-size:11px}
+
+@media(max-width:700px){
+    .stats-grid{grid-template-columns:repeat(3,1fr)}
+    .players-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+    .player-photo{height:145px}
+    .page-intro h1{font-size:22px}
+}
+@media(max-width:360px){
+    .players-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="club-name">نادي الصبية الرياضي</div>
+        <div class="header-subtitle">المنصة الرسمية للنادي | الصبية تعيش</div>
+        <div class="header-line"></div>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="page-intro">
+        <h1>⚽ لاعبونا</h1>
+        <p>نجوم الفريق.. روح واحدة وطموح واحد</p>
+    </div>
+
+    <section class="stats-grid" aria-label="إحصائيات اللاعبين">
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-number" id="totalPlayers">0</div>
+            <div class="stat-label">إجمالي اللاعبين</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🧤</div>
+            <div class="stat-number" id="goalkeeperCount">0</div>
+            <div class="stat-label">حراس المرمى</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🛡️</div>
+            <div class="stat-number" id="defenderCount">0</div>
+            <div class="stat-label">خط الدفاع</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⚙️</div>
+            <div class="stat-number" id="midfielderCount">0</div>
+            <div class="stat-label">خط الوسط</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⚽</div>
+            <div class="stat-number" id="forwardCount">0</div>
+            <div class="stat-label">خط الهجوم</div>
+        </div>
+    </section>
+
+    <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="playerSearch" placeholder="ابحث عن لاعب باسمه..." autocomplete="off" aria-label="البحث عن لاعب">
+        <button class="clear-search" id="clearSearch" aria-label="مسح البحث">×</button>
+    </div>
+
+    <div class="no-results" id="noResults">
+        <div>🔎</div>
+        <strong>لم نعثر على لاعب بهذا الاسم</strong>
+        <p>تأكد من كتابة الاسم بصورة صحيحة.</p>
+    </div>
+
+    <section class="position-section" id="goalkeepersSection">
+        <div class="section-heading">
+            <h2 class="section-title">🧤 حراس المرمى</h2>
+            <span class="section-count" id="goalkeepersBadge">0 لاعب</span>
+        </div>
+        <div class="players-grid" id="goalkeepersGrid"></div>
+    </section>
+
+    <section class="position-section" id="defendersSection">
+        <div class="section-heading">
+            <h2 class="section-title">🛡️ خط الدفاع</h2>
+            <span class="section-count" id="defendersBadge">0 لاعب</span>
+        </div>
+        <div class="players-grid" id="defendersGrid"></div>
+    </section>
+
+    <section class="position-section" id="midfieldersSection">
+        <div class="section-heading">
+            <h2 class="section-title">⚙️ خط الوسط</h2>
+            <span class="section-count" id="midfieldersBadge">0 لاعب</span>
+        </div>
+        <div class="players-grid" id="midfieldersGrid"></div>
+    </section>
+
+    <section class="position-section" id="forwardsSection">
+        <div class="section-heading">
+            <h2 class="section-title">⚽ خط الهجوم</h2>
+            <span class="section-count" id="forwardsBadge">0 لاعب</span>
+        </div>
+        <div class="players-grid" id="forwardsGrid"></div>
+    </section>
+
+</main>
+
+<div class="modal" id="playerModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModal" aria-label="إغلاق">×</button>
+        <div class="modal-photo" id="modalPhoto">
+            <span class="photo-placeholder">⚽</span>
+        </div>
+        <div class="modal-body">
+            <h2 class="modal-name" id="modalName"></h2>
+            <div class="modal-position" id="modalPosition"></div>
+            <div class="detail-divider"></div>
+
+            <div class="detail-item" id="numberDetail">
+                <h4>🔢 رقم اللاعب</h4>
+                <p id="modalNumber"></p>
+            </div>
+
+            <div class="detail-item">
+                <h4>📝 نبذة عن اللاعب</h4>
+                <p id="modalBio"></p>
+            </div>
+
+            <div class="detail-item">
+                <h4>💪 المهارات والقدرات</h4>
+                <div class="skills-list" id="modalSkills"></div>
+            </div>
+
+            <div class="detail-item">
+                <h4>🏆 إحصائيات اللاعب</h4>
+                <div class="stats-detail" id="modalStats"></div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="bottom-nav">
-        <a href="index.html"><span>🏠</span>الرئيسية</a>
-        <a href="about.html"><span>📜</span>عن النادي</a>
-        <a href="finance.html"><span>💳</span>الخزينة</a>
-        <a href="members.html" class="active"><span>⚽</span>الأعضاء</a>
-        <a href="media.html"><span>📢</span>الإعلامي</a>
-    </div>
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-item"><span>🏠</span><span>الرئيسية</span></a>
+    <a href="about.html" class="nav-item"><span>ℹ️</span><span>عن النادي</span></a>
+    <a href="finance.html" class="nav-item"><span>💰</span><span>الخزنة</span></a>
+    <a href="members.html" class="nav-item active"><span>👥</span><span>اللاعبون</span></a>
+    <a href="media.html" class="nav-item"><span>🖼️</span><span>الوسائط</span></a>
+</nav>
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - نادي الصبية الرياضي</p>
-    </footer>
+<footer>
+    © 2026 نادي الصبية الرياضي | الصبية تعيش 💙
+</footer>
+
+<script>
+/*
+  بيانات اللاعبين الحالية.
+  photo: مسار الصورة داخل images/players/
+  number: رقم اللاعب إن توفر
+  bio: نبذة اللاعب
+  skills: المهارات والقدرات
+  stats: المباريات والأهداف والتمريرات الحاسمة
+
+  لا توجد بيانات افتراضية للصور أو الإحصائيات.
+*/
+
+const players = [
+    // حراس المرمى
+    {name:"محمد عمر",position:"goalkeeper",customPosition:"حارس مرمى"},
+    {name:"مختار حمزة",position:"goalkeeper",customPosition:"حارس مرمى"},
+
+    // قلب الدفاع
+    {name:"محمد حمزة",position:"defender",customPosition:"قلب دفاع"},
+    {name:"عمر حسين",position:"defender",customPosition:"قلب دفاع"},
+    {name:"عباس البشير",position:"defender",customPosition:"قلب دفاع"},
+    {name:"أمجد علي",position:"defender",customPosition:"قلب دفاع"},
+    {name:"محمد عبد الحميد",position:"defender",customPosition:"قلب دفاع"},
+    {name:"عثمان عبد المنعم",position:"defender",customPosition:"قلب دفاع"},
+    {name:"مؤمن عبد الرحمن",position:"defender",customPosition:"قلب دفاع"},
+    {name:"بدري الخزين",position:"defender",customPosition:"قلب دفاع"},
+
+    // الظهير الأيسر
+    {name:"أحمد علي",position:"defender",customPosition:"ظهير أيسر"},
+    {name:"محمد صديق",position:"defender",customPosition:"ظهير أيسر"},
+    {name:"جماع",position:"defender",customPosition:"ظهير أيسر"},
+
+    // الظهير الأيمن
+    {name:"محمد ضياء الدين",position:"defender",customPosition:"ظهير أيمن"},
+    {name:"بلال إبراهيم",position:"defender",customPosition:"ظهير أيمن"},
+    {name:"محمد عمر",position:"defender",customPosition:"ظهير أيمن"},
+
+    // وسط الارتكاز
+    {name:"هالند",position:"midfielder",customPosition:"وسط ارتكاز"},
+    {name:"نزار أحمد هرة",position:"midfielder",customPosition:"وسط ارتكاز"},
+
+    // خط الوسط
+    {name:"عمر عبد المنعم",position:"midfielder",customPosition:"وسط"},
+    {name:"كتلوني",position:"midfielder",customPosition:"وسط"},
+    {name:"معاذ",position:"midfielder",customPosition:"وسط"},
+    {name:"مأمون",position:"midfielder",customPosition:"وسط"},
+    {name:"بن إدريس البشير",position:"midfielder",customPosition:"وسط"},
+    {name:"زرقة",position:"midfielder",customPosition:"وسط"},
+    {name:"عبد الرحمن علي",position:"midfielder",customPosition:"وسط"},
+    {name:"أحمد بابكر",position:"midfielder",customPosition:"وسط"},
+    {name:"صديق",position:"midfielder",customPosition:"وسط"},
+    {name:"مصطفى",position:"midfielder",customPosition:"وسط"},
+    {name:"خطري",position:"midfielder",customPosition:"وسط"},
+
+    // خط الهجوم
+    {name:"محمد عثمان",position:"forward",customPosition:"مهاجم"},
+    {name:"حسام",position:"forward",customPosition:"مهاجم"},
+    {name:"مجاهد",position:"forward",customPosition:"مهاجم"},
+    {name:"عمر",position:"forward",customPosition:"مهاجم"},
+    {name:"صديق",position:"forward",customPosition:"مهاجم"},
+    {name:"محمد عبد المنعم",position:"forward",customPosition:"مهاجم"},
+    {name:"أحمد مصعب",position:"forward",customPosition:"مهاجم"}
+];
+
+const positionSettings = {
+    goalkeeper:{
+        grid:"goalkeepersGrid",section:"goalkeepersSection",
+        badge:"goalkeepersBadge",stat:"goalkeeperCount",
+        empty:"لم تتم إضافة حراس المرمى حتى الآن."
+    },
+    defender:{
+        grid:"defendersGrid",section:"defendersSection",
+        badge:"defendersBadge",stat:"defenderCount",
+        empty:"لم تتم إضافة لاعبي الدفاع حتى الآن."
+    },
+    midfielder:{
+        grid:"midfieldersGrid",section:"midfieldersSection",
+        badge:"midfieldersBadge",stat:"midfielderCount",
+        empty:"لم تتم إضافة لاعبي الوسط حتى الآن."
+    },
+    forward:{
+        grid:"forwardsGrid",section:"forwardsSection",
+        badge:"forwardsBadge",stat:"forwardCount",
+        empty:"لم تتم إضافة لاعبي الهجوم حتى الآن."
+    }
+};
+
+const searchInput=document.getElementById("playerSearch");
+const clearSearch=document.getElementById("clearSearch");
+const noResults=document.getElementById("noResults");
+const modal=document.getElementById("playerModal");
+
+function escapeHTML(value){
+    return String(value??"").replace(/[&<>"']/g,char=>({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    })[char]);
+}
+
+function normalizeArabic(value){
+    return String(value??"").trim().toLowerCase()
+        .replace(/[أإآ]/g,"ا")
+        .replace(/ى/g,"ي")
+        .replace(/ة/g,"ه")
+        .replace(/\s+/g," ");
+}
+
+function playerPhotoHTML(player){
+    if(player.photo){
+        const safePhoto=escapeHTML(player.photo);
+        return `
+            <img src="${safePhoto}" alt="${escapeHTML(player.name)}"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <span class="photo-placeholder" style="display:none;">⚽</span>
+        `;
+    }
+    return '<span class="photo-placeholder">⚽</span>';
+}
+
+function createPlayerCard(player,index){
+    return `
+        <article class="player-card" tabindex="0" role="button"
+        aria-label="عرض تفاصيل ${escapeHTML(player.name)}"
+        data-player-index="${index}">
+            <div class="player-photo">
+                ${playerPhotoHTML(player)}
+            </div>
+            <div class="player-info">
+                <h3 class="player-name">${escapeHTML(player.name)}</h3>
+                <div class="player-position">${escapeHTML(player.customPosition)}</div>
+                <span class="view-details">عرض التفاصيل ←</span>
+            </div>
+        </article>
+    `;
+}
+
+function updateStatistics(){
+    document.getElementById("totalPlayers").textContent=players.length;
+
+    Object.entries(positionSettings).forEach(([position,settings])=>{
+        const count=players.filter(p=>p.position===position).length;
+        document.getElementById(settings.stat).textContent=count;
+        document.getElementById(settings.badge).textContent=`${count} لاعب`;
+    });
+}
+
+function renderPlayers(query=""){
+    const normalizedQuery=normalizeArabic(query);
+    let visibleCount=0;
+
+    Object.entries(positionSettings).forEach(([position,settings])=>{
+        const grid=document.getElementById(settings.grid);
+        const section=document.getElementById(settings.section);
+
+        const filtered=players.map((player,index)=>({player,index}))
+            .filter(({player})=>
+                player.position===position &&
+                normalizeArabic(player.name).includes(normalizedQuery)
+            );
+
+        visibleCount+=filtered.length;
+
+        if(filtered.length===0){
+            grid.innerHTML=`
+                <div class="empty-section" style="grid-column:1/-1;">
+                    <span>⚽</span>
+                    ${normalizedQuery?"لا يوجد لاعب مطابق في هذا القسم.":settings.empty}
+                </div>`;
+        }else{
+            grid.innerHTML=filtered
+                .map(({player,index})=>createPlayerCard(player,index)).join("");
+        }
+
+        section.style.display=
+            normalizedQuery&&filtered.length===0?"none":"block";
+    });
+
+    noResults.style.display=
+        normalizedQuery&&visibleCount===0?"block":"none";
+
+    clearSearch.style.display=query?"block":"none";
+}
+
+function openPlayer(index){
+    const player=players[index];
+    if(!player)return;
+
+    document.getElementById("modalPhoto").innerHTML=playerPhotoHTML(player);
+    document.getElementById("modalName").textContent=player.name;
+    document.getElementById("modalPosition").textContent=player.customPosition;
+
+    const numberDetail=document.getElementById("numberDetail");
+    numberDetail.style.display=
+        player.number!==undefined&&player.number!==null&&player.number!==""?"block":"none";
+
+    document.getElementById("modalNumber").textContent=player.number??"";
+
+    document.getElementById("modalBio").textContent=
+        player.bio||"لم تتم إضافة نبذة تعريفية عن اللاعب بعد.";
+
+    document.getElementById("modalSkills").innerHTML=
+        player.skills&&player.skills.length
+        ?player.skills.map(skill=>`<span class="skill-tag">${escapeHTML(skill)}</span>`).join("")
+        :'<span class="skill-tag">لم تتم إضافة المهارات بعد</span>';
+
+    const statItems=[
+        ["matches","المباريات"],
+        ["goals","الأهداف"],
+        ["assists","التمريرات الحاسمة"]
+    ];
+
+    const hasStats=statItems.some(([key])=>
+        player.stats&&player.stats[key]!==undefined&&
+        player.stats[key]!==null&&player.stats[key]!==""
+    );
+
+    document.getElementById("modalStats").innerHTML=hasStats
+        ?statItems.map(([key,label])=>`
+            <div>
+                <strong>${escapeHTML(player.stats?.[key]??"—")}</strong>
+                <span>${label}</span>
+            </div>`).join("")
+        :'<div style="grid-column:1/-1;">لم تتم إضافة الإحصائيات بعد.</div>';
+
+    modal.classList.add("active");
+    document.body.style.overflow="hidden";
+    document.getElementById("closeModal").focus();
+}
+
+function closePlayerModal(){
+    modal.classList.remove("active");
+    document.body.style.overflow="";
+}
+
+document.querySelectorAll(".players-grid").forEach(grid=>{
+    grid.addEventListener("click",event=>{
+        const card=event.target.closest(".player-card");
+        if(card)openPlayer(Number(card.dataset.playerIndex));
+    });
+
+    grid.addEventListener("keydown",event=>{
+        if(event.key!=="Enter"&&event.key!==" ")return;
+        const card=event.target.closest(".player-card");
+        if(!card)return;
+        event.preventDefault();
+        openPlayer(Number(card.dataset.playerIndex));
+    });
+});
+
+searchInput.addEventListener("input",()=>{
+    renderPlayers(searchInput.value);
+});
+
+clearSearch.addEventListener("click",()=>{
+    searchInput.value="";
+    renderPlayers();
+    searchInput.focus();
+});
+
+document.getElementById("closeModal").addEventListener("click",closePlayerModal);
+
+modal.addEventListener("click",event=>{
+    if(event.target===modal)closePlayerModal();
+});
+
+document.addEventListener("keydown",event=>{
+    if(event.key==="Escape"&&modal.classList.contains("active")){
+        closePlayerModal();
+    }
+});
+
+updateStatistics();
+renderPlayers();
+</script>
+
 </body>
 </html>
